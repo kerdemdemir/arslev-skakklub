@@ -294,6 +294,27 @@ section.tint{background:var(--cream);border-block:1px solid var(--line)}
 .person a{display:block;text-decoration:none;color:var(--ink-soft);font-size:.95rem}
 .person a:hover{color:var(--gold)}
 
+/* ---------- Statisk kort ---------- */
+.map-card{
+  position:relative;display:block;height:100%;min-height:320px;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);text-decoration:none;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.map-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);
+  border-color:color-mix(in srgb,var(--gold) 45%,var(--line))}
+.map-card img{width:100%;height:100%;min-height:320px;object-fit:cover;object-position:center}
+.map-pill{
+  position:absolute;left:14px;bottom:14px;
+  background:var(--panel);color:var(--on-panel);
+  font-size:.85rem;font-weight:600;padding:9px 15px;border-radius:99px;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.55);
+}
+.map-card:hover .map-pill{background:var(--gold-bright);color:#14110d}
+.map-credit{font-size:.78rem;color:var(--muted);margin:10px 0 0}
+.map-credit a{color:var(--muted)}
+.map-credit a:hover{color:var(--gold)}
+
 /* ---------- Tables ---------- */
 .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;font-size:.95rem}

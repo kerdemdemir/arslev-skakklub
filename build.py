@@ -355,9 +355,15 @@ def build_index():
              Lean Schier, formand</p>
         </div>
       </div>
-      <div class="card reveal" style="padding:0;overflow:hidden;min-height:340px;display:grid">
-        <iframe title="Kort over Over Bækken 1, 5792 Årslev" loading="lazy" width="640" height="480" style="border:0;width:100%;height:100%;min-height:340px;display:block"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=10.4728%2C55.3007%2C10.4968%2C55.3147&amp;layer=mapnik&amp;marker=55.30767%2C10.48484"></iframe>
+      <div class="reveal">
+        <a class="map-card" href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}"
+           target="_blank" rel="noopener">
+          <img src="assets/img/kort.png" width="1000" height="750" loading="lazy"
+               alt="Kort over spillestedet Over Bækken 1 i Sønder Nærå ved Årslev">
+          <span class="map-pill">Åbn i Google Maps →</span>
+        </a>
+        <p class="map-credit">Kortdata © <a href="https://www.openstreetmap.org/copyright"
+           target="_blank" rel="noopener">OpenStreetMap-bidragydere</a></p>
       </div>
     </div>
   </div>
@@ -750,9 +756,15 @@ def build_info():
           <div><dt>Forbund</dt><dd>Fyns Skak Union · Dansk Skak Union</dd></div>
         </dl>
       </div>
-      <div class="card reveal" style="padding:0;overflow:hidden;min-height:420px;display:grid">
-        <iframe title="Kort over Over Bækken 1, 5792 Årslev" loading="lazy" width="640" height="480" style="border:0;width:100%;height:100%;min-height:420px;display:block"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=10.4708%2C55.2987%2C10.4988%2C55.3167&amp;layer=mapnik&amp;marker=55.30767%2C10.48484"></iframe>
+      <div class="reveal">
+        <a class="map-card" href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}"
+           target="_blank" rel="noopener">
+          <img src="assets/img/kort.png" width="1000" height="750" loading="lazy"
+               alt="Kort over spillestedet Over Bækken 1 i Sønder Nærå ved Årslev">
+          <span class="map-pill">Åbn i Google Maps →</span>
+        </a>
+        <p class="map-credit">Kortdata © <a href="https://www.openstreetmap.org/copyright"
+           target="_blank" rel="noopener">OpenStreetMap-bidragydere</a></p>
       </div>
     </div>
   </div>
