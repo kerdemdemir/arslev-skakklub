@@ -1,6 +1,6 @@
 # Årslev Skakklub — hjemmeside
 
-Statisk hjemmeside for [Årslev Skakklub](https://www.arslevskak.duckdns.org),
+Statisk hjemmeside for [Årslev Skakklub](https://aarslevskak.com),
 en skakklub i Faaborg-Midtfyn Kommune på Fyn, stiftet 1982.
 
 Alt indhold er overført fra klubbens tidligere Wix-side.
@@ -26,7 +26,7 @@ Kun HTML, CSS og ~100 linjer JavaScript.
 
 ## Nyheder: admin-siden
 
-Nyheder og billeder lægges ud via **<https://www.arslevskak.duckdns.org/admin>**.
+Nyheder og billeder lægges ud via **<https://aarslevskak.com/admin>**.
 Log ind, skriv nyheden, læg eventuelt billeder på — siden bliver bygget og
 opdateret med det samme.
 
@@ -55,7 +55,7 @@ systemctl restart arslevskak-admin
 
 ## Partiarkivet (kun for administratorer)
 
-**<https://www.arslevskak.duckdns.org/admin/partier>** — importér PGN-filer og
+**<https://aarslevskak.com/admin/partier>** — importér PGN-filer og
 gennemgå partierne med bræt og motor.
 
 Siden ligger bag login og bliver **aldrig** bygget ind i den offentlige

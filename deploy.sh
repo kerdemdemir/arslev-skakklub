@@ -25,4 +25,4 @@ ssh "$SERVER" 'chown -R arslev:www-data /srv/arslevskak /var/www/arslevskak
                systemctl restart arslevskak-admin
                nginx -t && systemctl reload nginx'
 
-echo "✓ Udrullet: https://www.arslevskak.duckdns.org"
+echo "✓ Udrullet: https://aarslevskak.com"

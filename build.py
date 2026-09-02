@@ -11,7 +11,7 @@ import html as H
 import json
 import pathlib
 
-SITE = "https://www.arslevskak.duckdns.org"
+SITE = "https://aarslevskak.com"
 CLUB = "Årslev Skakklub"
 BUILT = date.today().isoformat()
 
@@ -190,6 +190,8 @@ def footer():
 
 def page(slug, title, desc, body, active=None):
     active = active or slug
+    # Forsiden er kanonisk på den nøgne adresse, ikke på /index.html
+    canon = f"{SITE}/" if slug == "index.html" else f"{SITE}/{slug}"
     doc = f"""<!DOCTYPE html>
 <html lang="da">
 <head>
@@ -198,14 +200,14 @@ def page(slug, title, desc, body, active=None):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#14110d">
-<link rel="canonical" href="{SITE}/{slug}">
+<link rel="canonical" href="{canon}">
 <link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/img/logo-192.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{CLUB}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:url" content="{SITE}/{slug}">
+<meta property="og:url" content="{canon}">
 <meta property="og:image" content="{SITE}/assets/img/logo-512.png">
 <meta property="og:locale" content="da_DK">
 <meta name="twitter:card" content="summary">

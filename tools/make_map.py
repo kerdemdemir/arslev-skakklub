@@ -16,7 +16,7 @@ LAT, LON = 55.30767, 10.48484      # Over Bækken, 5792 Årslev
 ZOOM = 16
 WIDTH, HEIGHT = 1000, 750
 TILE = 256
-UA = "arslevskak-website/1.0 (statisk kortgenerering; https://www.arslevskak.duckdns.org)"
+UA = "arslevskak-website/1.0 (statisk kortgenerering; https://aarslevskak.com)"
 OUT = pathlib.Path("assets/img/kort.png")
 
 from PIL import Image, ImageDraw, ImageFont
