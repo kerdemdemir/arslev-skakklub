@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Log ind{% endblock %}
+{% block body %}
+<div class="login">
+  <img src="/assets/img/logo-192.png" width="72" height="72" alt="">
+  <h1>Log ind</h1>
+  <p class="sub">Her tilføjer du nyheder og billeder til klubbens hjemmeside.</p>
+  {% if error %}<p class="alert err">{{ error }}</p>{% endif %}
+  <form method="post" action="/admin/login" autocomplete="on">
+    <label>Brugernavn
+      <input name="username" autocomplete="username" required autofocus>
+    </label>
+    <label>Adgangskode
+      <input name="password" type="password" autocomplete="current-password" required>
+    </label>
+    <button class="btn">Log ind</button>
+  </form>
+</div>
+{% endblock %}

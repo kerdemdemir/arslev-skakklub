@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block title %}Admin{% endblock %} · Årslev Skakklub</title>
+<link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/admin/static/admin.css">
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="/admin">
+    <img src="/assets/img/logo-96.png" width="34" height="34" alt="">
+    <span>Årslev Skakklub <b>· admin</b></span>
+  </a>
+  {% if request.cookies.get('arslev_admin') %}
+  <nav>
+    <a href="/" target="_blank" rel="noopener">Se siden ↗</a>
+    <form method="post" action="/admin/logout">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <button class="link">Log ud</button>
+    </form>
+  </nav>
+  {% endif %}
+</header>
+<main>{% block body %}{% endblock %}</main>
+</body>
+</html>

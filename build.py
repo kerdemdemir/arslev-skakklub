@@ -8,6 +8,7 @@ Al tekst er hentet fra klubbens tidligere Wix-side.
 """
 from datetime import date
 import html as H
+import json
 import pathlib
 
 SITE = "https://www.arslevskak.duckdns.org"
@@ -75,28 +76,39 @@ def dk_date(iso, short=False):
 
 
 # ---------------------------------------------------------------- nyheder
-NEWS = [
-    dict(iso="2026-08-01", title="Kalenderen er opdateret",
-         body=["""De 4 mandage, hvor vi skal spille OS-turnering, foregår jo inde i OS,
-                  og der er ikke skak i Årslev de aftener.""",
-               "Mere info omkring dette til GF."]),
-    dict(iso="2026-05-12", title="Jan er årets lynmester – og ny sæson i nye lokaler",
-         body=["""Som sidste aktivitet i den forgangne sæson afholdt vi i går vores afslutning,
-                  hvor det vigtigste punkt var at finde årets lynmester. Lidt skuffende var vi
-                  kun 7 mand, men der var vist noget med noget sygdom. Vi kastede os ud i en
-                  dobbeltrundig alle mod alle, 14 runder, og titlen var der aldrig tvivl om:
-                  Jan trampede hen over os alle sammen og vandt med 13/14. Tillykke!""",
-               """Selvom der står én mandag mere i kalenderen, var dette sidste aften i sæsonen.
-                  Næste begivenhed er sommerskak hos Søren, flyttet til 9. aug., og I skulle
-                  have fået indbydelsen.""",
-               """Den nye sæson starter mandag 31/8 (uge 36) – i nye lokaler! Det er på
-                  Husmandsstedet, og adressen er Over Bækken 1.""",
-               """Kalenderen er ikke så brugbar endnu, blandt andet fordi træningsturneringen
-                  mod OS ikke ligger klar. Men noget er der da dato på: Opstart og
-                  generalforsamling. Og det er dejligt nemt, det er nemlig samme dato:
-                  mandag 31/8 kl. 19.00. Der kommer en indbydelse senest 14 dage før.""",
-               "Fortsat god sommer til jer alle sammen!"]),
-]
+# Nyheder redigeres i content/news.json - enten i hånden eller via admin-siden
+# på /admin. Kør build.py bagefter (admin-siden gør det selv).
+NEWS_FILE = pathlib.Path("content/news.json")
+
+
+def load_news():
+    if not NEWS_FILE.exists():
+        return []
+    posts = json.loads(NEWS_FILE.read_text(encoding="utf-8")).get("posts", [])
+    posts.sort(key=lambda p: p.get("date", ""), reverse=True)
+    return [dict(iso=p["date"], title=p["title"],
+                 body=p.get("body", []), images=p.get("images", []))
+            for p in posts]
+
+
+NEWS = load_news()
+
+
+def render_images(imgs, lead_only=False):
+    """Billeder i en nyhed. lead_only: kun det første, til forsidens uddrag."""
+    if not imgs:
+        return ""
+    if lead_only:
+        imgs = imgs[:1]
+    figs = []
+    for im in imgs:
+        cap = f'<figcaption>{H.escape(im["caption"])}</figcaption>' if im.get("caption") else ""
+        figs.append(
+            f'<figure><img src="assets/img/{H.escape(im["file"])}" loading="lazy" '
+            f'alt="{H.escape(im.get("alt") or "")}">{cap}</figure>')
+    cls = "post-figs one" if len(figs) == 1 else "post-figs"
+    return f'\n          <div class="{cls}">{"".join(figs)}</div>'
+
 
 # ------------------------------------------------- klubturneringens rundeskema
 PLAYERS = ["Erdem", "Jens", "Bent", "Knud", "Jan", "Henrik",
@@ -244,8 +256,8 @@ def build_index():
     news = "\n".join(f"""      <article class="post reveal">
         <div class="when"><b>{int(n['iso'][8:])}. {MONTHS_SHORT[int(n['iso'][5:7])]}</b><span>{n['iso'][:4]}</span></div>
         <div>
-          <h3>{n['title']}</h3>
-          <p>{' '.join(n['body'][0].split())}</p>
+          <h3>{H.escape(n['title'])}</h3>
+          <p>{H.escape(' '.join((n['body'][0] if n['body'] else '').split()))}</p>{render_images(n.get('images'), lead_only=True)}
           <a class="more" href="nyheder.html" style="color:var(--gold);font-weight:600;text-decoration:none">Læs hele nyheden →</a>
         </div>
       </article>""" for n in NEWS[:2])
@@ -427,12 +439,13 @@ def build_index():
 def build_nyheder():
     posts = []
     for n in NEWS:
-        paras = "\n          ".join(f"<p>{' '.join(p.split())}</p>" for p in n["body"])
+        paras = "\n          ".join(
+            f"<p>{H.escape(' '.join(p.split()))}</p>" for p in n["body"] if p.strip())
         posts.append(f"""      <article class="post reveal" id="n{n['iso']}">
         <div class="when"><b>{int(n['iso'][8:])}. {MONTHS_SHORT[int(n['iso'][5:7])]}</b><span>{n['iso'][:4]}</span></div>
         <div>
-          <h3>{n['title']}</h3>
-          {paras}
+          <h3>{H.escape(n['title'])}</h3>
+          {paras}{render_images(n.get('images'))}
         </div>
       </article>""")
     body = page_head("Nyheder", "Nyheder", "Meddelelser, resultater og praktisk info til medlemmerne.") + f"""
@@ -1097,7 +1110,8 @@ def build_extras():
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n',
         encoding="utf-8")
     pathlib.Path("robots.txt").write_text(
-        f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+        f"User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: {SITE}/sitemap.xml\n",
+        encoding="utf-8")
 
     ev = ",\n".join('  {d:"%s",t:"%s",k:"%s"}' % (iso, akt.replace('"', ''), typ)
                     for _, iso, akt, typ in CAL_AUTUMN if typ != "fri")

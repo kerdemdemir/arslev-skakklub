@@ -1,0 +1,24 @@
+[Unit]
+Description=Årslev Skakklub admin (nyheder og partier)
+After=network.target
+
+[Service]
+User=arslev
+Group=www-data
+WorkingDirectory=/srv/arslevskak
+EnvironmentFile=/etc/arslevskak/admin.env
+ExecStart=/srv/arslevskak/venv/bin/uvicorn admin.app:app --host 127.0.0.1 --port 8096
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Appen skal kun kunne skrive de to steder, den har brug for.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/srv/arslevskak /var/www/arslevskak
+
+[Install]
+WantedBy=multi-user.target

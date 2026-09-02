@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}Nyheder{% endblock %}
+{% block body %}
+<div class="wrap">
+  {% if ok %}<p class="alert ok">{{ ok }}</p>{% endif %}
+  {% if err %}<p class="alert err">{{ err }}</p>{% endif %}
+
+  <div class="head">
+    <div>
+      <h1>Nyheder</h1>
+      <p class="sub">{{ posts|length }} nyhed{{ '' if posts|length == 1 else 'er' }} på siden.
+         Ændringer bliver lagt ud med det samme.</p>
+    </div>
+    <a class="btn" href="/admin/new">+ Ny nyhed</a>
+  </div>
+
+  {% if not posts %}
+    <p class="empty">Der er ingen nyheder endnu. Tryk „Ny nyhed“ for at skrive den første.</p>
+  {% endif %}
+
+  <ul class="posts">
+    {% for p in posts %}
+    <li>
+      <div class="meta">
+        <span class="date">{{ p.date }}</span>
+        {% if p.images %}<span class="pics">{{ p.images|length }} 🖼</span>{% endif %}
+      </div>
+      <div class="grow">
+        <h2>{{ p.title }}</h2>
+        <p class="excerpt">{{ (p.body[0] if p.body else '')[:150] }}{% if p.body and p.body[0]|length > 150 %}…{% endif %}</p>
+      </div>
+      <div class="actions">
+        <a class="btn small" href="/admin/edit/{{ p.id }}">Ret</a>
+        <form method="post" action="/admin/delete/{{ p.id }}"
+              onsubmit="return confirm('Slet nyheden „{{ p.title|replace("'", " ") }}“? Det kan ikke fortrydes.')">
+          <input type="hidden" name="csrf" value="{{ csrf }}">
+          <button class="btn small danger">Slet</button>
+        </form>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <form method="post" action="/admin/rebuild" class="rebuild">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <button class="link">Byg siden igen</button>
+    <span class="hint">Bruges kun hvis noget ser forkert ud på hjemmesiden.</span>
+  </form>
+</div>
+{% endblock %}

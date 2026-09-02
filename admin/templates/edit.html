@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}{{ 'Ny nyhed' if is_new else 'Ret nyhed' }}{% endblock %}
+{% block body %}
+<div class="wrap narrow">
+  <p class="crumb"><a href="/admin">← Alle nyheder</a></p>
+  <h1>{{ 'Ny nyhed' if is_new else 'Ret nyhed' }}</h1>
+
+  <form method="post" action="/admin/save" enctype="multipart/form-data">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <input type="hidden" name="id" value="{{ post.id }}">
+
+    <label>Overskrift
+      <input name="title" value="{{ post.title }}" required maxlength="140"
+             placeholder="fx Jan er årets lynmester">
+    </label>
+
+    <label>Dato
+      <input name="date" type="date" value="{{ post.date }}" required>
+      <span class="hint">Nyheder vises med den nyeste først.</span>
+    </label>
+
+    <label>Tekst
+      <textarea name="body" rows="12"
+        placeholder="Skriv nyheden her.&#10;&#10;Lad en linje stå tom for at starte et nyt afsnit.">{{ post.body | join('\n\n') }}</textarea>
+      <span class="hint">Én tom linje = nyt afsnit. Der skal ikke bruges HTML.</span>
+    </label>
+
+    {% if post.images %}
+    <fieldset>
+      <legend>Billeder på nyheden</legend>
+      {% for im in post.images %}
+      <div class="exist">
+        <img src="/assets/img/{{ im.file }}" alt="">
+        <div>
+          <label class="tight">Beskrivelse (for skærmlæsere)
+            <input name="ex{{ loop.index0 }}_alt" value="{{ im.alt or '' }}" maxlength="300">
+          </label>
+          <label class="tight">Billedtekst (vises under billedet)
+            <input name="ex{{ loop.index0 }}_caption" value="{{ im.caption or '' }}" maxlength="300">
+          </label>
+          <label class="check">
+            <input type="checkbox" name="ex{{ loop.index0 }}_delete" value="1">
+            Fjern dette billede
+          </label>
+        </div>
+      </div>
+      {% endfor %}
+    </fieldset>
+    {% endif %}
+
+    <fieldset>
+      <legend>Tilføj billeder</legend>
+      <p class="hint">JPG eller PNG, højst 12 MB pr. billede. De bliver automatisk
+         skaleret ned, og placeringsdata fra kameraet bliver fjernet.</p>
+      {% for n in slots %}
+      <div class="slot">
+        <input type="file" name="img{{ n }}_file" accept="image/jpeg,image/png">
+        <input name="img{{ n }}_alt" placeholder="Beskrivelse (for skærmlæsere)" maxlength="300">
+        <input name="img{{ n }}_caption" placeholder="Billedtekst (valgfri)" maxlength="300">
+      </div>
+      {% endfor %}
+    </fieldset>
+
+    <div class="row">
+      <button class="btn">{{ 'Læg nyheden ud' if is_new else 'Gem ændringer' }}</button>
+      <a class="btn ghost" href="/admin">Annullér</a>
+    </div>
+    <p class="hint">Når du gemmer, bliver hjemmesiden bygget og opdateret med det samme.</p>
+  </form>
+</div>
+{% endblock %}

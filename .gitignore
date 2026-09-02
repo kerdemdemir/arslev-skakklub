@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Serverens indhold hentes med fetch-content.sh; hemmeligheder ligger
+# udelukkende i /etc/arslevskak/admin.env på serveren.
+venv/
+*.env

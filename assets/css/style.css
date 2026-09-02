@@ -360,6 +360,16 @@ tr.is-past td{opacity:.5}
   .post .when b{font-size:1.4rem}
 }
 
+/* ---------- Billeder i nyheder ---------- */
+.post-figs{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin:16px 0 4px}
+.post-figs.one{grid-template-columns:minmax(0,460px)}
+.post-figs figure{margin:0}
+.post-figs img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--cream);
+}
+.post-figs figcaption{font-size:.82rem;color:var(--muted);margin-top:7px;line-height:1.5}
+
 /* ---------- Next-up strip ---------- */
 .nextup{
   display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;
