@@ -31,8 +31,8 @@ BOARD = [
     ("Kasserer", "Søren Christensen", "23618513", "grimstrup.christensen@gmail.com"),
     ("Sekretær", "Jens Lund", "22614575", "jl.od@hotmail.com"),
 ]
-VENUE = "Husmandsstedet, Over Bækken 1, 5792 Årslev"
-MAPQ = "Over+B%C3%A6kken+1,+5792+%C3%85rslev"
+VENUE = "Husmandsstedet, Over Bækken 1E, 5792 Årslev"
+MAPQ = "Over+B%C3%A6kken+1E,+5792+%C3%85rslev"
 
 # ---------------------------------------------------------------- kalender
 # (uge, dato ISO, aktivitet, type)  type: klub | hurtig | hold | social | fri
@@ -347,7 +347,7 @@ def build_index():
         <div class="card reveal">
           <div class="ico" aria-hidden="true">📍</div>
           <h3>Spillested</h3>
-          <p>Husmandsstedet<br>Over Bækken 1<br>5792 Årslev</p>
+          <p>Husmandsstedet<br>Over Bækken 1E<br>5792 Årslev</p>
           <a class="more" style="color:var(--gold);font-weight:600;text-decoration:none"
              href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}" target="_blank" rel="noopener">Vis på kort →</a>
         </div>
@@ -373,7 +373,7 @@ def build_index():
         <a class="map-card" href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}"
            target="_blank" rel="noopener">
           <img src="assets/img/kort.png" width="1000" height="750" loading="lazy"
-               alt="Kort over spillestedet Over Bækken 1 i Sønder Nærå ved Årslev">
+               alt="Kort over spillestedet Over Bækken 1E i Sønder Nærå ved Årslev">
           <span class="map-pill">Åbn i Google Maps →</span>
         </a>
         <p class="map-credit">Kortdata © <a href="https://www.openstreetmap.org/copyright"
@@ -433,7 +433,7 @@ def build_index():
 </section>"""
     page("index.html", f"{CLUB} – hyggeskak på Midtfyn hver mandag",
          "Årslev Skakklub er en lille, hyggelig skakklub i Faaborg-Midtfyn Kommune. "
-         "Vi spiller hver mandag kl. 19.00 på Husmandsstedet, Over Bækken 1, 5792 Årslev. "
+         "Vi spiller hver mandag kl. 19.00 på Husmandsstedet, Over Bækken 1E, 5792 Årslev. "
          "Alle er velkomne uanset niveau.", body)
 
 
@@ -471,7 +471,7 @@ def build_nyheder():
 # ================================================================ KALENDER
 def build_kalender():
     body = page_head("Kalender", "Sæsonkalender 2026/2027",
-        "Vi spiller mandage kl. 19.00 på Husmandsstedet, Over Bækken 1, 5792 Årslev. "
+        "Vi spiller mandage kl. 19.00 på Husmandsstedet, Over Bækken 1E, 5792 Årslev. "
         "Dagens aktivitet fremgår nedenfor – kalenderen opdateres i løbet af sæsonen.") + f"""
 <section>
   <div class="wrap">
@@ -761,7 +761,7 @@ def build_info():
         <p class="kicker">Praktisk</p>
         <h2>Det praktiske</h2>
         <dl class="deflist reveal">
-          <div><dt>Spillested</dt><dd>Husmandsstedet<br>Over Bækken 1<br>5792 Årslev<br>
+          <div><dt>Spillested</dt><dd>Husmandsstedet<br>Over Bækken 1E<br>5792 Årslev<br>
             <a href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}" target="_blank" rel="noopener">Vis på kort →</a></dd></div>
           <div><dt>Klubaften</dt><dd>Mandag kl. 19.00</dd></div>
           <div><dt>Sæsonstart</dt><dd>Mandag 31. august 2026 – opstart og generalforsamling kl. 19.00</dd></div>
@@ -775,7 +775,7 @@ def build_info():
         <a class="map-card" href="https://www.google.com/maps/search/?api=1&amp;query={MAPQ}"
            target="_blank" rel="noopener">
           <img src="assets/img/kort.png" width="1000" height="750" loading="lazy"
-               alt="Kort over spillestedet Over Bækken 1 i Sønder Nærå ved Årslev">
+               alt="Kort over spillestedet Over Bækken 1E i Sønder Nærå ved Årslev">
           <span class="map-pill">Åbn i Google Maps →</span>
         </a>
         <p class="map-credit">Kortdata © <a href="https://www.openstreetmap.org/copyright"
@@ -797,7 +797,7 @@ def build_info():
            eller send en mail til <a href="mailto:lean@schier.dk" style="color:var(--gold);font-weight:600;text-decoration:none">lean@schier.dk</a>.</p></div>
       <div class="card reveal"><div class="ico" aria-hidden="true">2</div>
         <h3>Kom en mandag</h3>
-        <p>Mød op kl. 19.00 på Husmandsstedet, Over Bækken 1. Du behøver ikke tage noget med
+        <p>Mød op kl. 19.00 på Husmandsstedet, Over Bækken 1E. Du behøver ikke tage noget med
            – vi har brikker, brætter og ure.</p></div>
       <div class="card reveal"><div class="ico" aria-hidden="true">3</div>
         <h3>Prøv en måned</h3>
@@ -837,7 +837,7 @@ def build_info():
 </section>"""
     page("info.html", f"Info &amp; kontakt – {CLUB}",
          "Spillested, klubaften, kontingent og kontaktoplysninger for Årslev Skakklub. "
-         "Husmandsstedet, Over Bækken 1, 5792 Årslev – mandag kl. 19.00.", body)
+         "Husmandsstedet, Over Bækken 1E, 5792 Årslev – mandag kl. 19.00.", body)
 
 
 # ================================================================ VEDTÆGTER

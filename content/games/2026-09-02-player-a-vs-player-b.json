@@ -1,0 +1,82 @@
+{
+  "event": "Casual Game",
+  "site": "Internet",
+  "date": "2026-09-02",
+  "round": "1",
+  "white": "Player A",
+  "black": "Player B",
+  "result": "1-0",
+  "eco": "",
+  "white_elo": "",
+  "black_elo": "",
+  "start_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "plies": 7,
+  "moves": [
+    {
+      "ply": 1,
+      "san": "e4",
+      "uci": "e2e4",
+      "from": "e2",
+      "to": "e4",
+      "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+      "comment": ""
+    },
+    {
+      "ply": 2,
+      "san": "e5",
+      "uci": "e7e5",
+      "from": "e7",
+      "to": "e5",
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+      "comment": ""
+    },
+    {
+      "ply": 3,
+      "san": "Bc4",
+      "uci": "f1c4",
+      "from": "f1",
+      "to": "c4",
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR b KQkq - 1 2",
+      "comment": ""
+    },
+    {
+      "ply": 4,
+      "san": "Nc6",
+      "uci": "b8c6",
+      "from": "b8",
+      "to": "c6",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR w KQkq - 2 3",
+      "comment": ""
+    },
+    {
+      "ply": 5,
+      "san": "Qh5",
+      "uci": "d1h5",
+      "from": "d1",
+      "to": "h5",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+      "comment": ""
+    },
+    {
+      "ply": 6,
+      "san": "Nf6",
+      "uci": "g8f6",
+      "from": "g8",
+      "to": "f6",
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+      "comment": ""
+    },
+    {
+      "ply": 7,
+      "san": "Qxf7#",
+      "uci": "h5f7",
+      "from": "h5",
+      "to": "f7",
+      "fen": "r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4",
+      "comment": ""
+    }
+  ],
+  "pgn": "[Event \"Casual Game\"]\n[Site \"Internet\"]\n[Date \"2026.09.02\"]\n[Round \"1\"]\n[White \"Player A\"]\n[Black \"Player B\"]\n[Result \"1-0\"]\n\n1. e4 e5 2. Bc4 Nc6 3. Qh5 Nf6 4. Qxf7# 1-0",
+  "id": "2026-09-02-player-a-vs-player-b",
+  "added": "2026-09-02"
+}

@@ -1,6 +1,27 @@
 {
   "posts": [
     {
+      "id": "2026-09-02-aarets-foerste-moede",
+      "date": "2026-09-02",
+      "title": "Årets første møde",
+      "body": [
+        "Vi havde årets første møde i vores nye lokaler. Vi talte om vores planer for det kommende år og spillede 5-minutters lynskak.",
+        "Jeg deler også nogle billeder fra vores sommerskak-arrangement."
+      ],
+      "images": [
+        {
+          "file": "nyheder/ae76f6dd8b4e7990.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "file": "nyheder/fbbbf224b7ce5757.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "id": "2026-08-01-kalenderen-er-opdateret",
       "date": "2026-08-01",
       "title": "Kalenderen er opdateret",
@@ -17,7 +38,7 @@
       "body": [
         "Som sidste aktivitet i den forgangne sæson afholdt vi i går vores afslutning, hvor det vigtigste punkt var at finde årets lynmester. Lidt skuffende var vi kun 7 mand, men der var vist noget med noget sygdom. Vi kastede os ud i en dobbeltrundig alle mod alle, 14 runder, og titlen var der aldrig tvivl om: Jan trampede hen over os alle sammen og vandt med 13/14. Tillykke!",
         "Selvom der står én mandag mere i kalenderen, var dette sidste aften i sæsonen. Næste begivenhed er sommerskak hos Søren, flyttet til 9. aug., og I skulle have fået indbydelsen.",
-        "Den nye sæson starter mandag 31/8 (uge 36) – i nye lokaler! Det er på Husmandsstedet, og adressen er Over Bækken 1.",
+        "Den nye sæson starter mandag 31/8 (uge 36) – i nye lokaler! Det er på Husmandsstedet, og adressen er Over Bækken 1E.",
         "Kalenderen er ikke så brugbar endnu, blandt andet fordi træningsturneringen mod OS ikke ligger klar. Men noget er der da dato på: Opstart og generalforsamling. Og det er dejligt nemt, det er nemlig samme dato: mandag 31/8 kl. 19.00. Der kommer en indbydelse senest 14 dage før.",
         "Fortsat god sommer til jer alle sammen!"
       ],

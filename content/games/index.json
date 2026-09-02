@@ -1,0 +1,17 @@
+{
+  "games": [
+    {
+      "id": "2026-09-02-player-a-vs-player-b",
+      "added": "2026-09-02",
+      "event": "Casual Game",
+      "site": "Internet",
+      "date": "2026-09-02",
+      "round": "1",
+      "white": "Player A",
+      "black": "Player B",
+      "result": "1-0",
+      "eco": "",
+      "plies": 7
+    }
+  ]
+}
