@@ -51,6 +51,8 @@ Praktisk om admin-siden:
 | `admin` | ✓ | ✓ | ✓ | ✓ |
 | `member` | – | ✓ | ✓ | – |
 
+Kalenderen kan kun rettes af `admin`.
+
 Begge logger ind på samme side. Et medlem sendes direkte til partierne og
 kan slet ikke komme til nyhederne; prøver man alligevel, kommer man tilbage
 med en besked om hvorfor.
@@ -68,7 +70,26 @@ python3 -c "import bcrypt,getpass; print(bcrypt.hashpw(getpass.getpass().encode(
 systemctl restart arslevskak-admin
 ```
 
-## Partiarkivet (kun for administratorer)
+## Kalenderen
+
+**<https://aarslevskak.com/admin/kalender>** — kun for administratorer.
+
+Kalenderen ligger i `content/calendar.json` som en liste af sæsoner. Hver
+sæson har en overskrift, en bemærkning og sine datoer.
+
+- **Ugenummeret tastes ikke** — det regnes ud af datoen som ISO-uge. Alle
+  18 datoer i efteråret 2026 stemte med kilden, så det er sikkert nok.
+- Datoerne sorteres automatisk, når du gemmer. Du kan tilføje dem i vilkårlig
+  rækkefølge.
+- Har en sæson **ingen** datoer, vises bemærkningen som et kort i stedet for
+  en tabel. Det er sådan „Forår 2027“ står nu; så snart der kommer datoer på,
+  bliver den selv en tabel.
+- „+ Tilføj sæson“ opretter en ny sæson, fx når 2027/28 skal lægges ind.
+
+Kalenderen driver også „Næste klubaften“-feltet og de kommende datoer på
+forsiden, som nu viser de **næste** otte datoer frem for sæsonens første otte.
+
+## Partiarkivet
 
 **<https://aarslevskak.com/admin/partier>** — importér PGN-filer og
 gennemgå partierne med bræt og motor. Både `admin` og `member` har adgang.
@@ -108,13 +129,12 @@ python3 build.py
 
 De vigtigste steder i `build.py`:
 
-- `CAL_AUTUMN` — sæsonkalenderen (uge, dato, aktivitet, type)
 - `BOARD` — bestyrelsens navne, telefon og mail
 - `VENUE` — spillestedets adresse
 - `PLAYERS` / `BERGER` — deltagere og rundeskema i klubturneringen
 
-Nyheder ligger derimod i `content/news.json` og redigeres normalt via
-admin-siden.
+Nyheder og kalender ligger derimod i `content/news.json` og
+`content/calendar.json` og redigeres normalt via admin-siden.
 
 Kalenderen genererer også `assets/js/events.js`, som driver
 „Næste klubaften“-feltet og markeringen af afviklede runder.

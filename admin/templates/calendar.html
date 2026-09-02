@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block title %}Kalender{% endblock %}
+{% block body %}
+<div class="wrap">
+  {% if ok %}<p class="alert ok">{{ ok }}</p>{% endif %}
+  {% if err %}<p class="alert err">{{ err }}</p>{% endif %}
+
+  <div class="head">
+    <div>
+      <h1>Kalender</h1>
+      <p class="sub">Ugenummeret regnes ud af datoen, så det skal du ikke taste.
+         Datoerne bliver sorteret automatisk, når du gemmer.</p>
+    </div>
+  </div>
+
+  <form method="post" action="/admin/kalender/gem" id="calForm">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+
+    <div id="seasons">
+      {% for s in seasons %}
+      {% set si = loop.index0 %}
+      <fieldset class="season" data-index="{{ si }}">
+        <legend>{{ s.kicker or s.heading or 'Sæson' }}</legend>
+        <input type="hidden" name="s{{ si }}_id" value="{{ s.id }}">
+
+        <div class="srow">
+          <label class="tight">Overskrift over sæsonen
+            <input name="s{{ si }}_kicker" value="{{ s.kicker }}"
+                   maxlength="60" placeholder="fx Efterår 2026">
+          </label>
+          <label class="tight">Titel
+            <input name="s{{ si }}_heading" value="{{ s.heading }}"
+                   maxlength="60" placeholder="fx Efterårssæsonen">
+          </label>
+        </div>
+
+        <label class="tight">Bemærkning
+          <textarea name="s{{ si }}_note" rows="2" maxlength="600">{{ s.note }}</textarea>
+          <span class="hint">Står over tabellen. Har sæsonen ingen datoer, vises
+            teksten i stedet for tabellen — brug den til „programmet er ikke lagt fast“.</span>
+        </label>
+
+        <label class="tight">Tekst under tabellen
+          <input name="s{{ si }}_caption" value="{{ s.caption }}"
+                 maxlength="120" placeholder="fx Mandage kl. 19.00 · uge 36–53, 2026">
+        </label>
+
+        <table class="caledit">
+          <thead><tr><th>Uge</th><th>Dato</th><th>Aktivitet</th><th>Type</th><th></th></tr></thead>
+          <tbody>
+            {% for e in s.events %}
+            <tr>
+              <td class="wk">{{ e.week }}</td>
+              <td><input type="date" name="s{{ si }}_date" value="{{ e.date }}"></td>
+              <td><input name="s{{ si }}_activity" value="{{ e.activity }}" maxlength="120"></td>
+              <td>
+                <select name="s{{ si }}_type">
+                  {% for val, label in types %}
+                  <option value="{{ val }}" {% if val == e.type %}selected{% endif %}>{{ label }}</option>
+                  {% endfor %}
+                </select>
+              </td>
+              <td><button type="button" class="rm" title="Fjern rækken">✕</button></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="row">
+          <button type="button" class="btn small ghost addrow">+ Tilføj dato</button>
+          <label class="check">
+            <input type="checkbox" name="s{{ si }}_delete" value="1">
+            Fjern hele sæsonen
+          </label>
+        </div>
+      </fieldset>
+      {% endfor %}
+    </div>
+
+    <div class="row" style="margin:22px 0">
+      <button class="btn">Gem kalenderen</button>
+      <button type="button" class="btn ghost" id="addSeason">+ Tilføj sæson</button>
+      <a class="btn ghost" href="/admin/kalender">Fortryd</a>
+    </div>
+    <p class="hint">Når du gemmer, bliver hjemmesiden bygget og opdateret med det samme.</p>
+  </form>
+</div>
+
+<template id="rowTpl">
+  <tr>
+    <td class="wk">–</td>
+    <td><input type="date" name="__S___date"></td>
+    <td><input name="__S___activity" maxlength="120" placeholder="fx Klubturnering 5"></td>
+    <td>
+      <select name="__S___type">
+        {% for val, label in types %}<option value="{{ val }}">{{ label }}</option>{% endfor %}
+      </select>
+    </td>
+    <td><button type="button" class="rm" title="Fjern rækken">✕</button></td>
+  </tr>
+</template>
+
+<template id="seasonTpl">
+  <fieldset class="season">
+    <legend>Ny sæson</legend>
+    <input type="hidden" name="__S___id" value="">
+    <div class="srow">
+      <label class="tight">Overskrift over sæsonen
+        <input name="__S___kicker" maxlength="60" placeholder="fx Forår 2028">
+      </label>
+      <label class="tight">Titel
+        <input name="__S___heading" maxlength="60" placeholder="fx Forårssæsonen">
+      </label>
+    </div>
+    <label class="tight">Bemærkning
+      <textarea name="__S___note" rows="2" maxlength="600"></textarea>
+    </label>
+    <label class="tight">Tekst under tabellen
+      <input name="__S___caption" maxlength="120">
+    </label>
+    <table class="caledit">
+      <thead><tr><th>Uge</th><th>Dato</th><th>Aktivitet</th><th>Type</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="row">
+      <button type="button" class="btn small ghost addrow">+ Tilføj dato</button>
+      <label class="check">
+        <input type="checkbox" name="__S___delete" value="1"> Fjern hele sæsonen
+      </label>
+    </div>
+  </fieldset>
+</template>
+
+<script src="/admin/static/calendar.js" defer></script>
+{% endblock %}

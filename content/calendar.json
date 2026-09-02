@@ -1,0 +1,111 @@
+{
+  "seasons": [
+    {
+      "id": "efteraar-2026",
+      "kicker": "Efterår 2026",
+      "heading": "Efterårssæsonen",
+      "note": "Bemærk: de 4 mandage, hvor vi skal spille OS-turnering, foregår inde i OS, og der er ikke skak i Årslev de aftener.",
+      "caption": "Mandage kl. 19.00 · uge 36–53, 2026",
+      "events": [
+        {
+          "date": "2026-08-31",
+          "activity": "Opstart og generalforsamling",
+          "type": "social"
+        },
+        {
+          "date": "2026-09-07",
+          "activity": "Klubmatch mod OS – 1",
+          "type": "klub"
+        },
+        {
+          "date": "2026-09-14",
+          "activity": "Klubmatch mod OS – 2",
+          "type": "klub"
+        },
+        {
+          "date": "2026-09-21",
+          "activity": "Hurtigturnering, parti 1–3 af 9",
+          "type": "hurtig"
+        },
+        {
+          "date": "2026-09-28",
+          "activity": "Klubmatch mod OS – 3",
+          "type": "klub"
+        },
+        {
+          "date": "2026-10-05",
+          "activity": "Klubmatch mod OS – 4",
+          "type": "klub"
+        },
+        {
+          "date": "2026-10-12",
+          "activity": "Hurtigturnering, parti 4–6 af 9",
+          "type": "hurtig"
+        },
+        {
+          "date": "2026-10-19",
+          "activity": "Holdkamp 1",
+          "type": "hold"
+        },
+        {
+          "date": "2026-10-26",
+          "activity": "Hurtigturnering, parti 7–9 af 9",
+          "type": "hurtig"
+        },
+        {
+          "date": "2026-11-02",
+          "activity": "Klubturnering 1",
+          "type": "klub"
+        },
+        {
+          "date": "2026-11-09",
+          "activity": "Holdkamp 2",
+          "type": "hold"
+        },
+        {
+          "date": "2026-11-16",
+          "activity": "Klubturnering 2",
+          "type": "klub"
+        },
+        {
+          "date": "2026-11-23",
+          "activity": "Klubturnering 3",
+          "type": "klub"
+        },
+        {
+          "date": "2026-11-30",
+          "activity": "Holdkamp 3",
+          "type": "hold"
+        },
+        {
+          "date": "2026-12-07",
+          "activity": "Klubturnering 4",
+          "type": "klub"
+        },
+        {
+          "date": "2026-12-14",
+          "activity": "Juleafslutning",
+          "type": "social"
+        },
+        {
+          "date": "2026-12-21",
+          "activity": "Fri",
+          "type": "fri"
+        },
+        {
+          "date": "2026-12-28",
+          "activity": "Fri",
+          "type": "fri"
+        }
+      ]
+    },
+    {
+      "id": "foraar-2027",
+      "kicker": "Forår 2027",
+      "heading": "Forårssæsonen",
+      "note": "Programmet for foråret 2027 er endnu ikke lagt fast. Det bliver offentliggjort her, så snart holdkampe og turneringsplaner er på plads.",
+      "caption": "",
+      "events": []
+    }
+  ]
+}

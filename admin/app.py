@@ -539,3 +539,121 @@ def game_pgn(request: Request, game_id: str):
     return PlainTextResponse(
         game["pgn"], media_type="application/x-chess-pgn",
         headers={"Content-Disposition": f'attachment; filename="{game_id}.pgn"'})
+
+
+# ================================================================= KALENDER
+CAL_FILE = SITE_DIR / "content" / "calendar.json"
+
+# Typerne skal svare til TAGS i build.py.
+EVENT_TYPES = [
+    ("klub", "Klubturnering"),
+    ("hurtig", "Hurtigskak"),
+    ("hold", "Holdkamp"),
+    ("social", "Klubaften / socialt"),
+    ("fri", "Fri"),
+]
+VALID_TYPES = {k for k, _ in EVENT_TYPES}
+
+
+def load_seasons() -> list[dict]:
+    if not CAL_FILE.exists():
+        return []
+    seasons = json.loads(CAL_FILE.read_text(encoding="utf-8")).get("seasons", [])
+    for season in seasons:
+        evs = [e for e in season.get("events", []) if e.get("date")]
+        evs.sort(key=lambda e: e["date"])
+        season["events"] = evs
+    return seasons
+
+
+def save_seasons(seasons: list[dict]) -> None:
+    CAL_FILE.parent.mkdir(parents=True, exist_ok=True)
+    tmp = CAL_FILE.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps({"seasons": seasons}, ensure_ascii=False, indent=2) + "\n",
+                   encoding="utf-8")
+    tmp.replace(CAL_FILE)
+
+
+def week_of(iso: str) -> int:
+    y, m, d = (int(x) for x in iso.split("-"))
+    return date(y, m, d).isocalendar()[1]
+
+
+@app.get("/admin/kalender", response_class=HTMLResponse)
+def calendar_form(request: Request, ok: str | None = None, err: str | None = None):
+    require_admin(request, "Kun administratorer kan rette kalenderen.")
+    seasons = load_seasons()
+    for season in seasons:                 # ugenummeret vises, men tastes ikke
+        for e in season["events"]:
+            e["week"] = week_of(e["date"])
+    return tpl.TemplateResponse("calendar.html", {
+        "request": request, "seasons": seasons, "types": EVENT_TYPES,
+        "csrf": csrf_of(request), "role": ROLE_ADMIN,
+        "today": date.today().isoformat(), "ok": ok, "err": err,
+    })
+
+
+@app.post("/admin/kalender/gem")
+async def calendar_save(request: Request):
+    require_admin(request, "Kun administratorer kan rette kalenderen.")
+    form = await request.form()
+    check_csrf(request, str(form.get("csrf", "")))
+
+    # Find sæson-indeksene i formularen. JS kan have tilføjet nye med højere
+    # numre og fjernet andre, så vi læser dem ud af feltnavnene.
+    idx = sorted({int(m.group(1)) for k in form
+                  if (m := re.fullmatch(r"s(\d+)_heading", k))})
+
+    seasons: list[dict] = []
+    for si in idx:
+        if str(form.get(f"s{si}_delete", "")):
+            continue
+        heading = str(form.get(f"s{si}_heading", "")).strip()
+        kicker = str(form.get(f"s{si}_kicker", "")).strip()
+        if not (heading or kicker):
+            continue                       # helt tom sæson springes over
+
+        dates = form.getlist(f"s{si}_date")
+        acts = form.getlist(f"s{si}_activity")
+        types = form.getlist(f"s{si}_type")
+
+        events = []
+        for n, raw_date in enumerate(dates):
+            iso = str(raw_date).strip()
+            activity = str(acts[n]).strip() if n < len(acts) else ""
+            typ = str(types[n]).strip() if n < len(types) else "klub"
+            if not iso and not activity:
+                continue                   # tom række = slettet række
+            if not iso:
+                raise HTTPException(400, f"„{activity}“ mangler en dato.")
+            try:
+                datetime.strptime(iso, "%Y-%m-%d")
+            except ValueError:
+                raise HTTPException(400, f"Ugyldig dato: {iso}")
+            if not activity:
+                raise HTTPException(400, f"Datoen {iso} mangler en aktivitet.")
+            events.append({"date": iso, "activity": activity[:120],
+                           "type": typ if typ in VALID_TYPES else "klub"})
+
+        events.sort(key=lambda e: e["date"])
+        seasons.append({
+            "id": str(form.get(f"s{si}_id", "")).strip() or slugify(heading or kicker),
+            "kicker": kicker[:60],
+            "heading": heading[:60],
+            "note": str(form.get(f"s{si}_note", "")).strip()[:600],
+            "caption": str(form.get(f"s{si}_caption", "")).strip()[:120],
+            "events": events,
+        })
+
+    save_seasons(seasons)
+    ok, log = publish()
+    if not ok:
+        print("PUBLISH FEJLEDE:\n" + log, flush=True)
+        return RedirectResponse(
+            "/admin/kalender?err=Kalenderen+blev+gemt%2C+men+siden+kunne+ikke+bygges.",
+            status_code=303)
+    n = sum(len(s["events"]) for s in seasons)
+    from urllib.parse import quote
+    return RedirectResponse(
+        f"/admin/kalender?ok={quote(f'Kalenderen er gemt ({n} datoer) og siden er opdateret.')}",
+        status_code=303)

@@ -35,27 +35,31 @@ VENUE = "Husmandsstedet, Over Bækken 1E, 5792 Årslev"
 MAPQ = "Over+B%C3%A6kken+1E,+5792+%C3%85rslev"
 
 # ---------------------------------------------------------------- kalender
-# (uge, dato ISO, aktivitet, type)  type: klub | hurtig | hold | social | fri
-CAL_AUTUMN = [
-    (36, "2026-08-31", "Opstart og generalforsamling", "social"),
-    (37, "2026-09-07", "Klubmatch mod OS – 1", "klub"),
-    (38, "2026-09-14", "Klubmatch mod OS – 2", "klub"),
-    (39, "2026-09-21", "Hurtigturnering, parti 1–3 af 9", "hurtig"),
-    (40, "2026-09-28", "Klubmatch mod OS – 3", "klub"),
-    (41, "2026-10-05", "Klubmatch mod OS – 4", "klub"),
-    (42, "2026-10-12", "Hurtigturnering, parti 4–6 af 9", "hurtig"),
-    (43, "2026-10-19", "Holdkamp 1", "hold"),
-    (44, "2026-10-26", "Hurtigturnering, parti 7–9 af 9", "hurtig"),
-    (45, "2026-11-02", "Klubturnering 1", "klub"),
-    (46, "2026-11-09", "Holdkamp 2", "hold"),
-    (47, "2026-11-16", "Klubturnering 2", "klub"),
-    (48, "2026-11-23", "Klubturnering 3", "klub"),
-    (49, "2026-11-30", "Holdkamp 3", "hold"),
-    (50, "2026-12-07", "Klubturnering 4", "klub"),
-    (51, "2026-12-14", "Juleafslutning", "social"),
-    (52, "2026-12-21", "Fri", "fri"),
-    (53, "2026-12-28", "Fri", "fri"),
-]
+# Kalenderen redigeres i content/calendar.json - i hånden eller via /admin/kalender.
+# Ugenummeret regnes ud af datoen (ISO-uge), så det skal ikke tastes.
+CAL_FILE = pathlib.Path("content/calendar.json")
+
+
+def iso_week(iso):
+    y, m, d = (int(x) for x in iso.split("-"))
+    return date(y, m, d).isocalendar()[1]
+
+
+def load_calendar():
+    if not CAL_FILE.exists():
+        return []
+    seasons = json.loads(CAL_FILE.read_text(encoding="utf-8")).get("seasons", [])
+    for season in seasons:
+        evs = [e for e in season.get("events", []) if e.get("date")]
+        evs.sort(key=lambda e: e["date"])
+        season["events"] = [
+            (iso_week(e["date"]), e["date"], e.get("activity", ""),
+             e.get("type", "klub") if e.get("type") in TAGS else "klub")
+            for e in evs
+        ]
+    return seasons
+
+
 TAGS = {
     "klub": ("tag", "Klubturnering"),
     "hurtig": ("tag", "Hurtigskak"),
@@ -63,6 +67,10 @@ TAGS = {
     "social": ("tag social", "Klubaften"),
     "fri": ("tag free", "Fri"),
 }
+SEASONS = load_calendar()
+# Alle begivenheder på tværs af sæsoner, til "næste klubaften" og forsiden.
+CAL_ALL = [e for season in SEASONS for e in season["events"]]
+
 MONTHS = ["", "januar", "februar", "marts", "april", "maj", "juni",
           "juli", "august", "september", "oktober", "november", "december"]
 MONTHS_SHORT = ["", "jan", "feb", "mar", "apr", "maj", "jun",
@@ -243,6 +251,13 @@ def page_head(kicker, h1, lede, crumb=True):
 
 
 # ================================================================ FORSIDE
+def upcoming(n):
+    """De næste n begivenheder fra i dag. Er sæsonen forbi, vises de sidste n."""
+    today = BUILT
+    future = [e for e in CAL_ALL if e[1] >= today]
+    return (future or CAL_ALL[-n:])[:n]
+
+
 def cal_rows(items, limit=None):
     rows = []
     for uge, iso, akt, typ in (items[:limit] if limit else items):
@@ -401,7 +416,7 @@ def build_index():
       <table>
         <thead><tr><th>Uge</th><th>Dato</th><th>Aktivitet</th><th>Type</th></tr></thead>
         <tbody>
-{cal_rows(CAL_AUTUMN, 8)}
+{cal_rows(upcoming(8))}
         </tbody>
       </table>
     </div>
@@ -469,6 +484,36 @@ def build_nyheder():
 
 
 # ================================================================ KALENDER
+def render_seasons():
+    """En sektion pr. sæson. Uden begivenheder vises noten som et kort i stedet."""
+    out = []
+    for i, season in enumerate(SEASONS):
+        top = 44 if i == 0 else 56
+        head = (f'    <div class="sec-head" style="margin-top:{top}px">'
+                f'<p class="kicker">{H.escape(season.get("kicker", ""))}</p>'
+                f'<h2>{H.escape(season.get("heading", ""))}</h2>')
+        note = season.get("note", "").strip()
+
+        if not season["events"]:
+            out.append(head + "</div>\n"
+                       f'    <div class="card reveal"><p style="margin:0">'
+                       f'{H.escape(note)}</p></div>')
+            continue
+
+        if note:
+            head += f"\n      <p>{H.escape(note)}</p>"
+        cap = season.get("caption", "").strip()
+        caption = f"\n        <caption>{H.escape(cap)}</caption>" if cap else ""
+        out.append(head + "</div>\n"
+                   '    <div class="table-scroll reveal">\n'
+                   '      <table>' + caption + '\n'
+                   '        <thead><tr><th>Uge</th><th>Dato</th><th>Aktivitet</th>'
+                   '<th>Type</th></tr></thead>\n        <tbody>\n'
+                   + cal_rows(season["events"]) +
+                   '\n        </tbody>\n      </table>\n    </div>')
+    return "\n\n".join(out)
+
+
 def build_kalender():
     body = page_head("Kalender", "Sæsonkalender 2026/2027",
         "Vi spiller mandage kl. 19.00 på Husmandsstedet, Over Bækken 1E, 5792 Årslev. "
@@ -484,25 +529,7 @@ def build_kalender():
       <div class="dt" id="nextDate"></div>
     </div>
 
-    <div class="sec-head" style="margin-top:44px"><p class="kicker">Efterår 2026</p><h2>Efterårssæsonen</h2>
-      <p>Bemærk: de 4 mandage, hvor vi skal spille OS‑turnering, foregår inde i OS,
-         og der er ikke skak i Årslev de aftener.</p></div>
-    <div class="table-scroll reveal">
-      <table id="calTable">
-        <caption>Mandage kl. 19.00 · uge 36–53, 2026</caption>
-        <thead><tr><th>Uge</th><th>Dato</th><th>Aktivitet</th><th>Type</th></tr></thead>
-        <tbody>
-{cal_rows(CAL_AUTUMN)}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sec-head" style="margin-top:56px"><p class="kicker">Forår 2027</p><h2>Forårssæsonen</h2></div>
-    <div class="card reveal">
-      <p style="margin:0">Programmet for foråret 2027 er endnu ikke lagt fast. Det bliver
-         offentliggjort her, så snart holdkampe og turneringsplaner er på plads –
-         blandt andet afventer vi datoerne fra Fyns Skak Union.</p>
-    </div>
+{render_seasons()}
 
     <div class="grid g2" style="margin-top:44px">
       <div class="card reveal">
@@ -1116,9 +1143,9 @@ def build_extras():
         encoding="utf-8")
 
     ev = ",\n".join('  {d:"%s",t:"%s",k:"%s"}' % (iso, akt.replace('"', ''), typ)
-                    for _, iso, akt, typ in CAL_AUTUMN if typ != "fri")
+                    for _, iso, akt, typ in CAL_ALL if typ != "fri")
     pathlib.Path("assets/js/events.js").write_text(
-        "/* Genereret af build.py - ret kalenderen i build.py, ikke her. */\n"
+        "/* Genereret af build.py ud fra content/calendar.json - ret ikke her. */\n"
         "window.AARSLEV_EVENTS = [\n" + ev + "\n];\n", encoding="utf-8")
     print("  → sitemap.xml, robots.txt, assets/js/events.js")
 

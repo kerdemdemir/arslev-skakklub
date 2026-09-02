@@ -197,3 +197,30 @@ details.import textarea{font-family:ui-monospace,"SFMono-Regular",Menlo,monospac
   font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:#14110d;background:var(--gold);padding:3px 10px;border-radius:99px;
 }
+
+/* ============================ kalender-editor ============================ */
+.season{margin-bottom:26px}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.srow{grid-template-columns:1fr}}
+
+table.caledit{width:100%;border-collapse:collapse;margin:14px 0 6px}
+table.caledit th{
+  text-align:left;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);font-weight:700;
+}
+table.caledit td{padding:4px 6px;vertical-align:middle;border-bottom:1px solid var(--line)}
+table.caledit td:first-child{padding-left:8px}
+table.caledit tr:last-child td{border-bottom:0}
+table.caledit input,table.caledit select{margin-top:0;padding:8px 10px;font-size:.92rem}
+table.caledit td.wk{
+  color:var(--muted);font-variant-numeric:tabular-nums;font-size:.9rem;
+  width:44px;text-align:right;
+}
+table.caledit td:nth-child(2){width:150px}
+table.caledit td:nth-child(4){width:190px}
+table.caledit td:last-child{width:38px;text-align:center}
+.rm{
+  background:none;border:0;cursor:pointer;color:var(--muted);font-size:1rem;
+  line-height:1;padding:6px 8px;border-radius:6px;
+}
+.rm:hover{background:#fbeae7;color:var(--danger)}
