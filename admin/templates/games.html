@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}Partier{% endblock %}
+{% block body %}
+<div class="wrap">
+  {% if ok %}<p class="alert ok">{{ ok }}</p>{% endif %}
+  {% if err %}<p class="alert err">{{ err }}</p>{% endif %}
+
+  <div class="head">
+    <div>
+      <h1>Partier</h1>
+      <p class="sub">{{ games|length }} parti{{ '' if games|length == 1 else 'er' }} i arkivet.
+         Kun administratorer kan se denne side — partierne kommer ikke på den
+         offentlige hjemmeside.</p>
+    </div>
+    <a class="btn ghost" href="/admin">Nyheder</a>
+  </div>
+
+  <details class="import" {% if not games %}open{% endif %}>
+    <summary>Importér PGN</summary>
+    <form method="post" action="/admin/partier/import" enctype="multipart/form-data">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>PGN-fil
+        <input type="file" name="pgn_file" accept=".pgn,application/x-chess-pgn,text/plain">
+        <span class="hint">En fil kan godt indeholde flere partier — de bliver
+          alle læst ind. Højst 4 MB.</span>
+      </label>
+      <label>… eller indsæt PGN-tekst
+        <textarea name="pgn_text" rows="7" placeholder='[Event "Klubturnering"]
+[White "Jan"]
+[Black "Erdem"]
+[Result "1-0"]
+
+1. e4 e5 2. Nf3 Nc6 ...'></textarea>
+      </label>
+      <button class="btn">Importér</button>
+    </form>
+  </details>
+
+  {% if not games %}
+    <p class="empty">Der er ingen partier endnu. Importér en PGN-fil ovenfor.</p>
+  {% endif %}
+
+  <ul class="posts games">
+    {% for g in games %}
+    <li>
+      <div class="meta">
+        <span class="date">{{ g.date or '—' }}</span>
+        <span class="plies">{{ g.plies }} halvtræk</span>
+      </div>
+      <div class="grow">
+        <h2>{{ g.white }} – {{ g.black }}
+          <span class="res">{{ g.result }}</span></h2>
+        <p class="excerpt">
+          {{ g.event or 'Uden turneringsnavn' }}{% if g.round %} · runde {{ g.round }}{% endif %}
+          {%- if g.site %} · {{ g.site }}{% endif %}{% if g.eco %} · {{ g.eco }}{% endif %}
+        </p>
+      </div>
+      <div class="actions">
+        <a class="btn small" href="/admin/parti/{{ g.id }}">Vis</a>
+        <a class="btn small ghost" href="/admin/parti/{{ g.id }}/pgn">PGN</a>
+        <form method="post" action="/admin/parti/{{ g.id }}/slet"
+              onsubmit="return confirm('Slet partiet {{ g.white }} – {{ g.black }}?')">
+          <input type="hidden" name="csrf" value="{{ csrf }}">
+          <button class="btn small danger">Slet</button>
+        </form>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

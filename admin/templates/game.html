@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block title %}{{ game.white }} – {{ game.black }}{% endblock %}
+{% block body %}
+<div class="wrap wide">
+  <p class="crumb"><a href="/admin/partier">← Alle partier</a></p>
+
+  <div class="ghead">
+    <div>
+      <h1>{{ game.white }}
+        {%- if game.white_elo %} <small>({{ game.white_elo }})</small>{% endif %}
+        – {{ game.black }}
+        {%- if game.black_elo %} <small>({{ game.black_elo }})</small>{% endif %}
+      </h1>
+      <p class="sub">
+        <b class="res">{{ game.result }}</b>
+        {%- if game.event %} · {{ game.event }}{% endif %}
+        {%- if game.round %} · runde {{ game.round }}{% endif %}
+        {%- if game.date %} · {{ game.date }}{% endif %}
+        {%- if game.site %} · {{ game.site }}{% endif %}
+        {%- if game.eco %} · {{ game.eco }}{% endif %}
+      </p>
+    </div>
+    <a class="btn ghost small" href="/admin/parti/{{ game.id }}/pgn">Hent PGN</a>
+  </div>
+
+  <div class="viewer">
+    <div class="boardcol">
+      <div class="boardwrap">
+        <div class="evalbar" title="Vurdering set fra hvid">
+          <div class="fill" id="evalFill"></div>
+        </div>
+        <div id="board" class="boardhost"></div>
+      </div>
+
+      <p class="plylabel" id="plyLabel"></p>
+      <p class="comment" id="moveComment" hidden></p>
+
+      <div class="controls">
+        <button class="btn small ghost" id="first" title="Startstilling (Home)">⏮</button>
+        <button class="btn small ghost" id="prev"  title="Forrige træk (venstre piletast)">◀</button>
+        <button class="btn small ghost" id="next"  title="Næste træk (højre piletast)">▶</button>
+        <button class="btn small ghost" id="last"  title="Slutstilling (End)">⏭</button>
+        <button class="btn small ghost" id="flip"  title="Vend brættet">⇅ Vend</button>
+      </div>
+      <p class="hint">Brug piletasterne til at bladre igennem partiet.</p>
+    </div>
+
+    <div class="sidecol">
+      <div class="engine">
+        <div class="row">
+          <button class="btn small" id="evalBtn">Motor: fra</button>
+          <button class="btn small ghost" id="scanBtn">Gennemgå hele partiet</button>
+        </div>
+        <p class="score">Vurdering: <b id="evalText">–</b></p>
+        <p class="hint" id="bestMove"></p>
+        <p class="hint" id="engineStatus"></p>
+        <p class="hint">Motoren er Stockfish 18 Lite og kører i din egen browser.
+           Første gang skal den hente ca. 7 MB, så giv den et øjeblik.</p>
+      </div>
+
+      <div class="legend">
+        <span class="k inaccuracy">Unøjagtighed</span>
+        <span class="k mistake">Fejl</span>
+        <span class="k blunder">Bommert</span>
+        <span class="hint">Markeres efter en gennemgang.</span>
+      </div>
+
+      <div id="movelist" class="movelist"></div>
+    </div>
+  </div>
+</div>
+
+<script id="gamedata" type="application/json">{{ game_json | safe }}</script>
+<script>window.GAME = JSON.parse(document.getElementById('gamedata').textContent);</script>
+<script src="/admin/static/viewer.js" defer></script>
+{% endblock %}

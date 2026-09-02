@@ -393,3 +393,102 @@ async def rebuild(request: Request, csrf: str = Form("")):
 @app.get("/admin/health")
 def health():
     return {"ok": True, "posts": len(load_posts())}
+
+
+# ================================================================== PARTIER
+# Partiarkivet er kun for administratorer - det ligger under /admin og bliver
+# aldrig bygget ind i den offentlige, statiske side.
+from admin.pgn import GameStore                                    # noqa: E402
+
+games = GameStore(SITE_DIR)
+
+
+@app.get("/admin/partier", response_class=HTMLResponse)
+def games_list(request: Request, ok: str | None = None, err: str | None = None):
+    require_user(request)
+    return tpl.TemplateResponse("games.html", {
+        "request": request, "games": games.index(), "csrf": csrf_of(request),
+        "ok": ok, "err": err,
+    })
+
+
+@app.post("/admin/partier/import")
+async def games_import(request: Request):
+    require_user(request)
+    form = await request.form()
+    check_csrf(request, str(form.get("csrf", "")))
+
+    text = ""
+    up = form.get("pgn_file")
+    if isinstance(up, FormUpload) and up.filename:
+        raw = up.file.read(4 * 1024 * 1024 + 1)
+        if len(raw) > 4 * 1024 * 1024:
+            raise HTTPException(413, "PGN-filen er for stor (højst 4 MB).")
+        for enc in ("utf-8", "latin-1"):
+            try:
+                text = raw.decode(enc)
+                break
+            except UnicodeDecodeError:
+                continue
+    if not text.strip():
+        text = str(form.get("pgn_text", ""))
+    if not text.strip():
+        raise HTTPException(400, "Vælg en PGN-fil, eller indsæt PGN-tekst.")
+
+    try:
+        added, warnings = games.add_from_pgn(text)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+    from urllib.parse import quote
+    if not added:
+        msg = "Der blev ikke fundet nogen partier i det indsendte."
+        if warnings:
+            msg += " " + warnings[0]
+        return RedirectResponse(f"/admin/partier?err={quote(msg)}", status_code=303)
+
+    msg = f"{added} parti{'' if added == 1 else 'er'} importeret."
+    if warnings:
+        msg += f" {len(warnings)} advarsel{'' if len(warnings) == 1 else 'ler'}: {warnings[0]}"
+    return RedirectResponse(f"/admin/partier?ok={quote(msg)}", status_code=303)
+
+
+@app.get("/admin/parti/{game_id}", response_class=HTMLResponse)
+def game_view(request: Request, game_id: str):
+    require_user(request)
+    game = games.get(game_id)
+    if not game:
+        raise HTTPException(404, "Partiet findes ikke.")
+    return tpl.TemplateResponse("game.html", {
+        "request": request, "game": game, "csrf": csrf_of(request),
+        # JSON'en lægges i et <script>-element. En PGN-kommentar kunne indeholde
+        # "</script>", så "<" escapes - < er gyldig JSON og læses tilbage
+        # som "<", men kan ikke lukke elementet.
+        "game_json": json.dumps({
+            "start_fen": game["start_fen"],
+            "moves": [{k: m[k] for k in ("ply", "san", "from", "to", "fen", "comment")}
+                      for m in game["moves"]],
+        }, ensure_ascii=False).replace("<", "\\u003c"),
+    })
+
+
+@app.post("/admin/parti/{game_id}/slet")
+async def game_delete(request: Request, game_id: str, csrf: str = Form("")):
+    require_user(request)
+    check_csrf(request, csrf)
+    if not games.delete(game_id):
+        raise HTTPException(404, "Partiet findes ikke.")
+    return RedirectResponse("/admin/partier?ok=Partiet+er+slettet.", status_code=303)
+
+
+@app.get("/admin/parti/{game_id}/pgn")
+def game_pgn(request: Request, game_id: str):
+    """Henter den oprindelige PGN igen, så intet går tabt ved importen."""
+    require_user(request)
+    game = games.get(game_id)
+    if not game:
+        raise HTTPException(404, "Partiet findes ikke.")
+    from fastapi.responses import PlainTextResponse
+    return PlainTextResponse(
+        game["pgn"], media_type="application/x-chess-pgn",
+        headers={"Content-Disposition": f'attachment; filename="{game_id}.pgn"'})

@@ -5,3 +5,4 @@ python-multipart==0.0.20
 itsdangerous==2.2.0
 bcrypt==4.2.1
 pillow==11.1.0
+chess==1.11.2

@@ -18,6 +18,9 @@ Alt indhold er overført fra klubbens tidligere Wix-side.
 | `vedtaegter.html` | Vedtægter |
 | `privatlivspolitik.html` | Privatlivspolitik |
 
+Bag login ligger desuden `/admin` (nyheder og billeder) og `/admin/partier`
+(partiarkiv med bræt og motor). De er ikke en del af den offentlige side.
+
 Ingen build-tools, ingen frameworks, ingen cookies eller sporing.
 Kun HTML, CSS og ~100 linjer JavaScript.
 
@@ -49,6 +52,35 @@ python3 -c "import bcrypt,getpass; print(bcrypt.hashpw(getpass.getpass().encode(
 # indsæt resultatet som ARSLEV_ADMIN_HASH i /etc/arslevskak/admin.env
 systemctl restart arslevskak-admin
 ```
+
+## Partiarkivet (kun for administratorer)
+
+**<https://www.arslevskak.duckdns.org/admin/partier>** — importér PGN-filer og
+gennemgå partierne med bræt og motor.
+
+Siden ligger bag login og bliver **aldrig** bygget ind i den offentlige
+hjemmeside. Partierne gemmes i `content/games/`, som ikke kopieres til
+webroden.
+
+- En PGN-fil kan indeholde flere partier; de bliver alle læst ind.
+- Den oprindelige PGN gemmes uændret og kan hentes igen med „Hent PGN“,
+  så importen ikke kan koste data.
+- Piletasterne bladrer gennem partiet. „⇅ Vend“ vender brættet.
+- **Motor: til** vurderer den aktuelle stilling.
+  **Gennemgå hele partiet** vurderer alle stillinger og markerer derefter
+  unøjagtigheder, fejl og bommerter i tekstlisten.
+
+Al skak-logik ligger på serveren i `admin/pgn.py`, som læser PGN'en med
+`python-chess` og gemmer en færdig liste af stillinger (FEN). Browseren
+skal derfor ikke kunne skakreglerne — `admin/static/viewer.js` tegner bare
+et bræt ud fra en FEN.
+
+Motoren er Stockfish 18 Lite (enkelttrådet), som kører i browseren.
+Mønsteret er taget fra `VisionChessVAR`: de ~21 KB worker-kode udleveres fra
+vores egen server (`admin/static/sf/`), mens selve wasm-filen på ~7 MB hentes
+fra jsDelivr — se `WASM` i `viewer.js`, hvis den skal hostes lokalt i stedet.
+Den enkelttrådede udgave kræver ingen `SharedArrayBuffer` og dermed heller
+ingen særlige cross-origin-headere.
 
 ## Sådan retter du det øvrige indhold
 
