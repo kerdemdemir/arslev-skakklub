@@ -16,7 +16,10 @@
   </a>
   {% if request.cookies.get('arslev_admin') %}
   <nav>
+    {% if role == 'admin' %}<a href="/admin">Nyheder</a>{% endif %}
+    <a href="/admin/partier">Partier</a>
     <a href="/" target="_blank" rel="noopener">Se siden ↗</a>
+    {% if role %}<span class="who">{{ role }}</span>{% endif %}
     <form method="post" action="/admin/logout">
       <input type="hidden" name="csrf" value="{{ csrf }}">
       <button class="link">Log ud</button>

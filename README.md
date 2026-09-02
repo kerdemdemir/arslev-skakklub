@@ -41,22 +41,37 @@ Praktisk om admin-siden:
 - Billeder bliver gen-kodet med Pillow. Det skalerer dem ned til højst
   2000 px og fjerner samtidig EXIF-data — altså også kameraets GPS-position.
 - Sletter man en nyhed, bliver dens billedfiler slettet med.
-- Adgangskoden ligger som et bcrypt-hash i `/etc/arslevskak/admin.env`
-  på serveren (kun læsbar for root). Den står **ikke** i dette repo.
+- Adgangskoderne ligger som bcrypt-hash i `/etc/arslevskak/admin.env`
+  på serveren (kun læsbar for root). De står **ikke** i dette repo.
 
-For at skifte adgangskode:
+### To slags logins
+
+| Login | Nyheder og billeder | Se partier | Importér PGN | Slet partier |
+|---|:--:|:--:|:--:|:--:|
+| `admin` | ✓ | ✓ | ✓ | ✓ |
+| `member` | – | ✓ | ✓ | – |
+
+Begge logger ind på samme side. Et medlem sendes direkte til partierne og
+kan slet ikke komme til nyhederne; prøver man alligevel, kommer man tilbage
+med en besked om hvorfor.
+
+Sletning er kun for administratorer. Den kan ikke fortrydes, og det er en
+dårlig kombination med en kode, mange kender.
+
+For at skifte en adgangskode:
 
 ```bash
 # på serveren
 python3 -c "import bcrypt,getpass; print(bcrypt.hashpw(getpass.getpass().encode(), bcrypt.gensalt(12)).decode())"
-# indsæt resultatet som ARSLEV_ADMIN_HASH i /etc/arslevskak/admin.env
+# indsæt resultatet som ARSLEV_ADMIN_HASH (eller ARSLEV_MEMBER_HASH)
+# i /etc/arslevskak/admin.env
 systemctl restart arslevskak-admin
 ```
 
 ## Partiarkivet (kun for administratorer)
 
 **<https://aarslevskak.com/admin/partier>** — importér PGN-filer og
-gennemgå partierne med bræt og motor.
+gennemgå partierne med bræt og motor. Både `admin` og `member` har adgang.
 
 Siden ligger bag login og bliver **aldrig** bygget ind i den offentlige
 hjemmeside. Partierne gemmes i `content/games/`, som ikke kopieres til

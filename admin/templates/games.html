@@ -9,10 +9,11 @@
     <div>
       <h1>Partier</h1>
       <p class="sub">{{ games|length }} parti{{ '' if games|length == 1 else 'er' }} i arkivet.
-         Kun administratorer kan se denne side — partierne kommer ikke på den
-         offentlige hjemmeside.</p>
+         Partierne kommer ikke på den offentlige hjemmeside — man skal være
+         logget ind for at se dem.
+         {% if role != 'admin' %}Som medlem kan du se og importere partier.{% endif %}</p>
     </div>
-    <a class="btn ghost" href="/admin">Nyheder</a>
+{% if role == 'admin' %}<a class="btn ghost" href="/admin">Nyheder</a>{% endif %}
   </div>
 
   <details class="import" {% if not games %}open{% endif %}>
@@ -58,11 +59,13 @@
       <div class="actions">
         <a class="btn small" href="/admin/parti/{{ g.id }}">Vis</a>
         <a class="btn small ghost" href="/admin/parti/{{ g.id }}/pgn">PGN</a>
+        {% if role == 'admin' %}
         <form method="post" action="/admin/parti/{{ g.id }}/slet"
               onsubmit="return confirm('Slet partiet {{ g.white }} – {{ g.black }}?')">
           <input type="hidden" name="csrf" value="{{ csrf }}">
           <button class="btn small danger">Slet</button>
         </form>
+        {% endif %}
       </div>
     </li>
     {% endfor %}

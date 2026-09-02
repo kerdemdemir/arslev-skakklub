@@ -192,3 +192,8 @@ details.import textarea{font-family:ui-monospace,"SFMono-Regular",Menlo,monospac
 .mv:hover{background:var(--cream)}
 .mv.on{background:var(--ink);color:var(--paper);font-weight:600}
 .mv.on.blunder,.mv.on.mistake,.mv.on.inaccuracy{color:var(--paper)}
+
+.bar .who{
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#14110d;background:var(--gold);padding:3px 10px;border-radius:99px;
+}
