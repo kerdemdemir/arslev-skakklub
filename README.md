@@ -48,10 +48,22 @@ Praktisk om admin-siden:
 
 | Login | Nyheder og billeder | Se partier | Importér PGN | Slet partier |
 |---|:--:|:--:|:--:|:--:|
-| `admin` | ✓ | ✓ | ✓ | ✓ |
-| `member` | – | ✓ | ✓ | – |
+| `admin` | ✓ | ✓ | ✓ | alle |
+| `Medlem` | – | ✓ | ✓ | kun sine egne |
 
 Kalenderen kan kun rettes af `admin`.
+
+Brugernavnet sammenlignes uden hensyn til store og små bogstaver, fordi
+mobiltastaturer gerne gør det første bogstav stort af sig selv. Adgangskoden
+skal passe præcist.
+
+Et medlem må slette de partier, medlemslogin selv har importeret — så man
+kan fortryde en fejlimport — men ikke administratorens. Hvert parti får
+`added_by` ved importen; partier fra før det blev indført regnes som
+administratorens.
+
+På den offentlige side er der et **Medlemslogin**-link nederst i fodnoten
+på alle sider.
 
 Begge logger ind på samme side. Et medlem sendes direkte til partierne og
 kan slet ikke komme til nyhederne; prøver man alligevel, kommer man tilbage

@@ -91,8 +91,12 @@ class GameStore:
         self._write_index([g for g in self.index() if g["id"] != game_id])
         return True
 
-    def add_from_pgn(self, text: str) -> tuple[int, list[str]]:
-        """Læser alle partier i en PGN-tekst. Returnerer (antal, advarsler)."""
+    def add_from_pgn(self, text: str, added_by: str = "admin") -> tuple[int, list[str]]:
+        """Læser alle partier i en PGN-tekst. Returnerer (antal, advarsler).
+
+        added_by er den rolle, der importerede partiet. Et medlem må slette
+        sine egne importer igen, men ikke dem administratoren har lagt ind.
+        """
         if len(text.encode("utf-8", "ignore")) > MAX_PGN_BYTES:
             raise ValueError("PGN-filen er for stor (højst 4 MB).")
 
@@ -125,14 +129,15 @@ class GameStore:
 
             parsed["id"] = gid
             parsed["added"] = date.today().isoformat()
+            parsed["added_by"] = added_by
 
             self.dir.mkdir(parents=True, exist_ok=True)
             (self.dir / f"{gid}.json").write_text(
                 json.dumps(parsed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
             index.append({k: parsed[k] for k in
-                          ("id", "added", "event", "site", "date", "round", "white",
-                           "black", "result", "eco", "plies")})
+                          ("id", "added", "added_by", "event", "site", "date", "round",
+                           "white", "black", "result", "eco", "plies")})
             added += 1
 
         if added:

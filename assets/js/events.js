@@ -1,4 +1,4 @@
-/* Genereret af build.py - ret kalenderen i build.py, ikke her. */
+/* Genereret af build.py ud fra content/calendar.json - ret ikke her. */
 window.AARSLEV_EVENTS = [
   {d:"2026-08-31",t:"Opstart og generalforsamling",k:"social"},
   {d:"2026-09-07",t:"Klubmatch mod OS – 1",k:"klub"},

@@ -10,8 +10,11 @@ Denne app rører kun ved noget, når en administrator er logget ind, og den
 lytter kun på localhost - nginx står for HTTPS og videresender /admin hertil.
 
 Der er to slags logins:
-  admin   nyheder og billeder + partiarkivet, og må slette
-  member  kun partiarkivet: se partier og importere PGN
+  admin   nyheder, kalender og billeder + partiarkivet, og må slette alt
+  Medlem  kun partiarkivet: se partier, importere PGN og slette sine egne
+          importer igen
+
+Brugernavnet sammenlignes uden hensyn til store og små bogstaver.
 
 Konfiguration læses fra miljøet (se /etc/arslevskak/admin.env på serveren):
   ARSLEV_ADMIN_USER    brugernavn            (default: admin)
@@ -215,11 +218,15 @@ def login(request: Request, username: str = Form(""), password: str = Form("")):
             status_code=429)
 
     time.sleep(0.4)                       # bremser gætteri en smule
-    name = username.strip()
+    # Brugernavnet er ikke hemmeligt, og mobiltastaturer gør gerne det første
+    # bogstav stort af sig selv - så det sammenlignes uden hensyn til store
+    # og små bogstaver. Adgangskoden skal stadig passe præcist.
+    typed = username.strip().casefold()
     role = None
-    if secrets.compare_digest(name, ADMIN_USER) and _check(password, ADMIN_HASH):
+    name = username.strip()
+    if secrets.compare_digest(typed, ADMIN_USER.casefold()) and _check(password, ADMIN_HASH):
         role, name = ROLE_ADMIN, ADMIN_USER
-    elif (MEMBER_HASH and secrets.compare_digest(name, MEMBER_USER)
+    elif (MEMBER_HASH and secrets.compare_digest(typed, MEMBER_USER.casefold())
           and _check(password, MEMBER_HASH)):
         role, name = ROLE_MEMBER, MEMBER_USER
 
@@ -460,7 +467,7 @@ def games_list(request: Request, ok: str | None = None, err: str | None = None):
 
 @app.post("/admin/partier/import")
 async def games_import(request: Request):
-    require_user(request)
+    _, role = require_user(request)
     form = await request.form()
     check_csrf(request, str(form.get("csrf", "")))
 
@@ -482,7 +489,7 @@ async def games_import(request: Request):
         raise HTTPException(400, "Vælg en PGN-fil, eller indsæt PGN-tekst.")
 
     try:
-        added, warnings = games.add_from_pgn(text)
+        added, warnings = games.add_from_pgn(text, added_by=role)
     except ValueError as e:
         raise HTTPException(400, str(e))
 
@@ -520,11 +527,23 @@ def game_view(request: Request, game_id: str):
 
 @app.post("/admin/parti/{game_id}/slet")
 async def game_delete(request: Request, game_id: str, csrf: str = Form("")):
-    # Sletning kan ikke fortrydes, så den er forbeholdt administratorer.
-    require_admin(request, "Kun administratorer kan slette partier.")
+    _, role = require_user(request)
     check_csrf(request, csrf)
-    if not games.delete(game_id):
+
+    game = games.get(game_id)
+    if not game:
         raise HTTPException(404, "Partiet findes ikke.")
+
+    # Et medlem må fortryde sin egen import, men ikke røre administratorens
+    # partier. Partier fra før added_by blev indført regnes som admins.
+    if role != ROLE_ADMIN and game.get("added_by") != ROLE_MEMBER:
+        from urllib.parse import quote
+        return RedirectResponse(
+            "/admin/partier?err=" + quote(
+                "Du kan kun slette de partier, du selv har importeret."),
+            status_code=303)
+
+    games.delete(game_id)
     return RedirectResponse("/admin/partier?ok=Partiet+er+slettet.", status_code=303)
 
 

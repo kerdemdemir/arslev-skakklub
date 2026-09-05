@@ -453,3 +453,11 @@ details.acc .body{padding:18px 22px 6px}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* Medlemslogin i fodnoten - diskret, men til at finde */
+.site-footer .member-login{
+  color:var(--gold);font-weight:600;
+  padding-left:2px;
+}
+.site-footer .member-login::before{content:"🔑 ";font-weight:400}
+.site-footer .member-login:hover{text-decoration:underline}
