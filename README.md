@@ -69,8 +69,8 @@ Begge logger ind på samme side. Et medlem sendes direkte til partierne og
 kan slet ikke komme til nyhederne; prøver man alligevel, kommer man tilbage
 med en besked om hvorfor.
 
-Sletning er kun for administratorer. Den kan ikke fortrydes, og det er en
-dårlig kombination med en kode, mange kender.
+Nyheder og kalender kan kun slettes og rettes af `admin`. Det kan ikke
+fortrydes, og det er en dårlig kombination med en kode, mange kender.
 
 For at skifte en adgangskode:
 
@@ -104,7 +104,7 @@ forsiden, som nu viser de **næste** otte datoer frem for sæsonens første otte
 ## Partiarkivet
 
 **<https://aarslevskak.com/admin/partier>** — importér PGN-filer og
-gennemgå partierne med bræt og motor. Både `admin` og `member` har adgang.
+gennemgå partierne med bræt og motor. Både `admin` og `Medlem` har adgang.
 
 Siden ligger bag login og bliver **aldrig** bygget ind i den offentlige
 hjemmeside. Partierne gemmes i `content/games/`, som ikke kopieres til
