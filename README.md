@@ -24,6 +24,10 @@ Bag login ligger desuden `/admin` (nyheder og billeder) og `/admin/partier`
 Ingen build-tools, ingen frameworks, ingen cookies eller sporing.
 Kun HTML, CSS og ~100 linjer JavaScript.
 
+CSS og JS hentes med en indholds-hash i adressen (`style.css?v=…`). nginx
+udleverer dem med `immutable` i 30 dage, så uden hashen kunne en besøgende
+sidde med et gammelt stilark i en måned efter en ændring.
+
 ## Nyheder: admin-siden
 
 Nyheder og billeder lægges ud via **<https://aarslevskak.com/admin>**.
@@ -62,8 +66,12 @@ kan fortryde en fejlimport — men ikke administratorens. Hvert parti får
 `added_by` ved importen; partier fra før det blev indført regnes som
 administratorens.
 
-På den offentlige side er der et **Medlemslogin**-link nederst i fodnoten
-på alle sider.
+På den offentlige side står **Medlemslogin** øverst til højre i menuen på
+alle sider — som en knap med en hængelås, ved siden af „Kom og spil“.
+
+Menuen falder sammen til en burgermenu under 1100 px, hvor der ikke længere
+er plads til alle punkter vandret. Menupunktet „Info & kontakt“ hedder
+derfor bare „Kontakt“, så der er plads til loginknappen.
 
 Begge logger ind på samme side. Et medlem sendes direkte til partierne og
 kan slet ikke komme til nyhederne; prøver man alligevel, kommer man tilbage

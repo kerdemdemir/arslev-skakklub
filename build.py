@@ -22,7 +22,7 @@ NAV = [
     ("kalender.html", "Kalender"),
     ("turneringer.html", "Turneringer"),
     ("klubben.html", "Klubben"),
-    ("info.html", "Info & kontakt"),
+    ("info.html", "Kontakt"),
 ]
 
 # ---------------------------------------------------------------- kontaktdata
@@ -75,6 +75,21 @@ MONTHS = ["", "januar", "februar", "marts", "april", "maj", "juni",
           "juli", "august", "september", "oktober", "november", "december"]
 MONTHS_SHORT = ["", "jan", "feb", "mar", "apr", "maj", "jun",
                 "jul", "aug", "sep", "okt", "nov", "dec"]
+
+
+def asset(rel):
+    """assets/... med en kort indholds-hash bagpå.
+
+    nginx udleverer css og js med "immutable" i 30 dage. Uden hashen ville
+    en besøgende kunne sidde med et gammelt stilark i en måned; med den
+    skifter adressen præcis når filen gør.
+    """
+    f = pathlib.Path(rel)
+    if not f.exists():
+        return rel
+    import hashlib
+    h = hashlib.md5(f.read_bytes()).hexdigest()[:8]
+    return f"{rel}?v={h}"
 
 
 def dk_date(iso, short=False):
@@ -155,6 +170,12 @@ def header(active, dark_top=False):
     <button class="burger" id="burger" aria-expanded="false" aria-controls="navLinks" aria-label="Åbn menu"><span></span></button>
     <ul class="nav-links" id="navLinks">
 {links}      <li><a class="nav-cta" href="info.html#bliv-medlem">Kom og spil</a></li>
+      <li class="nav-login-li"><a class="nav-login" href="/admin/login" rel="nofollow"
+          aria-label="Medlemslogin" title="Log ind som medlem"><svg width="17" height="17"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10"
+          rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span
+          class="nav-login-text">Medlemslogin</span></a></li>
     </ul>
   </div>
 </header>
@@ -190,8 +211,7 @@ def footer():
     </div>
     <div class="foot-bottom">
       <span>© 1982–2026 {CLUB}</span>
-      <span><a href="vedtaegter.html">Vedtægter</a> · <a href="privatlivspolitik.html">Privatlivspolitik</a>
-        · <a class="member-login" href="/admin/login" rel="nofollow">Medlemslogin</a></span>
+      <span><a href="vedtaegter.html">Vedtægter</a> · <a href="privatlivspolitik.html">Privatlivspolitik</a></span>
     </div>
   </div>
 </footer>"""
@@ -223,7 +243,7 @@ def page(slug, title, desc, body, active=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="{asset("assets/css/style.css")}">
 </head>
 <body>
 {header(active)}
@@ -231,8 +251,8 @@ def page(slug, title, desc, body, active=None):
 {body}
 </main>
 {footer()}
-<script src="assets/js/events.js" defer></script>
-<script src="assets/js/main.js" defer></script>
+<script src="{asset("assets/js/events.js")}" defer></script>
+<script src="{asset("assets/js/main.js")}" defer></script>
 </body>
 </html>
 """
@@ -1153,6 +1173,7 @@ def build_extras():
 
 if __name__ == "__main__":
     print(f"Bygger {CLUB} …")
+    build_extras()          # skriver events.js, som siderne henter med hash
     build_index()
     build_nyheder()
     build_kalender()
@@ -1161,5 +1182,4 @@ if __name__ == "__main__":
     build_info()
     build_vedtaegter()
     build_privatliv()
-    build_extras()
     print("Færdig.")
