@@ -52,8 +52,8 @@ Praktisk om admin-siden:
 
 | Login | Nyheder og billeder | Se partier | Importér PGN | Slet partier |
 |---|:--:|:--:|:--:|:--:|
-| `admin` | ✓ | ✓ | ✓ | alle |
-| `Medlem` | – | ✓ | ✓ | kun sine egne |
+| `admin` | ✓ | ✓ | ✓ | ✓ |
+| `Medlem` | – | ✓ | ✓ | – |
 
 Kalenderen kan kun rettes af `admin`.
 
@@ -61,10 +61,16 @@ Brugernavnet sammenlignes uden hensyn til store og små bogstaver, fordi
 mobiltastaturer gerne gør det første bogstav stort af sig selv. Adgangskoden
 skal passe præcist.
 
-Et medlem må slette de partier, medlemslogin selv har importeret — så man
-kan fortryde en fejlimport — men ikke administratorens. Hvert parti får
-`added_by` ved importen; partier fra før det blev indført regnes som
-administratorens.
+**Kun administratorer kan slette partier.** Alle medlemmer deler ét login,
+så `added_by` på et parti kan ikke skelne det ene medlem fra det andet. Lod
+vi et medlem slette „sine egne“ importer, kunne ethvert medlem i praksis
+slette alle de andres partier. Fortryder man en import, må man bede en
+administrator om at fjerne den.
+
+Feltet `added_by` sættes stadig ved importen, så man kan se, om et parti kom
+fra admin eller fra medlemslogin. Det styrer bare ikke længere, hvem der må
+slette. Skal medlemmer kunne slette deres egne, kræver det et login pr.
+medlem.
 
 På den offentlige side står **Medlemslogin** øverst til højre i menuen på
 alle sider — som en knap med en hængelås, ved siden af „Kom og spil“.

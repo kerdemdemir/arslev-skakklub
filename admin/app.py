@@ -527,21 +527,17 @@ def game_view(request: Request, game_id: str):
 
 @app.post("/admin/parti/{game_id}/slet")
 async def game_delete(request: Request, game_id: str, csrf: str = Form("")):
-    _, role = require_user(request)
+    # Kun administratorer må slette.
+    #
+    # Alle medlemmer deler ét login, så "added_by" kan ikke skelne det ene
+    # medlem fra det andet. Lod vi medlemmer slette deres egne importer, ville
+    # ethvert medlem i praksis kunne slette alle de andres partier. Fortryder
+    # man en import, må man bede en administrator om at fjerne den.
+    require_admin(request, "Kun administratorer kan slette partier.")
     check_csrf(request, csrf)
 
-    game = games.get(game_id)
-    if not game:
+    if not games.get(game_id):
         raise HTTPException(404, "Partiet findes ikke.")
-
-    # Et medlem må fortryde sin egen import, men ikke røre administratorens
-    # partier. Partier fra før added_by blev indført regnes som admins.
-    if role != ROLE_ADMIN and game.get("added_by") != ROLE_MEMBER:
-        from urllib.parse import quote
-        return RedirectResponse(
-            "/admin/partier?err=" + quote(
-                "Du kan kun slette de partier, du selv har importeret."),
-            status_code=303)
 
     games.delete(game_id)
     return RedirectResponse("/admin/partier?ok=Partiet+er+slettet.", status_code=303)
