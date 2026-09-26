@@ -1,0 +1,632 @@
+{
+  "event": "?",
+  "site": "?",
+  "date": "",
+  "round": "?",
+  "white": "LLS",
+  "black": "Ulf Kroman",
+  "result": "*",
+  "eco": "",
+  "white_elo": "",
+  "black_elo": "",
+  "start_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "plies": 68,
+  "moves": [
+    {
+      "ply": 1,
+      "san": "d4",
+      "uci": "d2d4",
+      "from": "d2",
+      "to": "d4",
+      "fen": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1",
+      "comment": ""
+    },
+    {
+      "ply": 2,
+      "san": "Nf6",
+      "uci": "g8f6",
+      "from": "g8",
+      "to": "f6",
+      "fen": "rnbqkb1r/pppppppp/5n2/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2",
+      "comment": ""
+    },
+    {
+      "ply": 3,
+      "san": "Bf4",
+      "uci": "c1f4",
+      "from": "c1",
+      "to": "f4",
+      "fen": "rnbqkb1r/pppppppp/5n2/8/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 2 2",
+      "comment": ""
+    },
+    {
+      "ply": 4,
+      "san": "e6",
+      "uci": "e7e6",
+      "from": "e7",
+      "to": "e6",
+      "fen": "rnbqkb1r/pppp1ppp/4pn2/8/3P1B2/8/PPP1PPPP/RN1QKBNR w KQkq - 0 3",
+      "comment": ""
+    },
+    {
+      "ply": 5,
+      "san": "e3",
+      "uci": "e2e3",
+      "from": "e2",
+      "to": "e3",
+      "fen": "rnbqkb1r/pppp1ppp/4pn2/8/3P1B2/4P3/PPP2PPP/RN1QKBNR b KQkq - 0 3",
+      "comment": ""
+    },
+    {
+      "ply": 6,
+      "san": "d5",
+      "uci": "d7d5",
+      "from": "d7",
+      "to": "d5",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3P1B2/4P3/PPP2PPP/RN1QKBNR w KQkq - 0 4",
+      "comment": ""
+    },
+    {
+      "ply": 7,
+      "san": "Nf3",
+      "uci": "g1f3",
+      "from": "g1",
+      "to": "f3",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3P1B2/4PN2/PPP2PPP/RN1QKB1R b KQkq - 1 4",
+      "comment": ""
+    },
+    {
+      "ply": 8,
+      "san": "Bd6",
+      "uci": "f8d6",
+      "from": "f8",
+      "to": "d6",
+      "fen": "rnbqk2r/ppp2ppp/3bpn2/3p4/3P1B2/4PN2/PPP2PPP/RN1QKB1R w KQkq - 2 5",
+      "comment": ""
+    },
+    {
+      "ply": 9,
+      "san": "Nbd2",
+      "uci": "b1d2",
+      "from": "b1",
+      "to": "d2",
+      "fen": "rnbqk2r/ppp2ppp/3bpn2/3p4/3P1B2/4PN2/PPPN1PPP/R2QKB1R b KQkq - 3 5",
+      "comment": "Det typiske Londontræk Lg3 er\nikke så attraktivt her."
+    },
+    {
+      "ply": 10,
+      "san": "Bxf4",
+      "uci": "d6f4",
+      "from": "d6",
+      "to": "f4",
+      "fen": "rnbqk2r/ppp2ppp/4pn2/3p4/3P1b2/4PN2/PPPN1PPP/R2QKB1R w KQkq - 0 6",
+      "comment": "Spilles som regel af sort, men strukturen er\nfin for hvid, hvis man kender ideerne."
+    },
+    {
+      "ply": 11,
+      "san": "exf4",
+      "uci": "e3f4",
+      "from": "e3",
+      "to": "f4",
+      "fen": "rnbqk2r/ppp2ppp/4pn2/3p4/3P1P2/5N2/PPPN1PPP/R2QKB1R b KQkq - 0 6",
+      "comment": ""
+    },
+    {
+      "ply": 12,
+      "san": "Qd6",
+      "uci": "d8d6",
+      "from": "d8",
+      "to": "d6",
+      "fen": "rnb1k2r/ppp2ppp/3qpn2/3p4/3P1P2/5N2/PPPN1PPP/R2QKB1R w KQkq - 1 7",
+      "comment": "Mere normalt er 0-0, da man\nofte gerne vil have en springer til d6 (efter f.eks. sort træk som b8, La6,\nSxLa6 og Sc7)."
+    },
+    {
+      "ply": 13,
+      "san": "g3",
+      "uci": "g2g3",
+      "from": "g2",
+      "to": "g3",
+      "fen": "rnb1k2r/ppp2ppp/3qpn2/3p4/3P1P2/5NP1/PPPN1P1P/R2QKB1R b KQkq - 0 7",
+      "comment": ""
+    },
+    {
+      "ply": 14,
+      "san": "Nbd7",
+      "uci": "b8d7",
+      "from": "b8",
+      "to": "d7",
+      "fen": "r1b1k2r/pppn1ppp/3qpn2/3p4/3P1P2/5NP1/PPPN1P1P/R2QKB1R w KQkq - 1 8",
+      "comment": ""
+    },
+    {
+      "ply": 15,
+      "san": "Bd3",
+      "uci": "f1d3",
+      "from": "f1",
+      "to": "d3",
+      "fen": "r1b1k2r/pppn1ppp/3qpn2/3p4/3P1P2/3B1NP1/PPPN1P1P/R2QK2R b KQkq - 2 8",
+      "comment": ""
+    },
+    {
+      "ply": 16,
+      "san": "c5",
+      "uci": "c7c5",
+      "from": "c7",
+      "to": "c5",
+      "fen": "r1b1k2r/pp1n1ppp/3qpn2/2pp4/3P1P2/3B1NP1/PPPN1P1P/R2QK2R w KQkq - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 17,
+      "san": "c3",
+      "uci": "c2c3",
+      "from": "c2",
+      "to": "c3",
+      "fen": "r1b1k2r/pp1n1ppp/3qpn2/2pp4/3P1P2/2PB1NP1/PP1N1P1P/R2QK2R b KQkq - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 18,
+      "san": "c4",
+      "uci": "c5c4",
+      "from": "c5",
+      "to": "c4",
+      "fen": "r1b1k2r/pp1n1ppp/3qpn2/3p4/2pP1P2/2PB1NP1/PP1N1P1P/R2QK2R w KQkq - 0 10",
+      "comment": ""
+    },
+    {
+      "ply": 19,
+      "san": "Bc2",
+      "uci": "d3c2",
+      "from": "d3",
+      "to": "c2",
+      "fen": "r1b1k2r/pp1n1ppp/3qpn2/3p4/2pP1P2/2P2NP1/PPBN1P1P/R2QK2R b KQkq - 1 10",
+      "comment": ""
+    },
+    {
+      "ply": 20,
+      "san": "b5",
+      "uci": "b7b5",
+      "from": "b7",
+      "to": "b5",
+      "fen": "r1b1k2r/p2n1ppp/3qpn2/1p1p4/2pP1P2/2P2NP1/PPBN1P1P/R2QK2R w KQkq - 0 11",
+      "comment": ""
+    },
+    {
+      "ply": 21,
+      "san": "a3",
+      "uci": "a2a3",
+      "from": "a2",
+      "to": "a3",
+      "fen": "r1b1k2r/p2n1ppp/3qpn2/1p1p4/2pP1P2/P1P2NP1/1PBN1P1P/R2QK2R b KQkq - 0 11",
+      "comment": "Lidt\nunødvendigt."
+    },
+    {
+      "ply": 22,
+      "san": "O-O",
+      "uci": "e8g8",
+      "from": "e8",
+      "to": "g8",
+      "fen": "r1b2rk1/p2n1ppp/3qpn2/1p1p4/2pP1P2/P1P2NP1/1PBN1P1P/R2QK2R w KQ - 1 12",
+      "comment": ""
+    },
+    {
+      "ply": 23,
+      "san": "Ne5",
+      "uci": "f3e5",
+      "from": "f3",
+      "to": "e5",
+      "fen": "r1b2rk1/p2n1ppp/3qpn2/1p1pN3/2pP1P2/P1P3P1/1PBN1P1P/R2QK2R b KQ - 2 12",
+      "comment": ""
+    },
+    {
+      "ply": 24,
+      "san": "Bb7",
+      "uci": "c8b7",
+      "from": "c8",
+      "to": "b7",
+      "fen": "r4rk1/pb1n1ppp/3qpn2/1p1pN3/2pP1P2/P1P3P1/1PBN1P1P/R2QK2R w KQ - 3 13",
+      "comment": ""
+    },
+    {
+      "ply": 25,
+      "san": "Qe2",
+      "uci": "d1e2",
+      "from": "d1",
+      "to": "e2",
+      "fen": "r4rk1/pb1n1ppp/3qpn2/1p1pN3/2pP1P2/P1P3P1/1PBNQP1P/R3K2R b KQ - 4 13",
+      "comment": ""
+    },
+    {
+      "ply": 26,
+      "san": "Qe7",
+      "uci": "d6e7",
+      "from": "d6",
+      "to": "e7",
+      "fen": "r4rk1/pb1nqppp/4pn2/1p1pN3/2pP1P2/P1P3P1/1PBNQP1P/R3K2R w KQ - 5 14",
+      "comment": ""
+    },
+    {
+      "ply": 27,
+      "san": "O-O",
+      "uci": "e1g1",
+      "from": "e1",
+      "to": "g1",
+      "fen": "r4rk1/pb1nqppp/4pn2/1p1pN3/2pP1P2/P1P3P1/1PBNQP1P/R4RK1 b - - 6 14",
+      "comment": ""
+    },
+    {
+      "ply": 28,
+      "san": "a5",
+      "uci": "a7a5",
+      "from": "a7",
+      "to": "a5",
+      "fen": "r4rk1/1b1nqppp/4pn2/pp1pN3/2pP1P2/P1P3P1/1PBNQP1P/R4RK1 w - - 0 15",
+      "comment": ""
+    },
+    {
+      "ply": 29,
+      "san": "h4",
+      "uci": "h2h4",
+      "from": "h2",
+      "to": "h4",
+      "fen": "r4rk1/1b1nqppp/4pn2/pp1pN3/2pP1P1P/P1P3P1/1PBNQP2/R4RK1 b - - 0 15",
+      "comment": "g4 først er\nlidt bedre."
+    },
+    {
+      "ply": 30,
+      "san": "h5",
+      "uci": "h7h5",
+      "from": "h7",
+      "to": "h5",
+      "fen": "r4rk1/1b1nqpp1/4pn2/pp1pN2p/2pP1P1P/P1P3P1/1PBNQP2/R4RK1 w - - 0 16",
+      "comment": "Hvid står lidt bedre, men nu begynder fejlene at komme\nfra begge sider."
+    },
+    {
+      "ply": 31,
+      "san": "f3",
+      "uci": "f2f3",
+      "from": "f2",
+      "to": "f3",
+      "fen": "r4rk1/1b1nqpp1/4pn2/pp1pN2p/2pP1P1P/P1P2PP1/1PBNQ3/R4RK1 b - - 0 16",
+      "comment": "Jeg vidste egentlig godt, at det ikke var det rette\ntræk i stillingen, men var ret blank her. Sdf3 var et klart bedre bud"
+    },
+    {
+      "ply": 32,
+      "san": "Nb6",
+      "uci": "d7b6",
+      "from": "d7",
+      "to": "b6",
+      "fen": "r4rk1/1b2qpp1/1n2pn2/pp1pN2p/2pP1P1P/P1P2PP1/1PBNQ3/R4RK1 w - - 1 17",
+      "comment": "b4 var noget bdre."
+    },
+    {
+      "ply": 33,
+      "san": "g4",
+      "uci": "g3g4",
+      "from": "g3",
+      "to": "g4",
+      "fen": "r4rk1/1b2qpp1/1n2pn2/pp1pN2p/2pP1PPP/P1P2P2/1PBNQ3/R4RK1 b - - 0 17",
+      "comment": ""
+    },
+    {
+      "ply": 34,
+      "san": "Nfd7",
+      "uci": "f6d7",
+      "from": "f6",
+      "to": "d7",
+      "fen": "r4rk1/1b1nqpp1/1n2p3/pp1pN2p/2pP1PPP/P1P2P2/1PBNQ3/R4RK1 w - - 1 18",
+      "comment": ""
+    },
+    {
+      "ply": 35,
+      "san": "Qh2",
+      "uci": "e2h2",
+      "from": "e2",
+      "to": "h2",
+      "fen": "r4rk1/1b1nqpp1/1n2p3/pp1pN2p/2pP1PPP/P1P2P2/1PBN3Q/R4RK1 b - - 2 18",
+      "comment": "Slapt. Tf2 havde sikret en pæn\nfordel."
+    },
+    {
+      "ply": 36,
+      "san": "Nxe5",
+      "uci": "d7e5",
+      "from": "d7",
+      "to": "e5",
+      "fen": "r4rk1/1b2qpp1/1n2p3/pp1pn2p/2pP1PPP/P1P2P2/1PBN3Q/R4RK1 w - - 0 19",
+      "comment": ""
+    },
+    {
+      "ply": 37,
+      "san": "dxe5",
+      "uci": "d4e5",
+      "from": "d4",
+      "to": "e5",
+      "fen": "r4rk1/1b2qpp1/1n2p3/pp1pP2p/2p2PPP/P1P2P2/1PBN3Q/R4RK1 b - - 0 19",
+      "comment": "Overvejede her om sorts d4 kunne blive farligt,\nmen jeg tænkte, at jeg kom buldrende først på kongefløjen."
+    },
+    {
+      "ply": 38,
+      "san": "f6",
+      "uci": "f7f6",
+      "from": "f7",
+      "to": "f6",
+      "fen": "r4rk1/1b2q1p1/1n2pp2/pp1pP2p/2p2PPP/P1P2P2/1PBN3Q/R4RK1 w - - 0 20",
+      "comment": ""
+    },
+    {
+      "ply": 39,
+      "san": "Qg3",
+      "uci": "h2g3",
+      "from": "h2",
+      "to": "g3",
+      "fen": "r4rk1/1b2q1p1/1n2pp2/pp1pP2p/2p2PPP/P1P2PQ1/1PBN4/R4RK1 b - - 1 20",
+      "comment": ""
+    },
+    {
+      "ply": 40,
+      "san": "fxe5",
+      "uci": "f6e5",
+      "from": "f6",
+      "to": "e5",
+      "fen": "r4rk1/1b2q1p1/1n2p3/pp1pp2p/2p2PPP/P1P2PQ1/1PBN4/R4RK1 w - - 0 21",
+      "comment": ""
+    },
+    {
+      "ply": 41,
+      "san": "fxe5",
+      "uci": "f4e5",
+      "from": "f4",
+      "to": "e5",
+      "fen": "r4rk1/1b2q1p1/1n2p3/pp1pP2p/2p3PP/P1P2PQ1/1PBN4/R4RK1 b - - 0 21",
+      "comment": ""
+    },
+    {
+      "ply": 42,
+      "san": "d4",
+      "uci": "d5d4",
+      "from": "d5",
+      "to": "d4",
+      "fen": "r4rk1/1b2q1p1/1n2p3/pp2P2p/2pp2PP/P1P2PQ1/1PBN4/R4RK1 w - - 0 22",
+      "comment": ""
+    },
+    {
+      "ply": 43,
+      "san": "cxd4",
+      "uci": "c3d4",
+      "from": "c3",
+      "to": "d4",
+      "fen": "r4rk1/1b2q1p1/1n2p3/pp2P2p/2pP2PP/P4PQ1/1PBN4/R4RK1 b - - 0 22",
+      "comment": ""
+    },
+    {
+      "ply": 44,
+      "san": "Rad8",
+      "uci": "a8d8",
+      "from": "a8",
+      "to": "d8",
+      "fen": "3r1rk1/1b2q1p1/1n2p3/pp2P2p/2pP2PP/P4PQ1/1PBN4/R4RK1 w - - 1 23",
+      "comment": ""
+    },
+    {
+      "ply": 45,
+      "san": "gxh5",
+      "uci": "g4h5",
+      "from": "g4",
+      "to": "h5",
+      "fen": "3r1rk1/1b2q1p1/1n2p3/pp2P2P/2pP3P/P4PQ1/1PBN4/R4RK1 b - - 0 23",
+      "comment": ""
+    },
+    {
+      "ply": 46,
+      "san": "Rxd4",
+      "uci": "d8d4",
+      "from": "d8",
+      "to": "d4",
+      "fen": "5rk1/1b2q1p1/1n2p3/pp2P2P/2pr3P/P4PQ1/1PBN4/R4RK1 w - - 0 24",
+      "comment": ""
+    },
+    {
+      "ply": 47,
+      "san": "Qg6",
+      "uci": "g3g6",
+      "from": "g3",
+      "to": "g6",
+      "fen": "5rk1/1b2q1p1/1n2p1Q1/pp2P2P/2pr3P/P4P2/1PBN4/R4RK1 b - - 1 24",
+      "comment": "Her var jeg af den\nopfattelse, at sort bare gik mat eller ville tabe for meget materiale, men nej."
+    },
+    {
+      "ply": 48,
+      "san": "Qc5",
+      "uci": "e7c5",
+      "from": "e7",
+      "to": "c5",
+      "fen": "5rk1/1b4p1/1n2p1Q1/ppq1P2P/2pr3P/P4P2/1PBN4/R4RK1 w - - 2 25",
+      "comment": "Enkelt og stærk - trussel og frigør e7 for kongen samtidig med at\ntårnet dækkes."
+    },
+    {
+      "ply": 49,
+      "san": "Qh7+",
+      "uci": "g6h7",
+      "from": "g6",
+      "to": "h7",
+      "fen": "5rk1/1b4pQ/1n2p3/ppq1P2P/2pr3P/P4P2/1PBN4/R4RK1 b - - 3 25",
+      "comment": ""
+    },
+    {
+      "ply": 50,
+      "san": "Kf7",
+      "uci": "g8f7",
+      "from": "g8",
+      "to": "f7",
+      "fen": "5r2/1b3kpQ/1n2p3/ppq1P2P/2pr3P/P4P2/1PBN4/R4RK1 w - - 4 26",
+      "comment": ""
+    },
+    {
+      "ply": 51,
+      "san": "Bg6+",
+      "uci": "c2g6",
+      "from": "c2",
+      "to": "g6",
+      "fen": "5r2/1b3kpQ/1n2p1B1/ppq1P2P/2pr3P/P4P2/1P1N4/R4RK1 b - - 5 26",
+      "comment": ""
+    },
+    {
+      "ply": 52,
+      "san": "Ke7",
+      "uci": "f7e7",
+      "from": "f7",
+      "to": "e7",
+      "fen": "5r2/1b2k1pQ/1n2p1B1/ppq1P2P/2pr3P/P4P2/1P1N4/R4RK1 w - - 6 27",
+      "comment": ""
+    },
+    {
+      "ply": 53,
+      "san": "Qxg7+",
+      "uci": "h7g7",
+      "from": "h7",
+      "to": "g7",
+      "fen": "5r2/1b2k1Q1/1n2p1B1/ppq1P2P/2pr3P/P4P2/1P1N4/R4RK1 b - - 0 27",
+      "comment": ""
+    },
+    {
+      "ply": 54,
+      "san": "Kd8",
+      "uci": "e7d8",
+      "from": "e7",
+      "to": "d8",
+      "fen": "3k1r2/1b4Q1/1n2p1B1/ppq1P2P/2pr3P/P4P2/1P1N4/R4RK1 w - - 1 28",
+      "comment": ""
+    },
+    {
+      "ply": 55,
+      "san": "Kh2",
+      "uci": "g1h2",
+      "from": "g1",
+      "to": "h2",
+      "fen": "3k1r2/1b4Q1/1n2p1B1/ppq1P2P/2pr3P/P4P2/1P1N3K/R4R2 b - - 2 28",
+      "comment": "Den afgørende\nfejl. Tiden var knap og jeg så trækket som den eneste mulighed for at undgå en\nkatastrofal afdækker. Det senere b4 var her redningen."
+    },
+    {
+      "ply": 56,
+      "san": "Rxd2+",
+      "uci": "d4d2",
+      "from": "d4",
+      "to": "d2",
+      "fen": "3k1r2/1b4Q1/1n2p1B1/ppq1P2P/2p4P/P4P2/1P1r3K/R4R2 w - - 0 29",
+      "comment": ""
+    },
+    {
+      "ply": 57,
+      "san": "Kg3",
+      "uci": "h2g3",
+      "from": "h2",
+      "to": "g3",
+      "fen": "3k1r2/1b4Q1/1n2p1B1/ppq1P2P/2p4P/P4PK1/1P1r4/R4R2 b - - 1 29",
+      "comment": ""
+    },
+    {
+      "ply": 58,
+      "san": "Bxf3",
+      "uci": "b7f3",
+      "from": "b7",
+      "to": "f3",
+      "fen": "3k1r2/6Q1/1n2p1B1/ppq1P2P/2p4P/P4bK1/1P1r4/R4R2 w - - 0 30",
+      "comment": ""
+    },
+    {
+      "ply": 59,
+      "san": "b4",
+      "uci": "b2b4",
+      "from": "b2",
+      "to": "b4",
+      "fen": "3k1r2/6Q1/1n2p1B1/ppq1P2P/1Pp4P/P4bK1/3r4/R4R2 b - b3 0 30",
+      "comment": ""
+    },
+    {
+      "ply": 60,
+      "san": "axb4",
+      "uci": "a5b4",
+      "from": "a5",
+      "to": "b4",
+      "fen": "3k1r2/6Q1/1n2p1B1/1pq1P2P/1pp4P/P4bK1/3r4/R4R2 w - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 61,
+      "san": "axb4",
+      "uci": "a3b4",
+      "from": "a3",
+      "to": "b4",
+      "fen": "3k1r2/6Q1/1n2p1B1/1pq1P2P/1Pp4P/5bK1/3r4/R4R2 b - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 62,
+      "san": "Qxb4",
+      "uci": "c5b4",
+      "from": "c5",
+      "to": "b4",
+      "fen": "3k1r2/6Q1/1n2p1B1/1p2P2P/1qp4P/5bK1/3r4/R4R2 w - - 0 32",
+      "comment": ""
+    },
+    {
+      "ply": 63,
+      "san": "Ra7",
+      "uci": "a1a7",
+      "from": "a1",
+      "to": "a7",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5bK1/3r4/5R2 b - - 1 32",
+      "comment": ""
+    },
+    {
+      "ply": 64,
+      "san": "Rg2+",
+      "uci": "d2g2",
+      "from": "d2",
+      "to": "g2",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5bK1/6r1/5R2 w - - 2 33",
+      "comment": "Efter det lakoniske Dc5 havde hvid\nværet færdig."
+    },
+    {
+      "ply": 65,
+      "san": "Kh3",
+      "uci": "g3h3",
+      "from": "g3",
+      "to": "h3",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5b1K/6r1/5R2 b - - 3 33",
+      "comment": ""
+    },
+    {
+      "ply": 66,
+      "san": "Rh2+",
+      "uci": "g2h2",
+      "from": "g2",
+      "to": "h2",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5b1K/7r/5R2 w - - 4 34",
+      "comment": ""
+    },
+    {
+      "ply": 67,
+      "san": "Kg3",
+      "uci": "h3g3",
+      "from": "h3",
+      "to": "g3",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5bK1/7r/5R2 b - - 5 34",
+      "comment": ""
+    },
+    {
+      "ply": 68,
+      "san": "Rg2+",
+      "uci": "h2g2",
+      "from": "h2",
+      "to": "g2",
+      "fen": "3k1r2/R5Q1/1n2p1B1/1p2P2P/1qp4P/5bK1/6r1/5R2 w - - 6 35",
+      "comment": ""
+    }
+  ],
+  "pgn": "[Event \"?\"]\n[Site \"?\"]\n[Date \"????.??.??\"]\n[Round \"?\"]\n[White \"LLS\"]\n[Black \"Ulf Kroman\"]\n[Result \"*\"]\n[Link \"https://www.chess.com/a/GPYG4fo42Lvni/analysis?move=3\"]\n\n1. d4 Nf6 2. Bf4 e6 3. e3 d5 4. Nf3 Bd6 5. Nbd2 { Det typiske Londontræk Lg3 er\nikke så attraktivt her. } 5... Bxf4 { Spilles som regel af sort, men strukturen er\nfin for hvid, hvis man kender ideerne. } 6. exf4 Qd6 { Mere normalt er 0-0, da man\nofte gerne vil have en springer til d6 (efter f.eks. sort træk som b8, La6,\nSxLa6 og Sc7). } 7. g3 Nbd7 8. Bd3 c5 9. c3 c4 10. Bc2 b5 11. a3 { Lidt\nunødvendigt. } 11... O-O 12. Ne5 Bb7 13. Qe2 Qe7 14. O-O a5 15. h4 { g4 først er\nlidt bedre. } 15... h5 $6 { Hvid står lidt bedre, men nu begynder fejlene at komme\nfra begge sider. } 16. f3 $2 { Jeg vidste egentlig godt, at det ikke var det rette\ntræk i stillingen, men var ret blank her. Sdf3 var et klart bedre bud } 16... Nb6 $6 { b4 var noget bdre. } 17. g4 Nfd7 $6 18. Qh2 { Slapt. Tf2 havde sikret en pæn\nfordel. } 18... Nxe5 19. dxe5 $2 { Overvejede her om sorts d4 kunne blive farligt,\nmen jeg tænkte, at jeg kom buldrende først på kongefløjen. } 19... f6 20. Qg3 $2 fxe5 $2 21. fxe5 d4 22. cxd4 Rad8 23. gxh5 Rxd4 24. Qg6 $1 { Her var jeg af den\nopfattelse, at sort bare gik mat eller ville tabe for meget materiale, men nej. } 24... Qc5 $1 { Enkelt og stærk - trussel og frigør e7 for kongen samtidig med at\ntårnet dækkes. } 25. Qh7+ Kf7 26. Bg6+ Ke7 27. Qxg7+ Kd8 28. Kh2 $4 { Den afgørende\nfejl. Tiden var knap og jeg så trækket som den eneste mulighed for at undgå en\nkatastrofal afdækker. Det senere b4 var her redningen. } 28... Rxd2+ 29. Kg3 Bxf3 $1 30. b4 axb4 31. axb4 Qxb4 32. Ra7 Rg2+ { Efter det lakoniske Dc5 havde hvid\nværet færdig. } 33. Kh3 Rh2+ 34. Kg3 Rg2+ *",
+  "id": "lls-vs-ulf-kroman",
+  "added": "2026-09-11",
+  "added_by": "admin"
+}

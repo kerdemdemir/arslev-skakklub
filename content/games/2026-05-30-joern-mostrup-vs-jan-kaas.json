@@ -1,0 +1,587 @@
+{
+  "event": "Odense onsdag",
+  "site": "Odense onsdag",
+  "date": "2026-05-30",
+  "round": "5",
+  "white": "Jørn Mostrup",
+  "black": "Jan Kaas",
+  "result": "1/2-1/2",
+  "eco": "E90",
+  "white_elo": "1960",
+  "black_elo": "1871",
+  "start_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "plies": 63,
+  "moves": [
+    {
+      "ply": 1,
+      "san": "c4",
+      "uci": "c2c4",
+      "from": "c2",
+      "to": "c4",
+      "fen": "rnbqkbnr/pppppppp/8/8/2P5/8/PP1PPPPP/RNBQKBNR b KQkq - 0 1",
+      "comment": ""
+    },
+    {
+      "ply": 2,
+      "san": "Nf6",
+      "uci": "g8f6",
+      "from": "g8",
+      "to": "f6",
+      "fen": "rnbqkb1r/pppppppp/5n2/8/2P5/8/PP1PPPPP/RNBQKBNR w KQkq - 1 2",
+      "comment": ""
+    },
+    {
+      "ply": 3,
+      "san": "Nc3",
+      "uci": "b1c3",
+      "from": "b1",
+      "to": "c3",
+      "fen": "rnbqkb1r/pppppppp/5n2/8/2P5/2N5/PP1PPPPP/R1BQKBNR b KQkq - 2 2",
+      "comment": ""
+    },
+    {
+      "ply": 4,
+      "san": "g6",
+      "uci": "g7g6",
+      "from": "g7",
+      "to": "g6",
+      "fen": "rnbqkb1r/pppppp1p/5np1/8/2P5/2N5/PP1PPPPP/R1BQKBNR w KQkq - 0 3",
+      "comment": ""
+    },
+    {
+      "ply": 5,
+      "san": "d4",
+      "uci": "d2d4",
+      "from": "d2",
+      "to": "d4",
+      "fen": "rnbqkb1r/pppppp1p/5np1/8/2PP4/2N5/PP2PPPP/R1BQKBNR b KQkq - 0 3",
+      "comment": ""
+    },
+    {
+      "ply": 6,
+      "san": "Bg7",
+      "uci": "f8g7",
+      "from": "f8",
+      "to": "g7",
+      "fen": "rnbqk2r/ppppppbp/5np1/8/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 1 4",
+      "comment": ""
+    },
+    {
+      "ply": 7,
+      "san": "e4",
+      "uci": "e2e4",
+      "from": "e2",
+      "to": "e4",
+      "fen": "rnbqk2r/ppppppbp/5np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR b KQkq - 0 4",
+      "comment": ""
+    },
+    {
+      "ply": 8,
+      "san": "d6",
+      "uci": "d7d6",
+      "from": "d7",
+      "to": "d6",
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR w KQkq - 0 5",
+      "comment": ""
+    },
+    {
+      "ply": 9,
+      "san": "Nf3",
+      "uci": "g1f3",
+      "from": "g1",
+      "to": "f3",
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq - 1 5",
+      "comment": ""
+    },
+    {
+      "ply": 10,
+      "san": "Bg4",
+      "uci": "c8g4",
+      "from": "c8",
+      "to": "g4",
+      "fen": "rn1qk2r/ppp1ppbp/3p1np1/8/2PPP1b1/2N2N2/PP3PPP/R1BQKB1R w KQkq - 2 6",
+      "comment": ""
+    },
+    {
+      "ply": 11,
+      "san": "h3",
+      "uci": "h2h3",
+      "from": "h2",
+      "to": "h3",
+      "fen": "rn1qk2r/ppp1ppbp/3p1np1/8/2PPP1b1/2N2N1P/PP3PP1/R1BQKB1R b KQkq - 0 6",
+      "comment": ""
+    },
+    {
+      "ply": 12,
+      "san": "Bxf3",
+      "uci": "g4f3",
+      "from": "g4",
+      "to": "f3",
+      "fen": "rn1qk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2b1P/PP3PP1/R1BQKB1R w KQkq - 0 7",
+      "comment": ""
+    },
+    {
+      "ply": 13,
+      "san": "Qxf3",
+      "uci": "d1f3",
+      "from": "d1",
+      "to": "f3",
+      "fen": "rn1qk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2Q1P/PP3PP1/R1B1KB1R b KQkq - 0 7",
+      "comment": ""
+    },
+    {
+      "ply": 14,
+      "san": "Nc6",
+      "uci": "b8c6",
+      "from": "b8",
+      "to": "c6",
+      "fen": "r2qk2r/ppp1ppbp/2np1np1/8/2PPP3/2N2Q1P/PP3PP1/R1B1KB1R w KQkq - 1 8",
+      "comment": ""
+    },
+    {
+      "ply": 15,
+      "san": "Be3",
+      "uci": "c1e3",
+      "from": "c1",
+      "to": "e3",
+      "fen": "r2qk2r/ppp1ppbp/2np1np1/8/2PPP3/2N1BQ1P/PP3PP1/R3KB1R b KQkq - 2 8",
+      "comment": ""
+    },
+    {
+      "ply": 16,
+      "san": "e5",
+      "uci": "e7e5",
+      "from": "e7",
+      "to": "e5",
+      "fen": "r2qk2r/ppp2pbp/2np1np1/4p3/2PPP3/2N1BQ1P/PP3PP1/R3KB1R w KQkq - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 17,
+      "san": "d5",
+      "uci": "d4d5",
+      "from": "d4",
+      "to": "d5",
+      "fen": "r2qk2r/ppp2pbp/2np1np1/3Pp3/2P1P3/2N1BQ1P/PP3PP1/R3KB1R b KQkq - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 18,
+      "san": "Ne7",
+      "uci": "c6e7",
+      "from": "c6",
+      "to": "e7",
+      "fen": "r2qk2r/ppp1npbp/3p1np1/3Pp3/2P1P3/2N1BQ1P/PP3PP1/R3KB1R w KQkq - 1 10",
+      "comment": ""
+    },
+    {
+      "ply": 19,
+      "san": "Qd1",
+      "uci": "f3d1",
+      "from": "f3",
+      "to": "d1",
+      "fen": "r2qk2r/ppp1npbp/3p1np1/3Pp3/2P1P3/2N1B2P/PP3PP1/R2QKB1R b KQkq - 2 10",
+      "comment": ""
+    },
+    {
+      "ply": 20,
+      "san": "Nd7",
+      "uci": "f6d7",
+      "from": "f6",
+      "to": "d7",
+      "fen": "r2qk2r/pppnnpbp/3p2p1/3Pp3/2P1P3/2N1B2P/PP3PP1/R2QKB1R w KQkq - 3 11",
+      "comment": ""
+    },
+    {
+      "ply": 21,
+      "san": "g4",
+      "uci": "g2g4",
+      "from": "g2",
+      "to": "g4",
+      "fen": "r2qk2r/pppnnpbp/3p2p1/3Pp3/2P1P1P1/2N1B2P/PP3P2/R2QKB1R b KQkq - 0 11",
+      "comment": ""
+    },
+    {
+      "ply": 22,
+      "san": "a6",
+      "uci": "a7a6",
+      "from": "a7",
+      "to": "a6",
+      "fen": "r2qk2r/1ppnnpbp/p2p2p1/3Pp3/2P1P1P1/2N1B2P/PP3P2/R2QKB1R w KQkq - 0 12",
+      "comment": ""
+    },
+    {
+      "ply": 23,
+      "san": "Qd2",
+      "uci": "d1d2",
+      "from": "d1",
+      "to": "d2",
+      "fen": "r2qk2r/1ppnnpbp/p2p2p1/3Pp3/2P1P1P1/2N1B2P/PP1Q1P2/R3KB1R b KQkq - 1 12",
+      "comment": ""
+    },
+    {
+      "ply": 24,
+      "san": "h6",
+      "uci": "h7h6",
+      "from": "h7",
+      "to": "h6",
+      "fen": "r2qk2r/1ppnnpb1/p2p2pp/3Pp3/2P1P1P1/2N1B2P/PP1Q1P2/R3KB1R w KQkq - 0 13",
+      "comment": ""
+    },
+    {
+      "ply": 25,
+      "san": "Be2",
+      "uci": "f1e2",
+      "from": "f1",
+      "to": "e2",
+      "fen": "r2qk2r/1ppnnpb1/p2p2pp/3Pp3/2P1P1P1/2N1B2P/PP1QBP2/R3K2R b KQkq - 1 13",
+      "comment": ""
+    },
+    {
+      "ply": 26,
+      "san": "g5",
+      "uci": "g6g5",
+      "from": "g6",
+      "to": "g5",
+      "fen": "r2qk2r/1ppnnpb1/p2p3p/3Pp1p1/2P1P1P1/2N1B2P/PP1QBP2/R3K2R w KQkq - 0 14",
+      "comment": ""
+    },
+    {
+      "ply": 27,
+      "san": "h4",
+      "uci": "h3h4",
+      "from": "h3",
+      "to": "h4",
+      "fen": "r2qk2r/1ppnnpb1/p2p3p/3Pp1p1/2P1P1PP/2N1B3/PP1QBP2/R3K2R b KQkq - 0 14",
+      "comment": ""
+    },
+    {
+      "ply": 28,
+      "san": "gxh4",
+      "uci": "g5h4",
+      "from": "g5",
+      "to": "h4",
+      "fen": "r2qk2r/1ppnnpb1/p2p3p/3Pp3/2P1P1Pp/2N1B3/PP1QBP2/R3K2R w KQkq - 0 15",
+      "comment": ""
+    },
+    {
+      "ply": 29,
+      "san": "g5",
+      "uci": "g4g5",
+      "from": "g4",
+      "to": "g5",
+      "fen": "r2qk2r/1ppnnpb1/p2p3p/3Pp1P1/2P1P2p/2N1B3/PP1QBP2/R3K2R b KQkq - 0 15",
+      "comment": ""
+    },
+    {
+      "ply": 30,
+      "san": "hxg5",
+      "uci": "h6g5",
+      "from": "h6",
+      "to": "g5",
+      "fen": "r2qk2r/1ppnnpb1/p2p4/3Pp1p1/2P1P2p/2N1B3/PP1QBP2/R3K2R w KQkq - 0 16",
+      "comment": ""
+    },
+    {
+      "ply": 31,
+      "san": "Bxg5",
+      "uci": "e3g5",
+      "from": "e3",
+      "to": "g5",
+      "fen": "r2qk2r/1ppnnpb1/p2p4/3Pp1B1/2P1P2p/2N5/PP1QBP2/R3K2R b KQkq - 0 16",
+      "comment": ""
+    },
+    {
+      "ply": 32,
+      "san": "Bf6",
+      "uci": "g7f6",
+      "from": "g7",
+      "to": "f6",
+      "fen": "r2qk2r/1ppnnp2/p2p1b2/3Pp1B1/2P1P2p/2N5/PP1QBP2/R3K2R w KQkq - 1 17",
+      "comment": ""
+    },
+    {
+      "ply": 33,
+      "san": "Bxf6",
+      "uci": "g5f6",
+      "from": "g5",
+      "to": "f6",
+      "fen": "r2qk2r/1ppnnp2/p2p1B2/3Pp3/2P1P2p/2N5/PP1QBP2/R3K2R b KQkq - 0 17",
+      "comment": ""
+    },
+    {
+      "ply": 34,
+      "san": "Nxf6",
+      "uci": "d7f6",
+      "from": "d7",
+      "to": "f6",
+      "fen": "r2qk2r/1pp1np2/p2p1n2/3Pp3/2P1P2p/2N5/PP1QBP2/R3K2R w KQkq - 0 18",
+      "comment": ""
+    },
+    {
+      "ply": 35,
+      "san": "O-O-O",
+      "uci": "e1c1",
+      "from": "e1",
+      "to": "c1",
+      "fen": "r2qk2r/1pp1np2/p2p1n2/3Pp3/2P1P2p/2N5/PP1QBP2/2KR3R b kq - 1 18",
+      "comment": ""
+    },
+    {
+      "ply": 36,
+      "san": "Ng6",
+      "uci": "e7g6",
+      "from": "e7",
+      "to": "g6",
+      "fen": "r2qk2r/1pp2p2/p2p1nn1/3Pp3/2P1P2p/2N5/PP1QBP2/2KR3R w kq - 2 19",
+      "comment": ""
+    },
+    {
+      "ply": 37,
+      "san": "Rdg1",
+      "uci": "d1g1",
+      "from": "d1",
+      "to": "g1",
+      "fen": "r2qk2r/1pp2p2/p2p1nn1/3Pp3/2P1P2p/2N5/PP1QBP2/2K3RR b kq - 3 19",
+      "comment": ""
+    },
+    {
+      "ply": 38,
+      "san": "Qe7",
+      "uci": "d8e7",
+      "from": "d8",
+      "to": "e7",
+      "fen": "r3k2r/1pp1qp2/p2p1nn1/3Pp3/2P1P2p/2N5/PP1QBP2/2K3RR w kq - 4 20",
+      "comment": ""
+    },
+    {
+      "ply": 39,
+      "san": "Qe3",
+      "uci": "d2e3",
+      "from": "d2",
+      "to": "e3",
+      "fen": "r3k2r/1pp1qp2/p2p1nn1/3Pp3/2P1P2p/2N1Q3/PP2BP2/2K3RR b kq - 5 20",
+      "comment": ""
+    },
+    {
+      "ply": 40,
+      "san": "Qf8",
+      "uci": "e7f8",
+      "from": "e7",
+      "to": "f8",
+      "fen": "r3kq1r/1pp2p2/p2p1nn1/3Pp3/2P1P2p/2N1Q3/PP2BP2/2K3RR w kq - 6 21",
+      "comment": ""
+    },
+    {
+      "ply": 41,
+      "san": "Bf1",
+      "uci": "e2f1",
+      "from": "e2",
+      "to": "f1",
+      "fen": "r3kq1r/1pp2p2/p2p1nn1/3Pp3/2P1P2p/2N1Q3/PP3P2/2K2BRR b kq - 7 21",
+      "comment": ""
+    },
+    {
+      "ply": 42,
+      "san": "Qh6",
+      "uci": "f8h6",
+      "from": "f8",
+      "to": "h6",
+      "fen": "r3k2r/1pp2p2/p2p1nnq/3Pp3/2P1P2p/2N1Q3/PP3P2/2K2BRR w kq - 8 22",
+      "comment": ""
+    },
+    {
+      "ply": 43,
+      "san": "Bh3",
+      "uci": "f1h3",
+      "from": "f1",
+      "to": "h3",
+      "fen": "r3k2r/1pp2p2/p2p1nnq/3Pp3/2P1P2p/2N1Q2B/PP3P2/2K3RR b kq - 9 22",
+      "comment": ""
+    },
+    {
+      "ply": 44,
+      "san": "Nh5",
+      "uci": "f6h5",
+      "from": "f6",
+      "to": "h5",
+      "fen": "r3k2r/1pp2p2/p2p2nq/3Pp2n/2P1P2p/2N1Q2B/PP3P2/2K3RR w kq - 10 23",
+      "comment": ""
+    },
+    {
+      "ply": 45,
+      "san": "Bf5",
+      "uci": "h3f5",
+      "from": "h3",
+      "to": "f5",
+      "fen": "r3k2r/1pp2p2/p2p2nq/3PpB1n/2P1P2p/2N1Q3/PP3P2/2K3RR b kq - 11 23",
+      "comment": ""
+    },
+    {
+      "ply": 46,
+      "san": "Nhf4",
+      "uci": "h5f4",
+      "from": "h5",
+      "to": "f4",
+      "fen": "r3k2r/1pp2p2/p2p2nq/3PpB2/2P1Pn1p/2N1Q3/PP3P2/2K3RR w kq - 12 24",
+      "comment": ""
+    },
+    {
+      "ply": 47,
+      "san": "Kd2",
+      "uci": "c1d2",
+      "from": "c1",
+      "to": "d2",
+      "fen": "r3k2r/1pp2p2/p2p2nq/3PpB2/2P1Pn1p/2N1Q3/PP1K1P2/6RR b kq - 13 24",
+      "comment": ""
+    },
+    {
+      "ply": 48,
+      "san": "Ne7",
+      "uci": "g6e7",
+      "from": "g6",
+      "to": "e7",
+      "fen": "r3k2r/1pp1np2/p2p3q/3PpB2/2P1Pn1p/2N1Q3/PP1K1P2/6RR w kq - 14 25",
+      "comment": ""
+    },
+    {
+      "ply": 49,
+      "san": "Bg4",
+      "uci": "f5g4",
+      "from": "f5",
+      "to": "g4",
+      "fen": "r3k2r/1pp1np2/p2p3q/3Pp3/2P1PnBp/2N1Q3/PP1K1P2/6RR b kq - 15 25",
+      "comment": ""
+    },
+    {
+      "ply": 50,
+      "san": "Ng8",
+      "uci": "e7g8",
+      "from": "e7",
+      "to": "g8",
+      "fen": "r3k1nr/1pp2p2/p2p3q/3Pp3/2P1PnBp/2N1Q3/PP1K1P2/6RR w kq - 16 26",
+      "comment": ""
+    },
+    {
+      "ply": 51,
+      "san": "Ne2",
+      "uci": "c3e2",
+      "from": "c3",
+      "to": "e2",
+      "fen": "r3k1nr/1pp2p2/p2p3q/3Pp3/2P1PnBp/4Q3/PP1KNP2/6RR b kq - 17 26",
+      "comment": ""
+    },
+    {
+      "ply": 52,
+      "san": "Nxe2",
+      "uci": "f4e2",
+      "from": "f4",
+      "to": "e2",
+      "fen": "r3k1nr/1pp2p2/p2p3q/3Pp3/2P1P1Bp/4Q3/PP1KnP2/6RR w kq - 0 27",
+      "comment": ""
+    },
+    {
+      "ply": 53,
+      "san": "Kxe2",
+      "uci": "d2e2",
+      "from": "d2",
+      "to": "e2",
+      "fen": "r3k1nr/1pp2p2/p2p3q/3Pp3/2P1P1Bp/4Q3/PP2KP2/6RR b kq - 0 27",
+      "comment": ""
+    },
+    {
+      "ply": 54,
+      "san": "Qxe3+",
+      "uci": "h6e3",
+      "from": "h6",
+      "to": "e3",
+      "fen": "r3k1nr/1pp2p2/p2p4/3Pp3/2P1P1Bp/4q3/PP2KP2/6RR w kq - 0 28",
+      "comment": ""
+    },
+    {
+      "ply": 55,
+      "san": "Kxe3",
+      "uci": "e2e3",
+      "from": "e2",
+      "to": "e3",
+      "fen": "r3k1nr/1pp2p2/p2p4/3Pp3/2P1P1Bp/4K3/PP3P2/6RR b kq - 0 28",
+      "comment": ""
+    },
+    {
+      "ply": 56,
+      "san": "Nf6",
+      "uci": "g8f6",
+      "from": "g8",
+      "to": "f6",
+      "fen": "r3k2r/1pp2p2/p2p1n2/3Pp3/2P1P1Bp/4K3/PP3P2/6RR w kq - 1 29",
+      "comment": ""
+    },
+    {
+      "ply": 57,
+      "san": "Rh3",
+      "uci": "h1h3",
+      "from": "h1",
+      "to": "h3",
+      "fen": "r3k2r/1pp2p2/p2p1n2/3Pp3/2P1P1Bp/4K2R/PP3P2/6R1 b kq - 2 29",
+      "comment": ""
+    },
+    {
+      "ply": 58,
+      "san": "Ke7",
+      "uci": "e8e7",
+      "from": "e8",
+      "to": "e7",
+      "fen": "r6r/1pp1kp2/p2p1n2/3Pp3/2P1P1Bp/4K2R/PP3P2/6R1 w - - 3 30",
+      "comment": ""
+    },
+    {
+      "ply": 59,
+      "san": "Bf5",
+      "uci": "g4f5",
+      "from": "g4",
+      "to": "f5",
+      "fen": "r6r/1pp1kp2/p2p1n2/3PpB2/2P1P2p/4K2R/PP3P2/6R1 b - - 4 30",
+      "comment": ""
+    },
+    {
+      "ply": 60,
+      "san": "b5",
+      "uci": "b7b5",
+      "from": "b7",
+      "to": "b5",
+      "fen": "r6r/2p1kp2/p2p1n2/1p1PpB2/2P1P2p/4K2R/PP3P2/6R1 w - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 61,
+      "san": "cxb5",
+      "uci": "c4b5",
+      "from": "c4",
+      "to": "b5",
+      "fen": "r6r/2p1kp2/p2p1n2/1P1PpB2/4P2p/4K2R/PP3P2/6R1 b - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 62,
+      "san": "axb5",
+      "uci": "a6b5",
+      "from": "a6",
+      "to": "b5",
+      "fen": "r6r/2p1kp2/3p1n2/1p1PpB2/4P2p/4K2R/PP3P2/6R1 w - - 0 32",
+      "comment": ""
+    },
+    {
+      "ply": 63,
+      "san": "a3",
+      "uci": "a2a3",
+      "from": "a2",
+      "to": "a3",
+      "fen": "r6r/2p1kp2/3p1n2/1p1PpB2/4P2p/P3K2R/1P3P2/6R1 b - - 0 32",
+      "comment": ""
+    }
+  ],
+  "pgn": "[Event \"Odense onsdag\"]\n[Site \"Odense onsdag\"]\n[Date \"2026.05.30\"]\n[Round \"5\"]\n[White \"Jørn Mostrup\"]\n[Black \"Jan Kaas\"]\n[Result \"1/2-1/2\"]\n[WhiteElo \"1960\"]\n[BlackElo \"1871\"]\n[ECO \"E90\"]\n\n1. c4 Nf6 2. Nc3 g6 3. d4 Bg7 4. e4 d6 5. Nf3 Bg4 6. h3 Bxf3 7. Qxf3 Nc6 8. Be3 e5 9. d5 Ne7 10. Qd1 Nd7 11. g4 a6 12. Qd2 h6 13. Be2 g5 14. h4 gxh4 15. g5 hxg5 16. Bxg5 Bf6 17. Bxf6 Nxf6 18. O-O-O Ng6 19. Rdg1 Qe7 20. Qe3 Qf8 21. Bf1 Qh6 22. Bh3 Nh5 23. Bf5 Nhf4 24. Kd2 Ne7 25. Bg4 Ng8 26. Ne2 Nxe2 27. Kxe2 Qxe3+ 28. Kxe3 Nf6 29. Rh3 Ke7 30. Bf5 b5 31. cxb5 axb5 32. a3 1/2-1/2",
+  "id": "2026-05-30-joern-mostrup-vs-jan-kaas",
+  "added": "2026-09-13",
+  "added_by": "member"
+}

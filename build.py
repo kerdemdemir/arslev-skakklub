@@ -136,23 +136,6 @@ def render_images(imgs, lead_only=False):
 # ------------------------------------------------- klubturneringens rundeskema
 PLAYERS = ["Erdem", "Jens", "Bent", "Knud", "Jan", "Henrik",
            "Niels", "Søren", "Magnus", "Ivar", "Lean", "Bye"]
-# Bergerskema, 11 runder alle-mod-alle (12 pladser, én bye).
-# Tal = modstanderens nummer i den pågældende runde.
-BERGER = [
-    [12, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-    [11, 1, 12, 3, 4, 5, 6, 7, 8, 9, 10],
-    [10, 11, 1, 2, 12, 4, 5, 6, 7, 8, 9],
-    [9, 10, 11, 1, 2, 3, 12, 5, 6, 7, 8],
-    [8, 9, 10, 11, 1, 2, 3, 4, 12, 6, 7],
-    [7, 8, 9, 10, 11, 1, 2, 3, 4, 5, 12],
-    [6, 12, 8, 9, 10, 11, 1, 2, 3, 4, 5],
-    [5, 6, 7, 12, 9, 10, 11, 1, 2, 3, 4],
-    [4, 5, 6, 7, 8, 12, 10, 11, 1, 2, 3],
-    [3, 4, 5, 6, 7, 8, 9, 12, 11, 1, 2],
-    [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 1],
-    [1, 7, 2, 8, 3, 9, 4, 10, 5, 11, 6],
-]
-
 # ---------------------------------------------------------------- skabelon
 def header(active, dark_top=False):
     parts = []
@@ -579,45 +562,63 @@ def build_kalender():
 
 # ================================================================ TURNERINGER
 def build_turneringer():
-    # rundeskema
-    head = "".join(f"<th>{r}</th>" for r in range(1, 12))
-    rows = []
-    for i, (name, sched) in enumerate(zip(PLAYERS[:-1], BERGER[:-1]), start=1):
-        cells = "".join(f"<td>{PLAYERS[o-1] if o != 12 else '—'}</td>" for o in sched)
-        rows.append(f"<tr><td>{i}</td><td>{name}</td>{cells}</tr>")
-    cross = f"""    <div class="table-scroll reveal">
-      <table class="crosstable">
-        <caption>Bergerskema: modstander i hver af de 11 runder. „—“ betyder oversidder.</caption>
-        <thead><tr><th>Nr.</th><th>Navn</th>{head}</tr></thead>
-        <tbody>
-        {chr(10).join('        ' + r for r in rows)}
-        </tbody>
-      </table>
-    </div>"""
-
     body = page_head("Turneringer", "Turneringer",
         "Klubturnering, hurtigskakmesterskab, holdturnering og de årlige klassikere. "
-        "Sådan spiller vi i Årslev.") + f"""
+        "Sådan spiller vi i Årslev.") + """
 <section>
   <div class="wrap">
     <div class="grid g2">
-      <div class="card hover reveal">
+      <div class="card reveal rules">
         <div class="ico" aria-hidden="true">♛</div>
         <h3>Klubturneringen</h3>
-        <p>Sæsonens hovedturnering. Vi spiller alle mod alle over 11 runder efter
-           Bergerskemaet nedenfor. Vi forsøger at afvikle alle kampene, men da der også
-           er noget, der hedder afbud, lader det sig næppe gøre. Hvis det mod slut viser sig
-           nødvendigt, får de mest betydende kampe (for mesterskabet) højeste prioritet.</p>
-        <p><strong>Afbud:</strong> man skal melde afbud, hvis man er forhindret –
-           meget nødigt!</p>
+        <p>Sæsonens hovedturnering. Vi spiller lange partier (80 min. + 30 sek.) alle
+           mod alle efter et skema plus et par opsamlingsrunder. Almindelig pointgivning
+           1 – ½ – 0.</p>
+        <p>Skemaet kommer, når vi ved, hvor mange der er med.</p>
+        <p>Vi forsøger at afvikle alle kampene, men da der også er noget, der hedder
+           afbud, lader det sig næppe gøre. Hvis det mod slut viser sig nødvendigt, får
+           de mest betydende kampe (for mesterskabet) højeste prioritet.</p>
+
+        <h4>Afbud</h4>
+        <p>Man skal melde afbud, hvis man er forhindret – meget nødigt!</p>
+        <p>I år prøver vi at køre en hård linje: <strong>afbud = 0 point</strong>, og
+           1 point til modstanderen. Medmindre man kan aftale at mødes på anden vis.</p>
+        <p>Udeblivelse – altså uden afbud – er selvfølgelig helt uacceptabelt.</p>
       </div>
-      <div class="card hover reveal">
+
+      <div class="card reveal rules">
         <div class="ico" aria-hidden="true">⚡</div>
         <h3>Hurtigskakmesterskabet</h3>
-        <p>Sideløbende med klubturneringen spiller vi over 4 aftener om årets
-           hurtigskakmesterskab – 9 partier fordelt på tre aftener i efteråret
-           (parti 1–3, 4–6 og 7–9).</p>
+        <p>Sideløbende med klubturneringen spiller vi over 3 aftener i efteråret og
+           3 aftener i foråret om årets hurtigskakmesterskab – i alt 2×9 partier
+           (30 min. + 0 sek.).</p>
+        <p>Måske bliver det i 2 sektioner med en finale. Det er ikke helt afgjort endnu.</p>
+        <p>Til hurtigskak skal vi ikke melde, om vi kommer eller ej. Aftenens 3 runder
+           lægges ved lodtrækning – vi prøver at undgå gentagelser.</p>
+        <p>Ved ulige antal tager vi i hver af de 3 runder 3 mand fra, som spiller
+           10 min. lyn alle mod alle (= 3 partier).</p>
+
+        <h4>Point</h4>
+        <div class="table-scroll">
+          <table class="points">
+            <thead><tr><th>Parti</th><th>Gevinst</th><th>Remis</th><th>Tab</th></tr></thead>
+            <tbody>
+              <tr><td>30 min.</td><td>2 point</td><td>1 point</td><td>0 point</td></tr>
+              <tr><td>10 min. lyn</td><td>1 point</td><td>½ point</td><td>0 point</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small">Vinder man begge 10‑minutters partier, giver det en bonus på
+           +½ point – højst én gang pr. aften.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Resten af sæsonen</p><h2>Øvrige turneringer</h2></div>
+    <div class="grid g2">
       <div class="card hover reveal">
         <div class="ico" aria-hidden="true">🛡</div>
         <h3>Holdturneringen</h3>
@@ -659,31 +660,10 @@ def build_turneringer():
       </ul>
     </div>
   </div>
-</section>
-
-<section class="tint">
-  <div class="wrap">
-    <div class="sec-head"><p class="kicker">Klubturneringen</p><h2>Rundeskema</h2>
-      <p>11 runder alle mod alle. Med 11 spillere sidder én over i hver runde.
-         Skemaet er udgangspunktet – afbud og resultater håndteres på klubaftenerne.</p></div>
-{cross}
-    <div class="grid g2" style="margin-top:34px">
-      <div class="card reveal">
-        <h3>Betænkningstid</h3>
-        <p>45+0 pr. parti i dobbeltrunderne og 90+0 i de enkeltrunder, hvor der kun spilles
-           ét langt parti.</p>
-      </div>
-      <div class="card reveal">
-        <h3>Opvarmningsturnering</h3>
-        <p>Sæsonen kan starte med en opvarmningsturnering over nogle aftener for de spillere,
-           der er klar fra start. Resultaterne tæller ikke med i den „rigtige“ klubturnering.</p>
-      </div>
-    </div>
-  </div>
 </section>"""
     page("turneringer.html", f"Turneringer – {CLUB}",
-         "Klubturnering over 11 runder, hurtigskakmesterskab, serie 1-holdturnering, "
-         "sommerskak og lynmesterskab i Årslev Skakklub.", body)
+         "Klubturnering med lange partier (80+30), hurtigskakmesterskab over 2×9 partier, "
+         "serie 1-holdturnering, sommerskak og lynmesterskab i Årslev Skakklub.", body)
 
 
 # ================================================================ KLUBBEN

@@ -1,0 +1,659 @@
+{
+  "event": "Odense onsdag",
+  "site": "Odense onsdag",
+  "date": "2026-05-27",
+  "round": "4",
+  "white": "Jan Kaas",
+  "black": "Henrik Vorager",
+  "result": "1-0",
+  "eco": "D37",
+  "white_elo": "1871",
+  "black_elo": "1921",
+  "start_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "plies": 71,
+  "moves": [
+    {
+      "ply": 1,
+      "san": "d4",
+      "uci": "d2d4",
+      "from": "d2",
+      "to": "d4",
+      "fen": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1",
+      "comment": ""
+    },
+    {
+      "ply": 2,
+      "san": "d5",
+      "uci": "d7d5",
+      "from": "d7",
+      "to": "d5",
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2",
+      "comment": ""
+    },
+    {
+      "ply": 3,
+      "san": "c4",
+      "uci": "c2c4",
+      "from": "c2",
+      "to": "c4",
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq - 0 2",
+      "comment": ""
+    },
+    {
+      "ply": 4,
+      "san": "e6",
+      "uci": "e7e6",
+      "from": "e7",
+      "to": "e6",
+      "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3",
+      "comment": ""
+    },
+    {
+      "ply": 5,
+      "san": "Nc3",
+      "uci": "b1c3",
+      "from": "b1",
+      "to": "c3",
+      "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR b KQkq - 1 3",
+      "comment": ""
+    },
+    {
+      "ply": 6,
+      "san": "Nf6",
+      "uci": "g8f6",
+      "from": "g8",
+      "to": "f6",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4",
+      "comment": ""
+    },
+    {
+      "ply": 7,
+      "san": "Nf3",
+      "uci": "g1f3",
+      "from": "g1",
+      "to": "f3",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N2N2/PP2PPPP/R1BQKB1R b KQkq - 3 4",
+      "comment": ""
+    },
+    {
+      "ply": 8,
+      "san": "Be7",
+      "uci": "f8e7",
+      "from": "f8",
+      "to": "e7",
+      "fen": "rnbqk2r/ppp1bppp/4pn2/3p4/2PP4/2N2N2/PP2PPPP/R1BQKB1R w KQkq - 4 5",
+      "comment": ""
+    },
+    {
+      "ply": 9,
+      "san": "Bf4",
+      "uci": "c1f4",
+      "from": "c1",
+      "to": "f4",
+      "fen": "rnbqk2r/ppp1bppp/4pn2/3p4/2PP1B2/2N2N2/PP2PPPP/R2QKB1R b KQkq - 5 5",
+      "comment": ""
+    },
+    {
+      "ply": 10,
+      "san": "c6",
+      "uci": "c7c6",
+      "from": "c7",
+      "to": "c6",
+      "fen": "rnbqk2r/pp2bppp/2p1pn2/3p4/2PP1B2/2N2N2/PP2PPPP/R2QKB1R w KQkq - 0 6",
+      "comment": ""
+    },
+    {
+      "ply": 11,
+      "san": "e3",
+      "uci": "e2e3",
+      "from": "e2",
+      "to": "e3",
+      "fen": "rnbqk2r/pp2bppp/2p1pn2/3p4/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQkq - 0 6",
+      "comment": ""
+    },
+    {
+      "ply": 12,
+      "san": "O-O",
+      "uci": "e8g8",
+      "from": "e8",
+      "to": "g8",
+      "fen": "rnbq1rk1/pp2bppp/2p1pn2/3p4/2PP1B2/2N1PN2/PP3PPP/R2QKB1R w KQ - 1 7",
+      "comment": ""
+    },
+    {
+      "ply": 13,
+      "san": "Bd3",
+      "uci": "f1d3",
+      "from": "f1",
+      "to": "d3",
+      "fen": "rnbq1rk1/pp2bppp/2p1pn2/3p4/2PP1B2/2NBPN2/PP3PPP/R2QK2R b KQ - 2 7",
+      "comment": ""
+    },
+    {
+      "ply": 14,
+      "san": "Nbd7",
+      "uci": "b8d7",
+      "from": "b8",
+      "to": "d7",
+      "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p4/2PP1B2/2NBPN2/PP3PPP/R2QK2R w KQ - 3 8",
+      "comment": ""
+    },
+    {
+      "ply": 15,
+      "san": "O-O",
+      "uci": "e1g1",
+      "from": "e1",
+      "to": "g1",
+      "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p4/2PP1B2/2NBPN2/PP3PPP/R2Q1RK1 b - - 4 8",
+      "comment": ""
+    },
+    {
+      "ply": 16,
+      "san": "b6",
+      "uci": "b7b6",
+      "from": "b7",
+      "to": "b6",
+      "fen": "r1bq1rk1/p2nbppp/1pp1pn2/3p4/2PP1B2/2NBPN2/PP3PPP/R2Q1RK1 w - - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 17,
+      "san": "cxd5",
+      "uci": "c4d5",
+      "from": "c4",
+      "to": "d5",
+      "fen": "r1bq1rk1/p2nbppp/1pp1pn2/3P4/3P1B2/2NBPN2/PP3PPP/R2Q1RK1 b - - 0 9",
+      "comment": ""
+    },
+    {
+      "ply": 18,
+      "san": "exd5",
+      "uci": "e6d5",
+      "from": "e6",
+      "to": "d5",
+      "fen": "r1bq1rk1/p2nbppp/1pp2n2/3p4/3P1B2/2NBPN2/PP3PPP/R2Q1RK1 w - - 0 10",
+      "comment": ""
+    },
+    {
+      "ply": 19,
+      "san": "Rc1",
+      "uci": "a1c1",
+      "from": "a1",
+      "to": "c1",
+      "fen": "r1bq1rk1/p2nbppp/1pp2n2/3p4/3P1B2/2NBPN2/PP3PPP/2RQ1RK1 b - - 1 10",
+      "comment": ""
+    },
+    {
+      "ply": 20,
+      "san": "Bb7",
+      "uci": "c8b7",
+      "from": "c8",
+      "to": "b7",
+      "fen": "r2q1rk1/pb1nbppp/1pp2n2/3p4/3P1B2/2NBPN2/PP3PPP/2RQ1RK1 w - - 2 11",
+      "comment": ""
+    },
+    {
+      "ply": 21,
+      "san": "Ne2",
+      "uci": "c3e2",
+      "from": "c3",
+      "to": "e2",
+      "fen": "r2q1rk1/pb1nbppp/1pp2n2/3p4/3P1B2/3BPN2/PP2NPPP/2RQ1RK1 b - - 3 11",
+      "comment": ""
+    },
+    {
+      "ply": 22,
+      "san": "Re8",
+      "uci": "f8e8",
+      "from": "f8",
+      "to": "e8",
+      "fen": "r2qr1k1/pb1nbppp/1pp2n2/3p4/3P1B2/3BPN2/PP2NPPP/2RQ1RK1 w - - 4 12",
+      "comment": ""
+    },
+    {
+      "ply": 23,
+      "san": "Ng3",
+      "uci": "e2g3",
+      "from": "e2",
+      "to": "g3",
+      "fen": "r2qr1k1/pb1nbppp/1pp2n2/3p4/3P1B2/3BPNN1/PP3PPP/2RQ1RK1 b - - 5 12",
+      "comment": ""
+    },
+    {
+      "ply": 24,
+      "san": "Nf8",
+      "uci": "d7f8",
+      "from": "d7",
+      "to": "f8",
+      "fen": "r2qrnk1/pb2bppp/1pp2n2/3p4/3P1B2/3BPNN1/PP3PPP/2RQ1RK1 w - - 6 13",
+      "comment": ""
+    },
+    {
+      "ply": 25,
+      "san": "Ne5",
+      "uci": "f3e5",
+      "from": "f3",
+      "to": "e5",
+      "fen": "r2qrnk1/pb2bppp/1pp2n2/3pN3/3P1B2/3BP1N1/PP3PPP/2RQ1RK1 b - - 7 13",
+      "comment": ""
+    },
+    {
+      "ply": 26,
+      "san": "c5",
+      "uci": "c6c5",
+      "from": "c6",
+      "to": "c5",
+      "fen": "r2qrnk1/pb2bppp/1p3n2/2ppN3/3P1B2/3BP1N1/PP3PPP/2RQ1RK1 w - - 0 14",
+      "comment": ""
+    },
+    {
+      "ply": 27,
+      "san": "Bb5",
+      "uci": "d3b5",
+      "from": "d3",
+      "to": "b5",
+      "fen": "r2qrnk1/pb2bppp/1p3n2/1BppN3/3P1B2/4P1N1/PP3PPP/2RQ1RK1 b - - 1 14",
+      "comment": ""
+    },
+    {
+      "ply": 28,
+      "san": "N6d7",
+      "uci": "f6d7",
+      "from": "f6",
+      "to": "d7",
+      "fen": "r2qrnk1/pb1nbppp/1p6/1BppN3/3P1B2/4P1N1/PP3PPP/2RQ1RK1 w - - 2 15",
+      "comment": ""
+    },
+    {
+      "ply": 29,
+      "san": "Nf5",
+      "uci": "g3f5",
+      "from": "g3",
+      "to": "f5",
+      "fen": "r2qrnk1/pb1nbppp/1p6/1BppNN2/3P1B2/4P3/PP3PPP/2RQ1RK1 b - - 3 15",
+      "comment": ""
+    },
+    {
+      "ply": 30,
+      "san": "g6",
+      "uci": "g7g6",
+      "from": "g7",
+      "to": "g6",
+      "fen": "r2qrnk1/pb1nbp1p/1p4p1/1BppNN2/3P1B2/4P3/PP3PPP/2RQ1RK1 w - - 0 16",
+      "comment": ""
+    },
+    {
+      "ply": 31,
+      "san": "Nh6+",
+      "uci": "f5h6",
+      "from": "f5",
+      "to": "h6",
+      "fen": "r2qrnk1/pb1nbp1p/1p4pN/1BppN3/3P1B2/4P3/PP3PPP/2RQ1RK1 b - - 1 16",
+      "comment": ""
+    },
+    {
+      "ply": 32,
+      "san": "Kg7",
+      "uci": "g8g7",
+      "from": "g8",
+      "to": "g7",
+      "fen": "r2qrn2/pb1nbpkp/1p4pN/1BppN3/3P1B2/4P3/PP3PPP/2RQ1RK1 w - - 2 17",
+      "comment": ""
+    },
+    {
+      "ply": 33,
+      "san": "Nhxf7",
+      "uci": "h6f7",
+      "from": "h6",
+      "to": "f7",
+      "fen": "r2qrn2/pb1nbNkp/1p4p1/1BppN3/3P1B2/4P3/PP3PPP/2RQ1RK1 b - - 0 17",
+      "comment": ""
+    },
+    {
+      "ply": 34,
+      "san": "Qc8",
+      "uci": "d8c8",
+      "from": "d8",
+      "to": "c8",
+      "fen": "r1q1rn2/pb1nbNkp/1p4p1/1BppN3/3P1B2/4P3/PP3PPP/2RQ1RK1 w - - 1 18",
+      "comment": ""
+    },
+    {
+      "ply": 35,
+      "san": "Bh6+",
+      "uci": "f4h6",
+      "from": "f4",
+      "to": "h6",
+      "fen": "r1q1rn2/pb1nbNkp/1p4pB/1BppN3/3P4/4P3/PP3PPP/2RQ1RK1 b - - 2 18",
+      "comment": ""
+    },
+    {
+      "ply": 36,
+      "san": "Kg8",
+      "uci": "g7g8",
+      "from": "g7",
+      "to": "g8",
+      "fen": "r1q1rnk1/pb1nbN1p/1p4pB/1BppN3/3P4/4P3/PP3PPP/2RQ1RK1 w - - 3 19",
+      "comment": ""
+    },
+    {
+      "ply": 37,
+      "san": "Qf3",
+      "uci": "d1f3",
+      "from": "d1",
+      "to": "f3",
+      "fen": "r1q1rnk1/pb1nbN1p/1p4pB/1BppN3/3P4/4PQ2/PP3PPP/2R2RK1 b - - 4 19",
+      "comment": ""
+    },
+    {
+      "ply": 38,
+      "san": "Nxe5",
+      "uci": "d7e5",
+      "from": "d7",
+      "to": "e5",
+      "fen": "r1q1rnk1/pb2bN1p/1p4pB/1Bppn3/3P4/4PQ2/PP3PPP/2R2RK1 w - - 0 20",
+      "comment": ""
+    },
+    {
+      "ply": 39,
+      "san": "Nxe5",
+      "uci": "f7e5",
+      "from": "f7",
+      "to": "e5",
+      "fen": "r1q1rnk1/pb2b2p/1p4pB/1BppN3/3P4/4PQ2/PP3PPP/2R2RK1 b - - 0 20",
+      "comment": ""
+    },
+    {
+      "ply": 40,
+      "san": "Qe6",
+      "uci": "c8e6",
+      "from": "c8",
+      "to": "e6",
+      "fen": "r3rnk1/pb2b2p/1p2q1pB/1BppN3/3P4/4PQ2/PP3PPP/2R2RK1 w - - 1 21",
+      "comment": ""
+    },
+    {
+      "ply": 41,
+      "san": "Bxe8",
+      "uci": "b5e8",
+      "from": "b5",
+      "to": "e8",
+      "fen": "r3Bnk1/pb2b2p/1p2q1pB/2ppN3/3P4/4PQ2/PP3PPP/2R2RK1 b - - 0 21",
+      "comment": ""
+    },
+    {
+      "ply": 42,
+      "san": "Rxe8",
+      "uci": "a8e8",
+      "from": "a8",
+      "to": "e8",
+      "fen": "4rnk1/pb2b2p/1p2q1pB/2ppN3/3P4/4PQ2/PP3PPP/2R2RK1 w - - 0 22",
+      "comment": ""
+    },
+    {
+      "ply": 43,
+      "san": "Bf4",
+      "uci": "h6f4",
+      "from": "h6",
+      "to": "f4",
+      "fen": "4rnk1/pb2b2p/1p2q1p1/2ppN3/3P1B2/4PQ2/PP3PPP/2R2RK1 b - - 1 22",
+      "comment": ""
+    },
+    {
+      "ply": 44,
+      "san": "Nd7",
+      "uci": "f8d7",
+      "from": "f8",
+      "to": "d7",
+      "fen": "4r1k1/pb1nb2p/1p2q1p1/2ppN3/3P1B2/4PQ2/PP3PPP/2R2RK1 w - - 2 23",
+      "comment": ""
+    },
+    {
+      "ply": 45,
+      "san": "Rfd1",
+      "uci": "f1d1",
+      "from": "f1",
+      "to": "d1",
+      "fen": "4r1k1/pb1nb2p/1p2q1p1/2ppN3/3P1B2/4PQ2/PP3PPP/2RR2K1 b - - 3 23",
+      "comment": ""
+    },
+    {
+      "ply": 46,
+      "san": "Rf8",
+      "uci": "e8f8",
+      "from": "e8",
+      "to": "f8",
+      "fen": "5rk1/pb1nb2p/1p2q1p1/2ppN3/3P1B2/4PQ2/PP3PPP/2RR2K1 w - - 4 24",
+      "comment": ""
+    },
+    {
+      "ply": 47,
+      "san": "Nxd7",
+      "uci": "e5d7",
+      "from": "e5",
+      "to": "d7",
+      "fen": "5rk1/pb1Nb2p/1p2q1p1/2pp4/3P1B2/4PQ2/PP3PPP/2RR2K1 b - - 0 24",
+      "comment": ""
+    },
+    {
+      "ply": 48,
+      "san": "Qxd7",
+      "uci": "e6d7",
+      "from": "e6",
+      "to": "d7",
+      "fen": "5rk1/pb1qb2p/1p4p1/2pp4/3P1B2/4PQ2/PP3PPP/2RR2K1 w - - 0 25",
+      "comment": ""
+    },
+    {
+      "ply": 49,
+      "san": "Qg3",
+      "uci": "f3g3",
+      "from": "f3",
+      "to": "g3",
+      "fen": "5rk1/pb1qb2p/1p4p1/2pp4/3P1B2/4P1Q1/PP3PPP/2RR2K1 b - - 1 25",
+      "comment": ""
+    },
+    {
+      "ply": 50,
+      "san": "Rf5",
+      "uci": "f8f5",
+      "from": "f8",
+      "to": "f5",
+      "fen": "6k1/pb1qb2p/1p4p1/2pp1r2/3P1B2/4P1Q1/PP3PPP/2RR2K1 w - - 2 26",
+      "comment": ""
+    },
+    {
+      "ply": 51,
+      "san": "Rd2",
+      "uci": "d1d2",
+      "from": "d1",
+      "to": "d2",
+      "fen": "6k1/pb1qb2p/1p4p1/2pp1r2/3P1B2/4P1Q1/PP1R1PPP/2R3K1 b - - 3 26",
+      "comment": ""
+    },
+    {
+      "ply": 52,
+      "san": "Qe6",
+      "uci": "d7e6",
+      "from": "d7",
+      "to": "e6",
+      "fen": "6k1/pb2b2p/1p2q1p1/2pp1r2/3P1B2/4P1Q1/PP1R1PPP/2R3K1 w - - 4 27",
+      "comment": ""
+    },
+    {
+      "ply": 53,
+      "san": "Rdc2",
+      "uci": "d2c2",
+      "from": "d2",
+      "to": "c2",
+      "fen": "6k1/pb2b2p/1p2q1p1/2pp1r2/3P1B2/4P1Q1/PPR2PPP/2R3K1 b - - 5 27",
+      "comment": ""
+    },
+    {
+      "ply": 54,
+      "san": "Qe4",
+      "uci": "e6e4",
+      "from": "e6",
+      "to": "e4",
+      "fen": "6k1/pb2b2p/1p4p1/2pp1r2/3PqB2/4P1Q1/PPR2PPP/2R3K1 w - - 6 28",
+      "comment": ""
+    },
+    {
+      "ply": 55,
+      "san": "h3",
+      "uci": "h2h3",
+      "from": "h2",
+      "to": "h3",
+      "fen": "6k1/pb2b2p/1p4p1/2pp1r2/3PqB2/4P1QP/PPR2PP1/2R3K1 b - - 0 28",
+      "comment": ""
+    },
+    {
+      "ply": 56,
+      "san": "Kf7",
+      "uci": "g8f7",
+      "from": "g8",
+      "to": "f7",
+      "fen": "8/pb2bk1p/1p4p1/2pp1r2/3PqB2/4P1QP/PPR2PP1/2R3K1 w - - 1 29",
+      "comment": ""
+    },
+    {
+      "ply": 57,
+      "san": "dxc5",
+      "uci": "d4c5",
+      "from": "d4",
+      "to": "c5",
+      "fen": "8/pb2bk1p/1p4p1/2Pp1r2/4qB2/4P1QP/PPR2PP1/2R3K1 b - - 0 29",
+      "comment": ""
+    },
+    {
+      "ply": 58,
+      "san": "bxc5",
+      "uci": "b6c5",
+      "from": "b6",
+      "to": "c5",
+      "fen": "8/pb2bk1p/6p1/2pp1r2/4qB2/4P1QP/PPR2PP1/2R3K1 w - - 0 30",
+      "comment": ""
+    },
+    {
+      "ply": 59,
+      "san": "Rxc5",
+      "uci": "c2c5",
+      "from": "c2",
+      "to": "c5",
+      "fen": "8/pb2bk1p/6p1/2Rp1r2/4qB2/4P1QP/PP3PP1/2R3K1 b - - 0 30",
+      "comment": ""
+    },
+    {
+      "ply": 60,
+      "san": "Bxc5",
+      "uci": "e7c5",
+      "from": "e7",
+      "to": "c5",
+      "fen": "8/pb3k1p/6p1/2bp1r2/4qB2/4P1QP/PP3PP1/2R3K1 w - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 61,
+      "san": "Rxc5",
+      "uci": "c1c5",
+      "from": "c1",
+      "to": "c5",
+      "fen": "8/pb3k1p/6p1/2Rp1r2/4qB2/4P1QP/PP3PP1/6K1 b - - 0 31",
+      "comment": ""
+    },
+    {
+      "ply": 62,
+      "san": "Qb1+",
+      "uci": "e4b1",
+      "from": "e4",
+      "to": "b1",
+      "fen": "8/pb3k1p/6p1/2Rp1r2/5B2/4P1QP/PP3PP1/1q4K1 w - - 1 32",
+      "comment": ""
+    },
+    {
+      "ply": 63,
+      "san": "Kh2",
+      "uci": "g1h2",
+      "from": "g1",
+      "to": "h2",
+      "fen": "8/pb3k1p/6p1/2Rp1r2/5B2/4P1QP/PP3PPK/1q6 b - - 2 32",
+      "comment": ""
+    },
+    {
+      "ply": 64,
+      "san": "Qxb2",
+      "uci": "b1b2",
+      "from": "b1",
+      "to": "b2",
+      "fen": "8/pb3k1p/6p1/2Rp1r2/5B2/4P1QP/Pq3PPK/8 w - - 0 33",
+      "comment": ""
+    },
+    {
+      "ply": 65,
+      "san": "Rc7+",
+      "uci": "c5c7",
+      "from": "c5",
+      "to": "c7",
+      "fen": "8/pbR2k1p/6p1/3p1r2/5B2/4P1QP/Pq3PPK/8 b - - 1 33",
+      "comment": ""
+    },
+    {
+      "ply": 66,
+      "san": "Kg8",
+      "uci": "f7g8",
+      "from": "f7",
+      "to": "g8",
+      "fen": "6k1/pbR4p/6p1/3p1r2/5B2/4P1QP/Pq3PPK/8 w - - 2 34",
+      "comment": ""
+    },
+    {
+      "ply": 67,
+      "san": "Qh4",
+      "uci": "g3h4",
+      "from": "g3",
+      "to": "h4",
+      "fen": "6k1/pbR4p/6p1/3p1r2/5B1Q/4P2P/Pq3PPK/8 b - - 3 34",
+      "comment": ""
+    },
+    {
+      "ply": 68,
+      "san": "Rf7",
+      "uci": "f5f7",
+      "from": "f5",
+      "to": "f7",
+      "fen": "6k1/pbR2r1p/6p1/3p4/5B1Q/4P2P/Pq3PPK/8 w - - 4 35",
+      "comment": ""
+    },
+    {
+      "ply": 69,
+      "san": "Qd8+",
+      "uci": "h4d8",
+      "from": "h4",
+      "to": "d8",
+      "fen": "3Q2k1/pbR2r1p/6p1/3p4/5B2/4P2P/Pq3PPK/8 b - - 5 35",
+      "comment": ""
+    },
+    {
+      "ply": 70,
+      "san": "Kg7",
+      "uci": "g8g7",
+      "from": "g8",
+      "to": "g7",
+      "fen": "3Q4/pbR2rkp/6p1/3p4/5B2/4P2P/Pq3PPK/8 w - - 6 36",
+      "comment": ""
+    },
+    {
+      "ply": 71,
+      "san": "Bh6+",
+      "uci": "f4h6",
+      "from": "f4",
+      "to": "h6",
+      "fen": "3Q4/pbR2rkp/6pB/3p4/8/4P2P/Pq3PPK/8 b - - 7 36",
+      "comment": ""
+    }
+  ],
+  "pgn": "[Event \"Odense onsdag\"]\n[Site \"Odense onsdag\"]\n[Date \"2026.05.27\"]\n[Round \"4\"]\n[White \"Jan Kaas\"]\n[Black \"Henrik Vorager\"]\n[Result \"1-0\"]\n[WhiteElo \"1871\"]\n[BlackElo \"1921\"]\n[ECO \"D37\"]\n\n1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 Be7 5. Bf4 c6 6. e3 O-O 7. Bd3 Nbd7 8. O-O b6 9. cxd5 exd5 10. Rc1 Bb7 11. Ne2 Re8 12. Ng3 Nf8 13. Ne5 c5 14. Bb5 N6d7 15. Nf5 g6 16. Nh6+ Kg7 17. Nhxf7 Qc8 18. Bh6+ Kg8 19. Qf3 Nxe5 20. Nxe5 Qe6 21. Bxe8 Rxe8 22. Bf4 Nd7 23. Rfd1 Rf8 24. Nxd7 Qxd7 25. Qg3 Rf5 26. Rd2 Qe6 27. Rdc2 Qe4 28. h3 Kf7 29. dxc5 bxc5 30. Rxc5 Bxc5 31. Rxc5 Qb1+ 32. Kh2 Qxb2 33. Rc7+ Kg8 34. Qh4 Rf7 35. Qd8+ Kg7 36. Bh6+ 1-0",
+  "id": "2026-05-27-jan-kaas-vs-henrik-vorager",
+  "added": "2026-09-13",
+  "added_by": "member"
+}

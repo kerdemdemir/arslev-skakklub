@@ -1,17 +1,88 @@
 {
   "games": [
     {
-      "id": "2026-09-02-player-a-vs-player-b",
-      "added": "2026-09-02",
-      "event": "Casual Game",
-      "site": "Internet",
-      "date": "2026-09-02",
-      "round": "1",
-      "white": "Player A",
-      "black": "Player B",
+      "id": "2026-06-03-erik-frandsen-vs-jan-kaas",
+      "added": "2026-09-13",
+      "added_by": "member",
+      "event": "Odense onsdag",
+      "site": "Odense onsdag",
+      "date": "2026-06-03",
+      "round": "6",
+      "white": "Erik Frandsen",
+      "black": "Jan Kaas",
+      "result": "0-1",
+      "eco": "A00",
+      "plies": 80
+    },
+    {
+      "id": "2026-05-30-joern-mostrup-vs-jan-kaas",
+      "added": "2026-09-13",
+      "added_by": "member",
+      "event": "Odense onsdag",
+      "site": "Odense onsdag",
+      "date": "2026-05-30",
+      "round": "5",
+      "white": "Jørn Mostrup",
+      "black": "Jan Kaas",
+      "result": "1/2-1/2",
+      "eco": "E90",
+      "plies": 63
+    },
+    {
+      "id": "2026-05-27-jan-kaas-vs-henrik-vorager",
+      "added": "2026-09-13",
+      "added_by": "member",
+      "event": "Odense onsdag",
+      "site": "Odense onsdag",
+      "date": "2026-05-27",
+      "round": "4",
+      "white": "Jan Kaas",
+      "black": "Henrik Vorager",
       "result": "1-0",
+      "eco": "D37",
+      "plies": 71
+    },
+    {
+      "id": "2026-04-29-ole-eik-joergensen-vs-jan-kaas",
+      "added": "2026-09-13",
+      "added_by": "member",
+      "event": "Odense onsdag",
+      "site": "Odense onsdag",
+      "date": "2026-04-29",
+      "round": "2",
+      "white": "Ole Eik Jørgensen",
+      "black": "Jan Kaas",
+      "result": "0-1",
+      "eco": "A15",
+      "plies": 38
+    },
+    {
+      "id": "2026-04-22-jan-kaas-vs-svend-veise",
+      "added": "2026-09-13",
+      "added_by": "member",
+      "event": "Odense onsdag",
+      "site": "Odense onsdag",
+      "date": "2026-04-22",
+      "round": "1",
+      "white": "Jan Kaas",
+      "black": "Svend Veise",
+      "result": "1-0",
+      "eco": "D43",
+      "plies": 80
+    },
+    {
+      "id": "lls-vs-ulf-kroman",
+      "added": "2026-09-11",
+      "added_by": "admin",
+      "event": "?",
+      "site": "?",
+      "date": "",
+      "round": "?",
+      "white": "LLS",
+      "black": "Ulf Kroman",
+      "result": "*",
       "eco": "",
-      "plies": 7
+      "plies": 68
     }
   ]
 }

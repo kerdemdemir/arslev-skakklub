@@ -38,10 +38,11 @@
           <label class="tight">Billedtekst (vises under billedet)
             <input name="ex{{ loop.index0 }}_caption" value="{{ im.caption or '' }}" maxlength="300">
           </label>
-          <label class="check">
-            <input type="checkbox" name="ex{{ loop.index0 }}_delete" value="1">
+          <button type="submit" class="btn small danger"
+                  name="ex{{ loop.index0 }}_delete" value="1"
+                  onclick="return confirm('Fjern billedet fra nyheden? Teksten bliver stående.')">
             Fjern dette billede
-          </label>
+          </button>
         </div>
       </div>
       {% endfor %}
