@@ -18,6 +18,7 @@ BUILT = date.today().isoformat()
 # ---------------------------------------------------------------- navigation
 NAV = [
     ("index.html", "Forside"),
+    ("skakskole.html", "Skakskole"),
     ("nyheder.html", "Nyheder"),
     ("kalender.html", "Kalender"),
     ("turneringer.html", "Turneringer"),
@@ -319,6 +320,21 @@ def build_index():
       <div class="dt" id="nextDate"></div>
       <a class="btn btn-gold" href="kalender.html">Hele kalenderen</a>
     </div>
+  </div>
+</section>
+
+<section class="school-band">
+  <div class="wrap">
+   <div class="sb reveal">
+    <div class="sb-art" aria-hidden="true">♞</div>
+    <div class="sb-text">
+      <p class="lbl">Nyt · skakskole for begyndere</p>
+      <h2>Lær at spille skak fra bunden</h2>
+      <p>Introforløb på Husmandsstedet hver mandag kl. 17 fra 19. oktober.
+         Gratis undervisning, og der er plads til alle.</p>
+    </div>
+    <a class="btn btn-gold" href="skakskole.html">Læs om skakskolen</a>
+   </div>
   </div>
 </section>
 
@@ -664,6 +680,185 @@ def build_turneringer():
     page("turneringer.html", f"Turneringer – {CLUB}",
          "Klubturnering med lange partier (80+30), hurtigskakmesterskab over 2×9 partier, "
          "serie 1-holdturnering, sommerskak og lynmesterskab i Årslev Skakklub.", body)
+
+
+# ================================================================ SKAKSKOLE
+def build_skakskole():
+    body = """
+<section class="hero kids-hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow"><span class="dot"></span> Nyt for begyndere · start mandag 19. oktober</p>
+      <h1>Kom og lær at spille skak <em>helt fra bunden</em></h1>
+      <p class="lede">Har du lyst til at være med i et hyggeligt fællesskab, hvor du kan
+         lære at spille skak fra bunden og få rigtig skakundervisning? Så har du nu
+         chancen for at kaste dig ud i skakkens mysterier på Husmandsstedet.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#tilmeld">Sådan melder du dig til</a>
+        <a class="btn btn-ghost" href="#hvad">Hvad skal vi lave?</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>19. okt</b><small>Første gang</small></div>
+        <div><b>Kl. 17</b><small>Hver mandag</small></div>
+        <div><b>Gratis</b><small>Undervisningen</small></div>
+        <div><b>Alle</b><small>Kan være med</small></div>
+      </div>
+    </div>
+    <div class="hero-art kids-art" aria-hidden="true">
+      <span class="pc p1">♞</span><span class="pc p2">♜</span>
+      <span class="pc p3">♝</span><span class="pc p4">♟</span>
+      <span class="pc p5">♛</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="bigquote reveal">„Det vigtigste er, at det skal være <strong>sjovt</strong>
+       og <strong>lærerigt</strong> – og at der er plads til alle.“</p>
+  </div>
+</section>
+
+<section class="tint" id="hvad">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="kicker">Hvad skal vi lave?</p>
+      <h2>Du skal ikke kunne noget på forhånd</h2>
+      <p>Vi starter med det allerførste: hvordan brikkerne går. Derfra bygger vi videre,
+         og niveauet bliver tilpasset, så det passer til dig.</p>
+    </div>
+    <div class="grid g3 learn">
+      <div class="card hover reveal">
+        <div class="ico big" aria-hidden="true">♟</div>
+        <h3>Reglerne</h3>
+        <p>Hvordan hver brik går, hvad den må, og hvordan et parti skak egentlig
+           foregår. Det er her, alle begynder.</p>
+      </div>
+      <div class="card hover reveal">
+        <div class="ico big" aria-hidden="true">♝</div>
+        <h3>Åbninger og taktik</h3>
+        <p>Grundlæggende åbningsforståelse og de taktiske temaer, der får det hele til
+           at klikke – gaflen, spiddet og alle de andre fælder.</p>
+      </div>
+      <div class="card hover reveal">
+        <div class="ico big" aria-hidden="true">♛</div>
+        <h3>Matsætning</h3>
+        <p>Det sjoveste af det hele: hvordan man sætter mat og faktisk vinder partiet,
+           når man har fået fordelen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Sådan foregår undervisningen</p>
+      <h2>Vi sidder ikke stille hele tiden</h2>
+      <p>Undervisningen bliver kombineret med skakspil og aktiviteter, hvor man både
+         skal bevæge sig og samarbejde.</p>
+    </div>
+    <div class="grid g22">
+      <div class="card reveal">
+        <div class="ico big" aria-hidden="true">🤾</div>
+        <h3>Bevægelse og samarbejde</h3>
+        <p>Inddragende aktiviteter, hvor man løser opgaverne sammen og kommer op af
+           stolen undervejs.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico big" aria-hidden="true">🏰</div>
+        <h3>Gigaskak</h3>
+        <p>Vi kan spille med et gigaskakspil, hvor brikkerne er så store, at man skal
+           bruge hele kroppen for at flytte dem.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico big" aria-hidden="true">💻</div>
+        <h3>Online og på skærm</h3>
+        <p>Vi bruger onlineværktøjer og andre tekniske hjælpemidler, så man også kan
+           øve sig hjemmefra.</p>
+      </div>
+      <div class="card reveal badges">
+        <div class="ico big" aria-hidden="true">🎖</div>
+        <h3>Duelighedsmærker</h3>
+        <p>Undervejs kan man optjene små duelighedsmærker for det, man har lært.
+           Man kan altså samle på dem.</p>
+        <div class="badgerow" aria-hidden="true">
+          <span>♟</span><span>♞</span><span>♝</span><span>♜</span><span>♛</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Forløbet</p><h2>Hvornår sker det?</h2></div>
+    <ol class="steps reveal">
+      <li>
+        <h3>Mandag 19. oktober kl. 17.00</h3>
+        <p>Første gang. Mød bare op – så tager vi den derfra.</p>
+      </li>
+      <li>
+        <h3>Hver mandag indtil jul</h3>
+        <p>Introforløbet kører hver mandag frem til jul. Det er en fordel at komme så
+           ofte som muligt, for så får man mest ud af det.</p>
+      </li>
+      <li>
+        <h3>Videre efter nytår</h3>
+        <p>Tilbuddet fortsætter efter nytår, hvor vi bygger færdighederne videre ud.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="tilmeld">
+  <div class="wrap">
+    <div class="grid g2">
+      <div>
+        <p class="kicker">Til forældrene</p>
+        <h2>Det praktiske</h2>
+        <dl class="deflist reveal">
+          <div><dt>Hvor</dt><dd>Husmandsstedet<br>Over Bækken 1E<br>5792 Årslev</dd></div>
+          <div><dt>Hvornår</dt><dd>Mandage kl. 17.00, første gang 19. oktober 2026</dd></div>
+          <div><dt>Hvad koster det</dt><dd>Undervisningen er gratis. Deltagelse kræver
+            blot, at man er medlem af Husmandsstedet.</dd></div>
+          <div><dt>Hvem underviser</dt><dd>Medlemmer af Årslev Skakklub, der alle har
+            undervisningserfaring</dd></div>
+          <div><dt>Niveau</dt><dd>Fra helt begynder. Niveauet tilpasses efter behov.</dd></div>
+          <div><dt>Tilmelding</dt><dd>
+            <a href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">lean@schier.dk</a>
+            eller SMS på <a href="sms:+4527264507">27 26 45 07</a></dd></div>
+        </dl>
+      </div>
+      <div class="callout reveal signup">
+        <h3>Meld dig til</h3>
+        <p>Skriv en mail eller send en SMS – så hører du fra os. Husk at skrive
+           navn og alder på den, der gerne vil være med.</p>
+        <p class="row" style="gap:10px;flex-wrap:wrap">
+          <a class="btn btn-dark" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">Send en mail</a>
+          <a class="btn btn-outline" href="sms:+4527264507">SMS 27 26 45 07</a>
+        </p>
+        <p class="small" style="margin-bottom:0">Du kan også bare møde op mandag
+           den 19. oktober kl. 17.00.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Vi glæder os til at se dig</h2>
+    <p>Du behøver ikke kunne noget, kende nogen eller tage noget med. Bare kom.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">Tilmeld dig</a>
+      <a class="btn btn-ghost" href="info.html">Find vej til Husmandsstedet</a>
+    </div>
+  </div>
+</section>"""
+    page("skakskole.html", f"Skakskole for begyndere – {CLUB}",
+         "Lær at spille skak fra bunden på Husmandsstedet i Årslev. Introforløb hver "
+         "mandag kl. 17 fra 19. oktober 2026. Gratis undervisning, alle kan være med.",
+         body)
 
 
 # ================================================================ KLUBBEN
@@ -1157,6 +1352,7 @@ if __name__ == "__main__":
     build_index()
     build_nyheder()
     build_kalender()
+    build_skakskole()
     build_turneringer()
     build_klubben()
     build_info()

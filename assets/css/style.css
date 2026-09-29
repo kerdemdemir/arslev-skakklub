@@ -108,6 +108,7 @@ p{margin:0 0 1.1em}
   transition:box-shadow .25s;
 }
 .site-header.is-stuck{box-shadow:0 6px 24px -14px rgba(20,17,13,.35)}
+.site-header .wrap{max-width:1260px}
 .nav{display:flex;align-items:center;gap:20px;min-height:var(--nav-h)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .brand img{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line)}
@@ -118,7 +119,7 @@ p{margin:0 0 1.1em}
 .nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;padding:0}
 .nav-links a{
   text-decoration:none;font-size:.93rem;font-weight:500;
-  padding:9px 13px;border-radius:99px;color:var(--ink-soft);
+  padding:9px 11px;border-radius:99px;color:var(--ink-soft);
   transition:background .18s,color .18s;white-space:nowrap;
 }
 .nav-links a:hover{background:var(--cream);color:var(--ink)}
@@ -143,7 +144,7 @@ p{margin:0 0 1.1em}
 .burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
 .burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
 
-@media (max-width:1100px){
+@media (max-width:1210px){
   .burger{display:flex}
   .nav-links{
     position:fixed;inset:var(--nav-h) 0 auto 0;flex-direction:column;align-items:stretch;
@@ -256,6 +257,9 @@ section.tint{background:var(--cream);border-block:1px solid var(--line)}
 .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+/* Fast 2x2 - auto-fit ville give 3+1 og se skævt ud */
+.g22{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:700px){.g22{grid-template-columns:1fr}}
 
 .card{
   background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
@@ -471,10 +475,99 @@ details.acc .body{padding:18px 22px 6px}
 .nav-login svg{flex:0 0 auto}
 
 /* I mobilmenuen fylder den hele bredden som de øvrige punkter. */
-@media (max-width:1100px){
+@media (max-width:1210px){
   .nav-login{
     display:flex;margin:8px 0 0;padding:12px 14px;
     border-radius:var(--radius-sm);
     justify-content:center;border-color:var(--line);
   }
 }
+
+/* ======================= Skakskolen ==========================
+   Siden skal virke indbydende på børn uden at forlade klubbens
+   palet. Derfor: større typografi, rundere kort og legende brikker
+   - men samme sort/guld som resten af siden. */
+
+.kids-hero h1{max-width:22ch}
+.kids-hero .hero-facts b{font-size:1.6rem}
+
+/* Brikkerne svæver i stedet for logoet */
+.kids-art{position:relative;min-height:320px}
+.kids-art .pc{
+  position:absolute;line-height:1;color:var(--gold-bright);
+  text-shadow:0 10px 30px rgba(0,0,0,.55);
+  animation:bob 6s ease-in-out infinite;
+}
+.kids-art .p1{font-size:clamp(5rem,11vw,9rem);top:4%;left:26%;animation-delay:0s}
+.kids-art .p2{font-size:clamp(2.6rem,6vw,4.6rem);top:44%;left:2%;animation-delay:.7s;opacity:.85}
+.kids-art .p3{font-size:clamp(2.6rem,6vw,4.6rem);top:50%;right:6%;animation-delay:1.4s;opacity:.85}
+.kids-art .p4{font-size:clamp(1.9rem,4vw,3rem);top:12%;right:2%;animation-delay:2.1s;opacity:.7}
+.kids-art .p5{font-size:clamp(2.2rem,5vw,3.6rem);bottom:2%;left:34%;animation-delay:2.8s;opacity:.8}
+@keyframes bob{50%{transform:translateY(-16px) rotate(-4deg)}}
+@media (max-width:860px){.kids-art{min-height:190px}}
+
+/* Citatet fra klubben får luft omkring sig */
+.bigquote{
+  font-family:var(--ff-display);font-size:clamp(1.4rem,3.2vw,2.1rem);
+  line-height:1.35;text-align:center;max-width:26ch;margin:0 auto;
+  color:var(--ink);
+}
+.bigquote strong{color:var(--gold);font-weight:600}
+
+/* Større, venligere ikoner på skakskolesiden */
+.ico.big{width:60px;height:60px;font-size:2rem;border-radius:18px}
+.learn .card{border-radius:22px}
+
+/* Duelighedsmærker som en række små medaljer */
+.badgerow{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.badgerow span{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  font-size:1.25rem;color:var(--gold);
+  background:var(--gold-soft);border:2px dashed color-mix(in srgb,var(--gold) 55%,transparent);
+}
+
+/* Forløbet som nummererede trin */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:16px}
+ol.steps li{
+  counter-increment:s;position:relative;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px 24px 84px;box-shadow:var(--shadow-sm);
+}
+ol.steps li::before{
+  content:counter(s);position:absolute;left:24px;top:22px;
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:var(--panel);color:var(--gold-bright);
+  font-family:var(--ff-display);font-size:1.2rem;font-weight:600;
+}
+ol.steps h3{margin-bottom:.25em}
+ol.steps p{margin:0;color:var(--muted)}
+@media (max-width:560px){
+  ol.steps li{padding:70px 20px 22px}
+  ol.steps li::before{left:20px;top:20px}
+}
+
+.signup{align-self:start}
+.small{font-size:.88rem;color:var(--muted)}
+
+/* Banner på forsiden, der peger på skakskolen.
+   Kortet ligger inde i .wrap, så det flugter med de øvrige sektioner. */
+.school-band{padding:clamp(26px,4vw,40px) 0}
+.school-band .sb{
+  display:flex;align-items:center;gap:clamp(18px,3vw,32px);flex-wrap:wrap;
+  background:var(--panel);color:var(--on-panel);
+  border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);
+  border-radius:var(--radius);
+  padding:clamp(24px,3.4vw,34px) clamp(24px,3.5vw,38px);
+}
+.school-band .sb-art{
+  flex:0 0 auto;font-size:clamp(2.6rem,6vw,4rem);line-height:1;
+  color:var(--gold-bright);
+}
+.school-band .sb-text{flex:1 1 340px;min-width:0}
+.school-band .lbl{
+  margin:0 0 8px;font-size:.72rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-bright);
+}
+.school-band h2{color:#fffdf7;font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:.35em}
+.school-band p:last-of-type{margin:0;color:var(--on-panel-dim)}
+.school-band .btn{flex:0 0 auto}

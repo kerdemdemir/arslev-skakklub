@@ -10,6 +10,7 @@ Alt indhold er overført fra klubbens tidligere Wix-side.
 | Fil | Side |
 |---|---|
 | `index.html` | Forside |
+| `skakskole.html` | Skakskole for begyndere (hvervekampagne) |
 | `nyheder.html` | Nyheder |
 | `kalender.html` | Sæsonkalender 2026/2027 |
 | `turneringer.html` | Turneringer og rundeskema |
@@ -152,6 +153,10 @@ og kør derefter:
 ```bash
 python3 build.py
 ```
+
+Skakskolesiden ligger i `build_skakskole()`. Datoerne står som tekst i den
+funktion, fordi forløbet er et enkeltstående tilbud og ikke en tilbagevendende
+sæson — når introforløbet er slut, rettes eller fjernes siden i hånden.
 
 De vigtigste steder i `build.py`:
 
