@@ -672,3 +672,141 @@ async def calendar_save(request: Request):
     return RedirectResponse(
         f"/admin/kalender?ok={quote(f'Kalenderen er gemt ({n} datoer) og siden er opdateret.')}",
         status_code=303)
+
+
+# ============================================================= TILMELDINGER
+# Tilmeldinger til juniorundervisningen. Formularen ligger på den offentlige
+# side, så ruten er åben - men den gemmer altid, og sender kun mail hvis der
+# er en SMTP-konto sat op. Gemmer først, mailer bagefter: så går en
+# tilmelding ikke tabt, fordi mailen fejler.
+SIGNUP_FILE = SITE_DIR / "content" / "signups.json"
+SIGNUP_TO = [a for a in
+             os.environ.get("ARSLEV_SIGNUP_TO", "lean@schier.dk,kerdemdemir@gmail.com")
+             .split(",") if a.strip()]
+SMTP_HOST = os.environ.get("ARSLEV_SMTP_HOST", "")
+SMTP_PORT = int(os.environ.get("ARSLEV_SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("ARSLEV_SMTP_USER", "")
+SMTP_PASS = os.environ.get("ARSLEV_SMTP_PASS", "")
+SMTP_FROM = os.environ.get("ARSLEV_SMTP_FROM", SMTP_USER)
+
+SIGNUP_MAX_PER_HOUR = 6
+_signup_hits: dict[str, list[float]] = {}
+EMAIL_RE = re.compile(r"^[^@\s]{1,64}@[^@\s.]+(\.[^@\s.]+)+$")
+
+
+def load_signups() -> list[dict]:
+    if not SIGNUP_FILE.exists():
+        return []
+    data = json.loads(SIGNUP_FILE.read_text(encoding="utf-8")).get("signups", [])
+    data.sort(key=lambda s: s.get("received", ""), reverse=True)
+    return data
+
+
+def save_signups(rows: list[dict]) -> None:
+    SIGNUP_FILE.parent.mkdir(parents=True, exist_ok=True)
+    tmp = SIGNUP_FILE.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps({"signups": rows}, ensure_ascii=False, indent=2) + "\n",
+                   encoding="utf-8")
+    tmp.replace(SIGNUP_FILE)
+
+
+def mail_signup(row: dict) -> str:
+    """Sender besked om en tilmelding. Returnerer "" ved held, ellers en fejl."""
+    if not (SMTP_HOST and SMTP_FROM and SIGNUP_TO):
+        return "ingen SMTP-konto konfigureret"
+    import smtplib
+    from email.message import EmailMessage
+
+    msg = EmailMessage()
+    msg["Subject"] = f"Tilmelding til juniorundervisning: {row['navn']}"
+    msg["From"] = SMTP_FROM
+    msg["To"] = ", ".join(SIGNUP_TO)
+    msg["Reply-To"] = row["email"]
+    msg.set_content(
+        "Der er kommet en tilmelding til juniorundervisningen.\n\n"
+        f"Navn:   {row['navn']}\n"
+        f"Alder:  {row['alder']}\n"
+        f"E-mail: {row['email']}\n\n"
+        f"Modtaget: {row['received']}\n\n"
+        "Alle tilmeldinger står også på https://aarslevskak.com/admin/tilmeldinger\n")
+    try:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20) as sm:
+            sm.starttls()
+            if SMTP_USER:
+                sm.login(SMTP_USER, SMTP_PASS)
+            sm.send_message(msg)
+        return ""
+    except Exception as e:                                          # noqa: BLE001
+        return f"{type(e).__name__}: {e}"
+
+
+@app.post("/tilmeld")
+async def signup(request: Request):
+    form = await request.form()
+
+    # Formularen må kun komme fra vores eget websted.
+    origin = request.headers.get("origin") or request.headers.get("referer") or ""
+    if origin and "aarslevskak.com" not in origin:
+        raise HTTPException(400, "Formularen blev sendt fra et ukendt sted.")
+
+    # Skjult felt, som kun robotter udfylder.
+    if str(form.get("hjemmeside", "")).strip():
+        return RedirectResponse("/juniorundervisning.html?tak=1", status_code=303)
+
+    ip = (request.headers.get("x-forwarded-for", "") or
+          (request.client.host if request.client else "?")).split(",")[0].strip()
+    now = time.time()
+    hits = [t for t in _signup_hits.get(ip, []) if now - t < 3600]
+    if len(hits) >= SIGNUP_MAX_PER_HOUR:
+        raise HTTPException(429, "Der er sendt for mange tilmeldinger herfra. "
+                                 "Prøv igen senere, eller send en mail i stedet.")
+    _signup_hits[ip] = hits + [now]
+
+    navn = " ".join(str(form.get("navn", "")).split())[:80]
+    alder_raw = str(form.get("alder", "")).strip()
+    email = str(form.get("email", "")).strip()[:120]
+
+    if len(navn) < 2:
+        raise HTTPException(400, "Skriv venligst et navn.")
+    if not EMAIL_RE.match(email):
+        raise HTTPException(400, "E-mailadressen ser ikke rigtig ud.")
+    try:
+        alder = int(alder_raw)
+        if not 3 <= alder <= 100:
+            raise ValueError
+    except ValueError:
+        raise HTTPException(400, "Skriv alderen som et tal.")
+
+    row = {"navn": navn, "alder": alder, "email": email,
+           "received": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+    rows = load_signups()
+    rows.append(row)
+    save_signups(rows)                    # gemmes først - så kan intet gå tabt
+
+    err = mail_signup(row)
+    if err:
+        print(f"TILMELDING GEMT, MEN MAIL FEJLEDE ({err}): {navn}", flush=True)
+
+    return RedirectResponse("/juniorundervisning.html?tak=1", status_code=303)
+
+
+@app.get("/admin/tilmeldinger", response_class=HTMLResponse)
+def signups_list(request: Request, ok: str | None = None):
+    require_admin(request, "Kun administratorer kan se tilmeldingerne.")
+    return tpl.TemplateResponse("signups.html", {
+        "request": request, "signups": load_signups(), "csrf": csrf_of(request),
+        "role": ROLE_ADMIN, "mail_on": bool(SMTP_HOST), "to": SIGNUP_TO, "ok": ok,
+    })
+
+
+@app.post("/admin/tilmeldinger/slet")
+async def signup_delete(request: Request, received: str = Form(""),
+                        email: str = Form(""), csrf: str = Form("")):
+    require_admin(request, "Kun administratorer kan slette tilmeldinger.")
+    check_csrf(request, csrf)
+    rows = [r for r in load_signups()
+            if not (r.get("received") == received and r.get("email") == email)]
+    save_signups(rows)
+    return RedirectResponse("/admin/tilmeldinger?ok=Tilmeldingen+er+slettet.",
+                            status_code=303)

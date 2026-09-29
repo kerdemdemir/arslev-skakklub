@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block title %}Tilmeldinger{% endblock %}
+{% block body %}
+<div class="wrap">
+  {% if ok %}<p class="alert ok">{{ ok }}</p>{% endif %}
+
+  <div class="head">
+    <div>
+      <h1>Tilmeldinger</h1>
+      <p class="sub">{{ signups|length }} tilmelding{{ '' if signups|length == 1 else 'er' }}
+         til juniorundervisningen. Listen står kun her — den kommer ikke på den
+         offentlige hjemmeside.</p>
+    </div>
+  </div>
+
+  {% if mail_on %}
+    <p class="alert ok">Der sendes også en mail til {{ to|join(' og ') }},
+       hver gang nogen melder sig til.</p>
+  {% else %}
+    <p class="alert err">Der er <strong>ingen mailkonto sat op</strong>, så
+       tilmeldinger bliver kun gemt her. De går ikke tabt — men ingen får besked.
+       Se afsnittet om tilmeldinger i <code>README.md</code>.</p>
+  {% endif %}
+
+  {% if not signups %}
+    <p class="empty">Der er ingen tilmeldinger endnu.</p>
+  {% else %}
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Modtaget</th><th>Navn</th><th>Alder</th><th>E-mail</th><th></th></tr></thead>
+      <tbody>
+        {% for s in signups %}
+        <tr>
+          <td>{{ s.received }}</td>
+          <td><strong>{{ s.navn }}</strong></td>
+          <td>{{ s.alder }}</td>
+          <td><a href="mailto:{{ s.email }}">{{ s.email }}</a></td>
+          <td>
+            <form method="post" action="/admin/tilmeldinger/slet"
+                  onsubmit="return confirm('Slet tilmeldingen fra {{ s.navn }}?')">
+              <input type="hidden" name="csrf" value="{{ csrf }}">
+              <input type="hidden" name="received" value="{{ s.received }}">
+              <input type="hidden" name="email" value="{{ s.email }}">
+              <button class="btn small danger">Slet</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="hint">Husk at slette tilmeldingerne, når de er skrevet ind på
+     medlemslisten. Det er oplysninger om børn, så de skal ikke ligge længere
+     end nødvendigt.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -6,3 +6,7 @@ __pycache__/
 # udelukkende i /etc/arslevskak/admin.env på serveren.
 venv/
 *.env
+
+# Tilmeldinger indeholder personoplysninger om børn og må aldrig havne i et
+# offentligt repo. De bor kun på serveren og ses via /admin/tilmeldinger.
+content/signups.json

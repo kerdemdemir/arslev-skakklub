@@ -83,6 +83,19 @@
     strip.hidden = false;
   }
 
+  /* ---------- Kvittering efter en tilmelding ---------- */
+  // Serveren sender tilbage til siden med ?tak=1, så selve siden kan blive
+  // en statisk fil.
+  if (/[?&]tak=1/.test(location.search)) {
+    var tak = document.getElementById("tak");
+    if (tak) {
+      tak.hidden = false;
+      var form = document.querySelector(".signupform");
+      if (form) form.hidden = true;
+      tak.scrollIntoView({ block: "center" });
+    }
+  }
+
   /* ---------- Markér fortid/næste i kalendertabeller ---------- */
   document.querySelectorAll("tr[data-date]").forEach(function (tr) {
     var d = new Date(tr.getAttribute("data-date") + "T23:59:59");

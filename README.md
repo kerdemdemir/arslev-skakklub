@@ -97,6 +97,43 @@ python3 -c "import bcrypt,getpass; print(bcrypt.hashpw(getpass.getpass().encode(
 systemctl restart arslevskak-admin
 ```
 
+## Tilmeldinger til juniorundervisningen
+
+Forældre melder til via formularen på juniorsiden (navn, alder, e-mail).
+Listen ses på **<https://aarslevskak.com/admin/tilmeldinger>** — kun for
+administratorer.
+
+Tilmeldingen bliver **altid gemt først**, og først derefter forsøges en mail
+sendt. Fejler mailen, ligger tilmeldingen stadig i admin, så intet går tabt.
+
+`content/signups.json` er i `.gitignore` og hentes ikke ned af
+`fetch-content.sh`. Det er personoplysninger om børn, og dette repo er
+offentligt.
+
+Ruten `/tilmeld` er åben, fordi forældre ikke er logget ind. Den er beskyttet
+af: højst 6 tilmeldinger pr. IP pr. time, et skjult felt som kun robotter
+udfylder, og et tjek af at formularen kom fra vores eget domæne.
+
+### Mailbesked er ikke sat op endnu
+
+Serveren har ingen mailserver, så der sendes **ingen** mail, før disse
+variabler står i `/etc/arslevskak/admin.env`:
+
+```
+ARSLEV_SMTP_HOST=smtp.gmail.com
+ARSLEV_SMTP_PORT=587
+ARSLEV_SMTP_USER=<afsenderens gmail-adresse>
+ARSLEV_SMTP_PASS=<et app-password, ikke den rigtige adgangskode>
+ARSLEV_SMTP_FROM=<samme som USER>
+ARSLEV_SIGNUP_TO=lean@schier.dk,kerdemdemir@gmail.com
+```
+
+Derefter `systemctl restart arslevskak-admin`. Admin-siden skriver selv, om
+mailbesked er slået til.
+
+Send ikke direkte fra serveren uden relæ: domænets SPF peger på Porkbun, så
+mail fra serverens egen IP ville ryge i spamfilteret.
+
 ## Kalenderen
 
 **<https://aarslevskak.com/admin/kalender>** — kun for administratorer.

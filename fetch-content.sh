@@ -7,7 +7,9 @@ SERVER="${ARSLEV_SERVER:-root@204.168.138.132}"
 cd "$(dirname "$0")"
 
 mkdir -p content assets/img/nyheder
-rsync -az "$SERVER:/srv/arslevskak/content/" ./content/
+# signups.json hentes bevidst IKKE ned: det er personoplysninger om
+# børn, og repoet er offentligt.
+rsync -az --exclude "signups.json" "$SERVER:/srv/arslevskak/content/" ./content/
 rsync -az "$SERVER:/srv/arslevskak/assets/img/nyheder/" ./assets/img/nyheder/
 
 echo "✓ Hentet. Kør 'git status' for at se, hvad der er nyt."

@@ -832,14 +832,39 @@ def build_junior():
       </div>
       <div class="callout reveal signup">
         <h3>Meld dig til</h3>
-        <p>Skriv en mail eller send en SMS – så hører du fra os. Husk at skrive
-           navn og alder på den, der gerne vil være med.</p>
-        <p class="row" style="gap:10px;flex-wrap:wrap">
-          <a class="btn btn-dark" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20juniorundervisning">Send en mail</a>
-          <a class="btn btn-outline" href="sms:+4527264507">SMS 27 26 45 07</a>
-        </p>
-        <p class="small" style="margin-bottom:0">Du kan også bare møde op mandag
-           den 19. oktober kl. 17.00.</p>
+
+        <p class="tak" id="tak" hidden>Tak! Vi har fået din tilmelding og
+           skriver til dig.</p>
+
+        <p>Udfyld de tre felter – så hører du fra os.</p>
+        <form class="signupform" method="post" action="/tilmeld">
+          <label>Navn
+            <input name="navn" required maxlength="80" autocomplete="name"
+                   placeholder="Fornavn og efternavn">
+          </label>
+          <label>Alder
+            <input name="alder" type="number" required min="3" max="100"
+                   inputmode="numeric" placeholder="fx 10">
+          </label>
+          <label>E-mail (forælderens)
+            <input name="email" type="email" required maxlength="120"
+                   autocomplete="email" placeholder="navn@example.dk">
+          </label>
+          <p class="hp" aria-hidden="true">
+            <label>Lad dette felt være tomt
+              <input name="hjemmeside" tabindex="-1" autocomplete="off">
+            </label>
+          </p>
+          <button class="btn btn-dark">Send tilmelding</button>
+        </form>
+
+        <p class="small">Du kan også skrive til
+           <a href="mailto:lean@schier.dk?subject=Tilmelding%20til%20juniorundervisning">lean@schier.dk</a>
+           eller sende en SMS på <a href="sms:+4527264507">27 26 45 07</a> –
+           eller bare møde op mandag den 19. oktober kl. 17.00.</p>
+        <p class="small" style="margin-bottom:0">Vi bruger kun oplysningerne til at
+           kontakte dig om undervisningen. Se
+           <a href="privatlivspolitik.html">privatlivspolitikken</a>.</p>
       </div>
     </div>
   </div>
@@ -1192,6 +1217,14 @@ def build_privatliv():
         krav i henhold til gældende lovgivning</li>
     <li>Oplysninger om strafbare forhold ved indhentelse af børneattest</li>
   </ul>
+
+  <h3>3) Tilmeldinger til juniorundervisningen</h3>
+  <p>Melder man sig til juniorundervisningen via formularen på hjemmesiden,
+     registrerer vi <em>navn</em>, <em>alder</em> og <em>en e-mailadresse</em>.
+     Oplysningerne bruges alene til at kontakte den tilmeldte om undervisningen.
+     De er kun tilgængelige for klubbens administratorer, de vises ikke på den
+     offentlige hjemmeside, og de bliver slettet, når tilmeldingen er behandlet
+     og deltageren eventuelt er skrevet på medlemslisten.</p>
 
   <h2>Her indsamler vi oplysninger fra</h2>
   <p>Normalt får vi oplysningerne fra dig. I nogle tilfælde kan der være andre kilder:</p>
