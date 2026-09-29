@@ -10,7 +10,7 @@ Alt indhold er overført fra klubbens tidligere Wix-side.
 | Fil | Side |
 |---|---|
 | `index.html` | Forside |
-| `skakskole.html` | Skakskole for begyndere (hvervekampagne) |
+| `juniorundervisning.html` | Juniorundervisning for begyndere (hvervekampagne) |
 | `nyheder.html` | Nyheder |
 | `kalender.html` | Sæsonkalender 2026/2027 |
 | `turneringer.html` | Turneringer og rundeskema |
@@ -154,9 +154,12 @@ og kør derefter:
 python3 build.py
 ```
 
-Skakskolesiden ligger i `build_skakskole()`. Datoerne står som tekst i den
-funktion, fordi forløbet er et enkeltstående tilbud og ikke en tilbagevendende
-sæson — når introforløbet er slut, rettes eller fjernes siden i hånden.
+Juniorsiden ligger i `build_junior()`. Datoerne står som tekst i den funktion,
+fordi forløbet er et enkeltstående tilbud og ikke en tilbagevendende sæson —
+når introforløbet er slut, rettes eller fjernes siden i hånden.
+
+Siden hed kort `skakskole.html`. nginx sender den gamle adresse videre med
+et 301, så et delt link ikke bliver dødt.
 
 De vigtigste steder i `build.py`:
 

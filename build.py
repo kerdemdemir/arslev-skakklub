@@ -18,7 +18,7 @@ BUILT = date.today().isoformat()
 # ---------------------------------------------------------------- navigation
 NAV = [
     ("index.html", "Forside"),
-    ("skakskole.html", "Skakskole"),
+    ("juniorundervisning.html", "Juniorundervisning"),
     ("nyheder.html", "Nyheder"),
     ("kalender.html", "Kalender"),
     ("turneringer.html", "Turneringer"),
@@ -323,17 +323,17 @@ def build_index():
   </div>
 </section>
 
-<section class="school-band">
+<section class="junior-band">
   <div class="wrap">
    <div class="sb reveal">
     <div class="sb-art" aria-hidden="true">♞</div>
     <div class="sb-text">
-      <p class="lbl">Nyt · skakskole for begyndere</p>
+      <p class="lbl">Nyt · juniorundervisning</p>
       <h2>Lær at spille skak fra bunden</h2>
       <p>Introforløb på Husmandsstedet hver mandag kl. 17 fra 19. oktober.
          Gratis undervisning, og der er plads til alle.</p>
     </div>
-    <a class="btn btn-gold" href="skakskole.html">Læs om skakskolen</a>
+    <a class="btn btn-gold" href="juniorundervisning.html">Læs om undervisningen</a>
    </div>
   </div>
 </section>
@@ -682,8 +682,8 @@ def build_turneringer():
          "serie 1-holdturnering, sommerskak og lynmesterskab i Årslev Skakklub.", body)
 
 
-# ================================================================ SKAKSKOLE
-def build_skakskole():
+# ========================================================= JUNIORUNDERVISNING
+def build_junior():
     body = """
 <section class="hero kids-hero">
   <div class="wrap">
@@ -826,7 +826,7 @@ def build_skakskole():
             undervisningserfaring</dd></div>
           <div><dt>Niveau</dt><dd>Fra helt begynder. Niveauet tilpasses efter behov.</dd></div>
           <div><dt>Tilmelding</dt><dd>
-            <a href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">lean@schier.dk</a>
+            <a href="mailto:lean@schier.dk?subject=Tilmelding%20til%20juniorundervisning">lean@schier.dk</a>
             eller SMS på <a href="sms:+4527264507">27 26 45 07</a></dd></div>
         </dl>
       </div>
@@ -835,7 +835,7 @@ def build_skakskole():
         <p>Skriv en mail eller send en SMS – så hører du fra os. Husk at skrive
            navn og alder på den, der gerne vil være med.</p>
         <p class="row" style="gap:10px;flex-wrap:wrap">
-          <a class="btn btn-dark" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">Send en mail</a>
+          <a class="btn btn-dark" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20juniorundervisning">Send en mail</a>
           <a class="btn btn-outline" href="sms:+4527264507">SMS 27 26 45 07</a>
         </p>
         <p class="small" style="margin-bottom:0">Du kan også bare møde op mandag
@@ -850,14 +850,14 @@ def build_skakskole():
     <h2>Vi glæder os til at se dig</h2>
     <p>Du behøver ikke kunne noget, kende nogen eller tage noget med. Bare kom.</p>
     <div class="btns">
-      <a class="btn btn-gold" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20skakskolen">Tilmeld dig</a>
+      <a class="btn btn-gold" href="mailto:lean@schier.dk?subject=Tilmelding%20til%20juniorundervisning">Tilmeld dig</a>
       <a class="btn btn-ghost" href="info.html">Find vej til Husmandsstedet</a>
     </div>
   </div>
 </section>"""
-    page("skakskole.html", f"Skakskole for begyndere – {CLUB}",
-         "Lær at spille skak fra bunden på Husmandsstedet i Årslev. Introforløb hver "
-         "mandag kl. 17 fra 19. oktober 2026. Gratis undervisning, alle kan være med.",
+    page("juniorundervisning.html", f"Juniorundervisning – {CLUB}",
+         "Lær at spille skak fra bunden på Husmandsstedet i Årslev. Introforløb for "
+         "juniorer hver mandag kl. 17 fra 19. oktober 2026. Gratis undervisning.",
          body)
 
 
@@ -1352,7 +1352,7 @@ if __name__ == "__main__":
     build_index()
     build_nyheder()
     build_kalender()
-    build_skakskole()
+    build_junior()
     build_turneringer()
     build_klubben()
     build_info()
