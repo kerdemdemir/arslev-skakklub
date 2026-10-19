@@ -45,6 +45,12 @@ Praktisk om admin-siden:
 - Én tom linje i teksten bliver et nyt afsnit. Der skal ikke bruges HTML.
 - Billeder bliver gen-kodet med Pillow. Det skalerer dem ned til højst
   2000 px og fjerner samtidig EXIF-data — altså også kameraets GPS-position.
+  **Drejningen udføres på pixelsne først** (`ImageOps.exif_transpose`): en
+  telefon gemmer tit billedet, som sensoren så det, og lader et EXIF-flag
+  fortælle, hvordan det skal vendes. Smider man EXIF væk uden at dreje
+  først, kommer stående fotos til at ligge ned.
+- Billederne beholder deres eget format på nyhedssiden. Tvang vi dem ind i
+  4:3, ville stående fotos blive beskåret til liggende.
 - Sletter man en nyhed, bliver dens billedfiler slettet med.
 - Adgangskoderne ligger som bcrypt-hash i `/etc/arslevskak/admin.env`
   på serveren (kun læsbar for root). De står **ikke** i dette repo.

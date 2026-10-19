@@ -1,6 +1,48 @@
 {
   "posts": [
     {
+      "id": "2026-10-19-opstart-af-juniortraening-paa-husseren",
+      "date": "2026-10-19",
+      "title": "Opstart af juniortræning på Husseren",
+      "body": [
+        "Flot fremmøde i dag til opstarten af juniorundervisning på Husmandsstedet (kl. 17), dog uden nogen fast aldersgrænse. Reglerne blev gennemgået og der blev spillet flot skak i hyggepartierne. Næste gang vil der blandt andet være teknikundervisning."
+      ],
+      "images": [
+        {
+          "file": "nyheder/9d8dca7621ba6a0d.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "file": "nyheder/15b5500e2703ba74.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "file": "nyheder/31a3cd1897b793eb.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "file": "nyheder/2cbec86661dacaa5.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-info",
+      "date": "2026-10-08",
+      "title": "Info",
+      "body": [
+        "Mini-turnringen mod OS sluttede i mandags med en smal sejr til OS. Det samlede resultat af de 4 runder kommer (muligvis) på et senere tidspunkt. Tak til OS for nogle hyggelige aftener!",
+        "Vi nærmer os tidspunktet for første holdkamp: Mandag 19/10 kl. 19.00 mod Frem 5, ude. Holdet sættes på mandag (12/10)",
+        "På mandag starter jo også vores hurtigturnering. Husk at I ikke behøver at melde til eller fra.",
+        "Og måske er der en tidlig julegave...."
+      ],
+      "images": []
+    },
+    {
       "id": "2026-09-22-udskudt-start",
       "date": "2026-09-22",
       "title": "Udskudt start!",

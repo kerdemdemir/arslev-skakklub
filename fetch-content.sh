@@ -9,7 +9,9 @@ cd "$(dirname "$0")"
 mkdir -p content assets/img/nyheder
 # signups.json hentes bevidst IKKE ned: det er personoplysninger om
 # børn, og repoet er offentligt.
-rsync -az --exclude "signups.json" "$SERVER:/srv/arslevskak/content/" ./content/
-rsync -az "$SERVER:/srv/arslevskak/assets/img/nyheder/" ./assets/img/nyheder/
+rsync -az --delete --exclude "signups.json" "$SERVER:/srv/arslevskak/content/" ./content/
+# --delete, så billeder slettet på serveren heller ikke bliver
+# liggende her. Serveren er kilden til sandheden for indholdet.
+rsync -az --delete "$SERVER:/srv/arslevskak/assets/img/nyheder/" ./assets/img/nyheder/
 
 echo "✓ Hentet. Kør 'git status' for at se, hvad der er nyt."

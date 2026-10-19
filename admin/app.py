@@ -43,7 +43,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
-from PIL import Image, UnidentifiedImageError
+from PIL import Image, ImageOps, UnidentifiedImageError
 # request.form() giver Starlettes UploadFile, ikke FastAPIs underklasse - så det
 # er den type, isinstance-tjekket i save() skal bruge.
 from starlette.datastructures import UploadFile as FormUpload
@@ -317,7 +317,14 @@ def store_image(upload: FormUpload) -> str:
         raise HTTPException(400, "Filen kunne ikke læses som et billede. "
                                  "Brug JPG eller PNG.")
 
-    keep_png = img.format == "PNG" and img.mode in ("RGBA", "LA", "P")
+    # Telefoner gemmer tit billedet, som sensoren så det, og lader et
+    # EXIF-flag fortælle, hvor meget det skal drejes. Vi fjerner EXIF for at
+    # slippe af med GPS-data - så drejningen SKAL udføres på pixelsne først,
+    # ellers ender stående billeder med at ligge ned.
+    fmt = img.format
+    img = ImageOps.exif_transpose(img) or img
+
+    keep_png = fmt == "PNG" and img.mode in ("RGBA", "LA", "P")
     img = img.convert("RGBA" if keep_png else "RGB")
     img.thumbnail((MAX_EDGE, MAX_EDGE), Image.LANCZOS)
 
