@@ -150,9 +150,15 @@ python3 -P tools/import_hurtigskak.py ~/Downloads/Hurtigskak-resultater.xlsx
 python3 build.py && ./deploy.sh
 ```
 
-Scriptet skriver `data/hurtigskak.json` og kontrollerer undervejs, at hver
-total passer med spillerens resultater (2/1/0 for de lange partier). Det
-siger også til, hvor arket mangler noget — fx et resultat uden modstander.
+Scriptet skriver `data/hurtigskak.json` og kontrollerer undervejs, at
+**begge spilleres resultater i samme parti passer sammen** (1 mod 0, ½ mod ½).
+Hænger de ikke sammen, skriver det intet og stopper — for så er rækkerne
+læst forskudt, eller der er en tastefejl i arket.
+
+Den kontrol er der af en grund: i arket står resultaterne i rækken **over**
+navnet, ikke under. Læser man dem forkert, ser tallene helt plausible ud,
+og totalerne stemmer endda — de følger jo med resultatrækken. Kun
+pardannelsen afslører fejlen.
 
 Filen ligger i **`data/`** og ikke i `content/`. `content/` hører til
 serveren, fordi administratorerne redigerer det via `/admin`; `data/` følger
