@@ -150,7 +150,12 @@ HURTIG = load_hurtigskak()
 
 
 def render_hurtigskak():
-    """Stillingen som tabel. Modstandernumrene fra arket tages ikke med:
+    """IKKE I BRUG. Parkeret efter aftale med Jens (3/11-2026): tabellen
+    skal kunne vise modstander og farve, før den kommer op igen. Farven
+    findes ikke i regnearket endnu. Funktionen og tools/import_hurtigskak.py
+    bliver stående, så arbejdet ikke skal laves forfra.
+
+    Stillingen som tabel. Modstandernumrene fra arket tages ikke med:
     de er kun udfyldt for de lange partier, så kolonnerne ville stå
     halvtomme. Resultater og totaler er kontrolleret og stemmer."""
     if not HURTIG or not HURTIG.get("players"):
@@ -681,13 +686,10 @@ def build_turneringer():
         </div>
         <p class="small">Vinder man begge 10‑minutters partier, giver det en bonus på
            +½ point – højest én gang pr. aften.</p>
-        <p class="small" style="margin-bottom:0"><a href="#hurtigstilling"
-           style="color:var(--gold);font-weight:600;text-decoration:none">Se stillingen →</a></p>
       </div>
     </div>
   </div>
 </section>
-""" + render_hurtigskak() + """
 
 <section>
   <div class="wrap">

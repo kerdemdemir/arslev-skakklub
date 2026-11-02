@@ -140,33 +140,21 @@ mailbesked er slået til.
 Send ikke direkte fra serveren uden relæ: domænets SPF peger på Porkbun, så
 mail fra serverens egen IP ville ryge i spamfilteret.
 
-## Hurtigskakkens stilling
+## Hurtigskakkens stilling (parkeret)
 
-Jens sender stillingen som et regneark efter hver spilleaften. Den omsættes
-sådan her:
+Tabellen blev vist kort, men er taget af siden igen efter aftale med Jens
+(3/11-2026): den skal kunne vise **hvem man spillede mod, og hvilken farve
+man havde**, før den giver mening.
 
-```bash
-python3 -P tools/import_hurtigskak.py ~/Downloads/Hurtigskak-resultater.xlsx
-python3 build.py && ./deploy.sh
-```
+Farven findes ikke i regnearket. Jeg har kigget efter den både som tekst og
+som formatering (fed, kursiv, skriftfarve, baggrund, kommentarer) — der er
+ingen. Så den skal tilføjes i arket, før siden kan vise den.
 
-Scriptet skriver `data/hurtigskak.json` og kontrollerer undervejs, at
-**begge spilleres resultater i samme parti passer sammen** (1 mod 0, ½ mod ½).
-Hænger de ikke sammen, skriver det intet og stopper — for så er rækkerne
-læst forskudt, eller der er en tastefejl i arket.
-
-Den kontrol er der af en grund: i arket står resultaterne i rækken **over**
-navnet, ikke under. Læser man dem forkert, ser tallene helt plausible ud,
-og totalerne stemmer endda — de følger jo med resultatrækken. Kun
-pardannelsen afslører fejlen.
-
-Filen ligger i **`data/`** og ikke i `content/`. `content/` hører til
-serveren, fordi administratorerne redigerer det via `/admin`; `data/` følger
-med koden ved udrulning. Lagde man den i `content/`, ville `build.py` på
-serveren ikke kunne se den, og tabellen ville forsvinde.
-
-Modstandernumrene fra arket bliver **ikke** vist. De er kun udfyldt for de
-lange partier, så kolonnerne ville stå halvtomme på siden.
+`tools/import_hurtigskak.py`, `data/hurtigskak.json` og `render_hurtigskak()`
+i `build.py` bliver stående, så arbejdet ikke skal laves forfra. Importeren
+kontrollerer, at begge spilleres resultater i samme parti passer sammen, og
+skriver intet, hvis de ikke gør — det var sådan, en forskydning på én række
+blev fanget, da Erdem stod til 0 point i stedet for 7.
 
 ## Kalenderen
 
