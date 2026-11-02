@@ -134,6 +134,60 @@ def render_images(imgs, lead_only=False):
     return f'\n          <div class="{cls}">{"".join(figs)}</div>'
 
 
+# ------------------------------------------- hurtigskakkens stilling
+# Skrives af tools/import_hurtigskak.py ud fra Jens' regneark. Ligger i
+# data/ og ikke content/, fordi den følger med koden ved udrulning.
+HURTIG_FILE = pathlib.Path("data/hurtigskak.json")
+
+
+def load_hurtigskak():
+    if not HURTIG_FILE.exists():
+        return None
+    return json.loads(HURTIG_FILE.read_text(encoding="utf-8"))
+
+
+HURTIG = load_hurtigskak()
+
+
+def render_hurtigskak():
+    """Stillingen som tabel. Modstandernumrene fra arket tages ikke med:
+    de er kun udfyldt for de lange partier, så kolonnerne ville stå
+    halvtomme. Resultater og totaler er kontrolleret og stemmer."""
+    if not HURTIG or not HURTIG.get("players"):
+        return ""
+    ev = HURTIG["evenings"]
+    top = "".join(
+        f'<th colspan="3">{e["no"]} · {dk_date(e["date"], short=True) if e["date"] else "—"}</th>'
+        for e in ev)
+    nums = "".join(f"<th>{r}</th>" for e in ev for r in e["rounds"])
+    rows = []
+    for p in HURTIG["players"]:
+        cells = "".join(f'<td>{H.escape(x) if x else "–"}</td>' for x in p["results"])
+        rows.append(f'        <tr><td>{H.escape(p["no"])}</td>'
+                    f'<td class="nm">{H.escape(p["name"])}</td>{cells}'
+                    f'<td class="tot">{H.escape(p["total"]) if p["total"] else "–"}</td></tr>')
+    return f"""
+<section class="tint" id="hurtigstilling">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Hurtigskakmesterskabet</p>
+      <h2>{H.escape(HURTIG["heading"])}</h2>
+      <p>Gevinst giver 2 point, remis 1 og tab 0. „–“ betyder, at der ikke er
+         spillet eller noteret et resultat i den runde.</p></div>
+    <div class="table-scroll reveal">
+      <table class="standings">
+        <thead>
+          <tr><th rowspan="2">Nr.</th><th rowspan="2" class="nm">Navn</th>{top}<th rowspan="2">I alt</th></tr>
+          <tr>{nums}</tr>
+        </thead>
+        <tbody>
+{chr(10).join(rows)}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>"""
+
+
 # ------------------------------------------------- klubturneringens rundeskema
 PLAYERS = ["Erdem", "Jens", "Bent", "Knud", "Jan", "Henrik",
            "Niels", "Søren", "Magnus", "Ivar", "Lean", "Bye"]
@@ -606,13 +660,14 @@ def build_turneringer():
         <div class="ico" aria-hidden="true">⚡</div>
         <h3>Hurtigskakmesterskabet</h3>
         <p>Sideløbende med klubturneringen spiller vi over 3 aftener i efteråret og
-           3 aftener i foråret om årets hurtigskakmesterskab – i alt 2×9 partier
+           3 aftener i foråret om årets hurtigskakmesterskab – i alt 6×3
            (30 min. + 0 sek.).</p>
-        <p>Måske bliver det i 2 sektioner med en finale. Det er ikke helt afgjort endnu.</p>
         <p>Til hurtigskak skal vi ikke melde, om vi kommer eller ej. Aftenens 3 runder
-           lægges ved lodtrækning – vi prøver at undgå gentagelser.</p>
+           lægges ved lodtrækning – vi prøver at undgå gentagelser. Dvs. at man er
+           sikker på 3 runder til regnskabet, hvis man møder ind.</p>
         <p>Ved ulige antal tager vi i hver af de 3 runder 3 mand fra, som spiller
-           10 min. lyn alle mod alle (= 3 partier).</p>
+           10 min. lyn alle mod alle (A mod B, B mod C, C mod A = 3 partier à
+           20 min. = 1 time).</p>
 
         <h4>Point</h4>
         <div class="table-scroll">
@@ -625,13 +680,16 @@ def build_turneringer():
           </table>
         </div>
         <p class="small">Vinder man begge 10‑minutters partier, giver det en bonus på
-           +½ point – højst én gang pr. aften.</p>
+           +½ point – højest én gang pr. aften.</p>
+        <p class="small" style="margin-bottom:0"><a href="#hurtigstilling"
+           style="color:var(--gold);font-weight:600;text-decoration:none">Se stillingen →</a></p>
       </div>
     </div>
   </div>
 </section>
+""" + render_hurtigskak() + """
 
-<section class="tint">
+<section>
   <div class="wrap">
     <div class="sec-head"><p class="kicker">Resten af sæsonen</p><h2>Øvrige turneringer</h2></div>
     <div class="grid g2">

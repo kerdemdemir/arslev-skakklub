@@ -140,6 +140,28 @@ mailbesked er slået til.
 Send ikke direkte fra serveren uden relæ: domænets SPF peger på Porkbun, så
 mail fra serverens egen IP ville ryge i spamfilteret.
 
+## Hurtigskakkens stilling
+
+Jens sender stillingen som et regneark efter hver spilleaften. Den omsættes
+sådan her:
+
+```bash
+python3 -P tools/import_hurtigskak.py ~/Downloads/Hurtigskak-resultater.xlsx
+python3 build.py && ./deploy.sh
+```
+
+Scriptet skriver `data/hurtigskak.json` og kontrollerer undervejs, at hver
+total passer med spillerens resultater (2/1/0 for de lange partier). Det
+siger også til, hvor arket mangler noget — fx et resultat uden modstander.
+
+Filen ligger i **`data/`** og ikke i `content/`. `content/` hører til
+serveren, fordi administratorerne redigerer det via `/admin`; `data/` følger
+med koden ved udrulning. Lagde man den i `content/`, ville `build.py` på
+serveren ikke kunne se den, og tabellen ville forsvinde.
+
+Modstandernumrene fra arket bliver **ikke** vist. De er kun udfyldt for de
+lange partier, så kolonnerne ville stå halvtomme på siden.
+
 ## Kalenderen
 
 **<https://aarslevskak.com/admin/kalender>** — kun for administratorer.

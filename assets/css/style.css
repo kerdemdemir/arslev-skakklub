@@ -593,3 +593,15 @@ ol.steps p{margin:0;color:var(--muted)}
   background:#e8f2ec;border:1px solid #bfdccc;color:#2f6b46;
   border-radius:var(--radius-sm);padding:13px 16px;font-weight:600;
 }
+
+/* Stillingen i hurtigskakmesterskabet */
+table.standings{font-variant-numeric:tabular-nums}
+table.standings th,table.standings td{text-align:center;padding:9px 10px}
+table.standings thead tr:first-child th{border-bottom:1px solid var(--line)}
+table.standings th.nm,table.standings td.nm{text-align:left;white-space:nowrap}
+table.standings td.nm{font-weight:600}
+table.standings td.tot{
+  font-weight:700;color:var(--gold);font-size:1.02rem;
+  background:color-mix(in srgb,var(--gold) 8%,transparent);
+}
+table.standings tbody td{border-bottom:1px solid var(--line)}
